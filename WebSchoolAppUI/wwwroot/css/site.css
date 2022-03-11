@@ -11,6 +11,16 @@ a.navbar-brand {
 a {
   color: #0366d6;
 }
+.navbar-nav > .active > a {
+    color: aqua;
+    background-color: chartreuse;
+}
+
+.nav-item > a:hover {
+    color: aqua;
+}
+
+
 
 .btn-primary {
   color: #fff;

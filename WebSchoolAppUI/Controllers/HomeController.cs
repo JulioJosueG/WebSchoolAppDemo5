@@ -22,7 +22,22 @@ namespace WebSchoolAppUI.Controllers
         {
             return View();
         }
-
+        public IActionResult Gestion()
+        {
+            return View();
+        }
+        public IActionResult Login()
+        {
+            return View();
+        }
+        public IActionResult Configuracion()
+        {
+            return View();
+        }
+        public IActionResult Reportes()
+        {
+            return View();
+        }
         public IActionResult Privacy()
         {
             return View();
