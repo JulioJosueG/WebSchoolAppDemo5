@@ -5,7 +5,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using System.IO;
 using WebSchoolAppUI.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace WebSchoolAppUI.Controllers
 {
@@ -30,10 +32,18 @@ namespace WebSchoolAppUI.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Configuracion()
         {
             return View();
         }
+
+        /*[HttpPost("Configuracion")]
+        public IActionResult Configuracion(IFormFile file)
+        {
+            return View();
+        }*/
+        
         public IActionResult Reportes()
         {
             return View();

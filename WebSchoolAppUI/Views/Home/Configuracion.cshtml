@@ -8,8 +8,23 @@
         <a class="navbar-brand">Configuracion</a>
         <form class="form-inline">
             <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button type="button" class="btn btn-primary"> Cargar DataWarehouse</button>
+            <button type="button" class="btn btn-primary">Buscar</button>
         </form>
+
+
+        <form class="form-inline" method="post" enctype="multipart/form-data" asp-controller="Home" asp-action="Configuracion">
+            <div class="input-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="inputGroupFile">
+                    <label class="custom-file-label" for="inputGroupFile">Choose file</label>
+                </div>
+                <div class="input-group-append">
+                    <input class="btn btn-outline-secondary" value="Cargar DataSource" type="button"/>
+                </div>
+            </div>
+        </form>
+
+
     </nav>
     <div style="margin-top:30px" class="table-responsive">
         <table class="table">
@@ -27,30 +42,29 @@
             <tbody>
                 <tr>
                     <th scope="row">1</th>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-                    <td>Otto</td>
-
+                    <td>ExcelEstudiantes2020</td>
+                    <td>10/5/2022</td>
+                    <td>400</td>
+                    <td>380</td>
+                    <td>20</td>
                 </tr>
                 <tr>
                     <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>Thornton</td>
-                    <td>Thornton</td>
-                    <td>Thornton</td>
-
+                    <td>ExcelEstudiantes2021</td>
+                    <td>10/5/2022</td>
+                    <td>450</td>
+                    <td>440</td>
+                    <td>10</td>
                 </tr>
                 <tr>
                     <th scope="row">3</th>
-                    <td>Larry</td>
-                    <td>the Bird</td>
-                    <td>the Bird</td>
-                    <td>the Bird</td>
-                    <td>the Bird</td>
+                    <td>ExcelEstudiantes2022</td>
+                    <td>10/5/2022</td>
+                    <td>475</td>
+                    <td>460</td>
+                    <td>15</td>
                 </tr>
+               
             </tbody>
         </table>
 
