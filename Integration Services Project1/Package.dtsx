@@ -11,8 +11,8 @@
   DTS:LocaleID="7178"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="21"
-  DTS:VersionGUID="{BEA03CED-632C-4D61-9362-CECA5E601563}">
+  DTS:VersionBuild="22"
+  DTS:VersionGUID="{6A31C6FC-EA4A-4166-A76B-010A6C5D3A20}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -637,7 +637,7 @@
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Aula]"
                           cachedDataType="wstr"
-                          cachedLength="7"
+                          cachedLength="6"
                           cachedName="Aula"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Course]"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Aula]" />
@@ -650,14 +650,14 @@
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nombre]"
                           cachedDataType="wstr"
-                          cachedLength="150"
+                          cachedLength="255"
                           cachedName="Nombre"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Nombre]" />
                         <inputColumn
                           refId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NewEstado]"
                           cachedDataType="wstr"
-                          cachedLength="150"
+                          cachedLength="255"
                           cachedName="NewEstado"
                           externalMetadataColumnId="Package\Foreach Loop Container\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
                           lineageId="Package\Foreach Loop Container\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[NewEstado]" />

@@ -33,17 +33,45 @@ namespace WebSchoolAppUI.Controllers
             return View();
         }
         [HttpGet]
-        public IActionResult Configuracion()
+        public ActionResult Configuracion()
         {
             return View();
         }
-
-        /*[HttpPost("Configuracion")]
-        public IActionResult Configuracion(IFormFile file)
+        [HttpPost]
+        public async  Task<ActionResult> Configuracion(List<IFormFile> files)
         {
-            return View();
-        }*/
-        
+            long size = files.Sum(f => f.Length);
+
+            try
+            {
+
+                foreach (var formFile in files)
+                {
+                    if (formFile.Length > 0)
+                    {
+                        string _FileName = Path.GetFileName(formFile.FileName);
+                        string _path = Path.Combine("~/UploadedFiles", _FileName);
+                        using (var stream = System.IO.File.Create(_path))
+                        {
+                            await formFile.CopyToAsync(stream);
+                        }
+                    }
+                    ViewBag.Message = "File Uploaded Successfully!!";
+                    return View();
+
+                }
+
+                   
+            }
+            catch
+            {
+                ViewBag.Message = "File upload failed!!";
+                return View();
+            }
+
+            return Ok(new { count = files.Count, size });
+
+        }
         public IActionResult Reportes()
         {
             return View();
