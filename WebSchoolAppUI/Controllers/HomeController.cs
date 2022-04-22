@@ -42,34 +42,21 @@ namespace WebSchoolAppUI.Controllers
         {
             long size = files.Sum(f => f.Length);
 
-            try
+            var filePaths = new List<string>();
+            foreach (var formFile in files)
             {
-
-                foreach (var formFile in files)
+                if (formFile.Length > 0)
                 {
-                    if (formFile.Length > 0)
+                    var filePath = Path.Combine("UploadedFiles", formFile.FileName);
+                    filePaths.Add(filePath);
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
-                        string _FileName = Path.GetFileName(formFile.FileName);
-                        string _path = Path.Combine("~/UploadedFiles", _FileName);
-                        using (var stream = System.IO.File.Create(_path))
-                        {
-                            await formFile.CopyToAsync(stream);
-                        }
+                        await formFile.CopyToAsync(stream);
                     }
-                    ViewBag.Message = "File Uploaded Successfully!!";
-                    return View();
-
                 }
-
-                   
             }
-            catch
-            {
-                ViewBag.Message = "File upload failed!!";
-                return View();
-            }
-
-            return Ok(new { count = files.Count, size });
+            return Ok(new { count = files.Count, size, filePaths });
+         
 
         }
         public IActionResult Reportes()

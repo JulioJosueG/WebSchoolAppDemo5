@@ -6,6 +6,18 @@
     <Name>Cubo.database</Name>
     <FullPath>Cubo.database</FullPath>
   </Database>
+  <Cubes>
+    <ProjectItem>
+      <Name>DW Episcopal.cube</Name>
+      <FullPath>DW Episcopal.cube</FullPath>
+      <Dependencies>
+        <ProjectItem>
+          <Name>DW Episcopal.partitions</Name>
+          <FullPath>DW Episcopal.partitions</FullPath>
+        </ProjectItem>
+      </Dependencies>
+    </ProjectItem>
+  </Cubes>
   <Dimensions>
     <ProjectItem>
       <Name>Ages.dim</Name>
