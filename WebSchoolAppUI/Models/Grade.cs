@@ -5,18 +5,18 @@ using System.Collections.Generic;
 
 namespace WebSchoolAppUI.Models
 {
-    public partial class SchoolYear
+    public partial class Grade
     {
-        public SchoolYear()
+        public Grade()
         {
             FactSignOns = new HashSet<FactSignOn>();
-            Files = new HashSet<File>();
         }
 
-        public int IdSchoolYear { get; set; }
-        public string Year { get; set; }
+        public int IdGrade { get; set; }
+        public string Name { get; set; }
+        public string Section { get; set; }
+        public string Level { get; set; }
 
         public virtual ICollection<FactSignOn> FactSignOns { get; set; }
-        public virtual ICollection<File> Files { get; set; }
     }
 }
