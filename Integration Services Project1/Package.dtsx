@@ -11,8 +11,8 @@
   DTS:LocaleID="7178"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="29"
-  DTS:VersionGUID="{DE603C1B-7536-4397-968F-9DAC0F125E9A}">
+  DTS:VersionBuild="34"
+  DTS:VersionGUID="{26FAC2DA-9D6B-4AE9-8ADE-D270F269F55D}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -35,7 +35,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\C# Projects\WebSchoolAppDemo5\WebSchoolAppUI\UploadedFiles\Colegio Episcopal La Encarnación Estudiantes 2021-2022.xls;Extended Properties=&quot;Excel 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\C# Projects\WebSchoolAppDemo5\WebSchoolAppUI\UploadedFiles\Listado estudiantes 2021-2022.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -88,7 +88,7 @@
       DTS:Namespace="User"
       DTS:ObjectName="Archivo">
       <DTS:VariableValue
-        DTS:DataType="8">E:\C# Projects\WebSchoolAppDemo5\WebSchoolAppUI\UploadedFiles\Colegio Episcopal La Encarnación Estudiantes 2021-2022.xlsx</DTS:VariableValue>
+        DTS:DataType="8">E:\C# Projects\WebSchoolAppDemo5\WebSchoolAppUI\UploadedFiles\Listado estudiantes 2021-2022.xls</DTS:VariableValue>
     </DTS:Variable>
     <DTS:Variable
       DTS:CreationName=""
@@ -129,29 +129,11 @@
                   name="Derived Column Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Nombre de los estudiantes]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Nombre de los estudiantes"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nombre de los estudiantes]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Estado]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Estado"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Estado]" />
-                    <inputColumn
                       refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[Sexo]"
                       cachedDataType="wstr"
                       cachedLength="255"
                       cachedName="Sexo"
                       lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Sexo]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input].Columns[No]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="No"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[No]" />
                   </inputColumns>
                   <externalMetadataColumns />
                 </input>
@@ -165,35 +147,12 @@
                   synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
                   <outputColumns>
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Aula]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="7"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Aula]"
-                      name="Aula"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::Aula]</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::Aula]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idEstado]"
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idFile]"
                       dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idEstado]"
-                      name="idEstado"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idFile]"
+                      name="idFile"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
@@ -210,141 +169,71 @@
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[IdFile]"
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idState]"
                       dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[IdFile]"
-                      name="IdFile"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idState]"
+                      name="idState"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">@[$Package::File]</property>
+                          name="Expression">1</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::File]</property>
+                          name="FriendlyExpression">1</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Nombre]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="150"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Nombre]"
-                      name="Nombre"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nombre de los estudiantes]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">[Nombre de los estudiantes]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[NewEstado]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="150"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[NewEstado]"
-                      name="NewEstado"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Estado]}</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">Estado</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[FilePath]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Computation"
-                      errorRowDisposition="FailComponent"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[FilePath]"
-                      name="FilePath"
-                      truncationRowDisposition="FailComponent">
-                      <properties>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Expression"
-                          name="Expression">@[$Package::FilePath]</property>
-                        <property
-                          containsID="true"
-                          dataType="System.String"
-                          description="Derived Column Friendly Expression"
-                          expressionType="Notify"
-                          name="FriendlyExpression">@[$Package::FilePath]</property>
-                      </properties>
-                    </outputColumn>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Sex]"
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[sex]"
                       codePage="1252"
                       dataType="str"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
                       length="20"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Sex]"
-                      name="Sex"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[sex]"
+                      name="sex"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Sexo]}</property>
+                          name="Expression">#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Sexo]} == "Masculino" ? "M" : "F"</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">Sexo</property>
+                          name="FriendlyExpression">Sexo == "Masculino" ? "M" : "F"</property>
                       </properties>
                     </outputColumn>
                     <outputColumn
-                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[IsStudent]"
-                      dataType="wstr"
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[sa]"
+                      dataType="i4"
                       errorOrTruncationOperation="Computation"
                       errorRowDisposition="FailComponent"
-                      length="50"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[IsStudent]"
-                      name="IsStudent"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[sa]"
+                      name="sa"
                       truncationRowDisposition="FailComponent">
                       <properties>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Expression"
-                          name="Expression">#{Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[No]}</property>
+                          name="Expression">1</property>
                         <property
                           containsID="true"
                           dataType="System.String"
                           description="Derived Column Friendly Expression"
                           expressionType="Notify"
-                          name="FriendlyExpression">No</property>
+                          name="FriendlyExpression">1</property>
                       </properties>
                     </outputColumn>
                   </outputColumns>
@@ -391,7 +280,7 @@
                 <property
                   dataType="System.String"
                   description="Specifies the name of the database object used to open a rowset."
-                  name="OpenRowset">'1ero A de Secundaria$'</property>
+                  name="OpenRowset">'2021-2022$'</property>
                 <property
                   dataType="System.String"
                   description="Specifies the variable that contains the name of the database object used to open a rowset."
@@ -428,16 +317,6 @@
                   refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]"
                   name="Excel Source Output">
                   <outputColumns>
-                    <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nombre de los estudiantes]"
-                      dataType="wstr"
-                      errorOrTruncationOperation="Conversion"
-                      errorRowDisposition="FailComponent"
-                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre de los estudiantes]"
-                      length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nombre de los estudiantes]"
-                      name="Nombre de los estudiantes"
-                      truncationRowDisposition="FailComponent" />
                     <outputColumn
                       refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Estado]"
                       dataType="wstr"
@@ -507,14 +386,59 @@
                       lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Sexo]"
                       name="Sexo"
                       truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Curso]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Curso]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Curso]"
+                      name="Curso"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Seccion]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Seccion]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Seccion]"
+                      name="Seccion"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nivel]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nivel]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nivel]"
+                      name="Nivel"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Profesor]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Profesor]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Profesor]"
+                      name="Profesor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nombre]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nombre]"
+                      name="Nombre"
+                      truncationRowDisposition="FailComponent" />
                   </outputColumns>
                   <externalMetadataColumns
                     isUsed="True">
-                    <externalMetadataColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre de los estudiantes]"
-                      dataType="wstr"
-                      length="255"
-                      name="Nombre de los estudiantes" />
                     <externalMetadataColumn
                       refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Contacto]"
                       dataType="wstr"
@@ -574,6 +498,31 @@
                       dataType="wstr"
                       length="255"
                       name="Sexo" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Curso]"
+                      dataType="wstr"
+                      length="255"
+                      name="Curso" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Seccion]"
+                      dataType="wstr"
+                      length="255"
+                      name="Seccion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nivel]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nivel" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Profesor]"
+                      dataType="wstr"
+                      length="255"
+                      name="Profesor" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].ExternalColumns[Nombre]"
+                      dataType="wstr"
+                      length="255"
+                      name="Nombre" />
                   </externalMetadataColumns>
                 </output>
                 <output
@@ -582,17 +531,41 @@
                   name="Excel Source Error Output">
                   <outputColumns>
                     <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Curso]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Curso]"
+                      name="Curso" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Seccion]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Seccion]"
+                      name="Seccion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Nivel]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Nivel]"
+                      name="Nivel" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Profesor]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Profesor]"
+                      name="Profesor" />
+                    <outputColumn
                       refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[No]"
                       dataType="wstr"
                       length="255"
                       lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[No]"
                       name="No" />
                     <outputColumn
-                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre de los estudiantes]"
+                      refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre]"
                       dataType="wstr"
                       length="255"
-                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre de los estudiantes]"
-                      name="Nombre de los estudiantes" />
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Nombre]"
+                      name="Nombre" />
                     <outputColumn
                       refId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Error Output].Columns[Apellido]"
                       dataType="wstr"
@@ -641,37 +614,6 @@
                       name="ErrorColumn"
                       specialFlags="2" />
                   </outputColumns>
-                  <externalMetadataColumns />
-                </output>
-              </outputs>
-            </component>
-            <component
-              refId="Package\Data Flow Task\Multicast"
-              componentClassID="Microsoft.Multicast"
-              contactInfo="Multicast;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
-              description="Distributes every input row to every row in one or more outputs. For example, branch your data flow to make a copy of data so that some values can be masked before sharing with external partners."
-              name="Multicast">
-              <inputs>
-                <input
-                  refId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]"
-                  name="Multicast Input 1">
-                  <externalMetadataColumns />
-                </input>
-              </inputs>
-              <outputs>
-                <output
-                  refId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 2]"
-                  deleteOutputOnPathDetached="true"
-                  name="Multicast Output 2"
-                  synchronousInputId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]">
-                  <externalMetadataColumns />
-                </output>
-                <output
-                  refId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 1]"
-                  dangling="true"
-                  deleteOutputOnPathDetached="true"
-                  name="Multicast Output 1"
-                  synchronousInputId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]">
                   <externalMetadataColumns />
                 </output>
               </outputs>
@@ -749,11 +691,31 @@
                   name="OLE DB Destination Input">
                   <inputColumns>
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IdFile]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idFile]"
                       cachedDataType="i4"
-                      cachedName="IdFile"
+                      cachedName="idFile"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdFile]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[IdFile]" />
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idFile]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idState]"
+                      cachedDataType="i4"
+                      cachedName="idState"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdState]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idState]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Nombre"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Nombre]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Estado]"
+                      cachedDataType="wstr"
+                      cachedLength="255"
+                      cachedName="Estado"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Estado]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Modalidad]"
                       cachedDataType="wstr"
@@ -775,32 +737,19 @@
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Condition]"
                       lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Condición]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Aula]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Curso]"
                       cachedDataType="wstr"
-                      cachedLength="8"
-                      cachedName="Aula"
+                      cachedLength="255"
+                      cachedName="Curso"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Course]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Aula]" />
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Curso]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[idEstado]"
-                      cachedDataType="i4"
-                      cachedName="idEstado"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IdState]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[idEstado]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nombre]"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[No]"
                       cachedDataType="wstr"
                       cachedLength="255"
-                      cachedName="Nombre"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Nombre]" />
-                    <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[NewEstado]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="NewEstado"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[NewEstado]" />
+                      cachedName="No"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentId]"
+                      lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[No]" />
                     <inputColumn
                       refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Apellido]"
                       cachedDataType="wstr"
@@ -809,19 +758,19 @@
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LastName]"
                       lineageId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output].Columns[Apellido]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sex]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="Sex"
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sex]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="sex"
                       externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sex]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[Sex]" />
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[sex]" />
                     <inputColumn
-                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[IsStudent]"
-                      cachedDataType="wstr"
-                      cachedLength="255"
-                      cachedName="IsStudent"
-                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[StudentId]"
-                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[IsStudent]" />
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[sa]"
+                      cachedDataType="i4"
+                      cachedName="sa"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[IDSigerd]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[sa]" />
                   </inputColumns>
                   <externalMetadataColumns
                     isUsed="True">
@@ -924,7 +873,7 @@
           <paths>
             <path
               refId="Package\Data Flow Task.Paths[Derived Column Output]"
-              endId="Package\Data Flow Task\Multicast.Inputs[Multicast Input 1]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
               name="Derived Column Output"
               startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
             <path
@@ -932,11 +881,6 @@
               endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
               name="Excel Source Output"
               startId="Package\Data Flow Task\Excel Source.Outputs[Excel Source Output]" />
-            <path
-              refId="Package\Data Flow Task.Paths[Multicast Output 2]"
-              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
-              name="Multicast Output 2"
-              startId="Package\Data Flow Task\Multicast.Outputs[Multicast Output 2]" />
           </paths>
         </pipeline>
       </DTS:ObjectData>
@@ -983,6 +927,10 @@
     <LayoutInfo>
       <GraphLayout
         Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="464.80001192093,226.035297388684" />
         <ContainerLayout
           HeaderHeight="43"
           IsExpanded="True"
@@ -990,10 +938,6 @@
           Size="204.8,165.6"
           Id="Package\Foreach Loop Container"
           TopLeft="172.857145800883,176.647061300938" />
-        <NodeLayout
-          Size="150.4,41.6"
-          Id="Package\Data Flow Task"
-          TopLeft="464.80001192093,226.035297388684" />
       </GraphLayout>
     </LayoutInfo>
   </Package>
@@ -1003,81 +947,39 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="494.28572270335,188.117649697103" />
-        <NodeLayout
           Size="138.4,41.6"
           Id="Package\Data Flow Task\Excel Source"
           TopLeft="132.142859393237,151.411766829375" />
         <NodeLayout
           Size="152.8,41.6"
           Id="Package\Data Flow Task\Derived Column"
-          TopLeft="291.428576391571,281.411768652576" />
-        <NodeLayout
-          Size="120,41.6"
-          Id="Package\Data Flow Task\Multicast"
-          TopLeft="484.693885805308,299.351263479543" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Multicast Output 2]"
-          TopLeft="544.693885805308,299.351263479543">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="34.791836898042,-69.6336137824401"
-              Start="0,0"
-              End="34.791836898042,-62.1336137824401">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,-30.81680689122" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,-30.81680689122"
-                    Point2="0,-34.81680689122"
-                    Point3="4,-34.81680689122" />
-                  <mssgle:LineSegment
-                    End="30.791836898042,-34.81680689122" />
-                  <mssgle:CubicBezierSegment
-                    Point1="30.791836898042,-34.81680689122"
-                    Point2="34.791836898042,-34.81680689122"
-                    Point3="34.791836898042,-38.81680689122" />
-                  <mssgle:LineSegment
-                    End="34.791836898042,-62.1336137824401" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
+          TopLeft="282.142861947722,248.529415250237" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Excel Source Output]"
           TopLeft="201.342859393237,193.011766829375">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="142.352383665001,88.400001823201"
+              EndConnector="133.066669221151,55.517648420862"
               Start="0,0"
-              End="142.352383665001,80.900001823201">
+              End="133.066669221151,48.017648420862">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="0,48.4903637768851" />
+                    End="0,28.9654016011958" />
                   <mssgle:CubicBezierSegment
-                    Point1="0,48.4903637768851"
-                    Point2="0,52.4903637768851"
-                    Point3="4,52.4903637768851" />
+                    Point1="0,28.9654016011958"
+                    Point2="0,32.9654016011958"
+                    Point3="4,32.9654016011958" />
                   <mssgle:LineSegment
-                    End="138.352383665001,52.4903637768851" />
+                    End="129.066669221151,32.9654016011958" />
                   <mssgle:CubicBezierSegment
-                    Point1="138.352383665001,52.4903637768851"
-                    Point2="142.352383665001,52.4903637768851"
-                    Point3="142.352383665001,56.4903637768851" />
+                    Point1="129.066669221151,32.9654016011958"
+                    Point2="133.066669221151,32.9654016011958"
+                    Point3="133.066669221151,36.9654016011958" />
                   <mssgle:LineSegment
-                    End="142.352383665001,80.900001823201" />
+                    End="133.066669221151,48.017648420862" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1086,32 +988,36 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="490.00000834465,184.294120231714" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
-          TopLeft="444.228576391571,302.211768652576">
+          TopLeft="382.676195281055,248.529415250237">
           <EdgeLayout.Curve>
             <mssgle:Curve
               StartConnector="{assembly:Null}"
-              EndConnector="40.465309413737,17.9394948269671"
+              EndConnector="192.523813063596,-22.6352950185228"
               Start="0,0"
-              End="32.965309413737,17.9394948269671">
+              End="192.523813063596,-15.1352950185228">
               <mssgle:Curve.Segments>
                 <mssgle:SegmentCollection
                   Capacity="5">
                   <mssgle:LineSegment
-                    End="16.2326547068685,0" />
+                    End="0,-5.19485559301651" />
                   <mssgle:CubicBezierSegment
-                    Point1="16.2326547068685,0"
-                    Point2="20.2326547068685,0"
-                    Point3="20.2326547068685,4" />
+                    Point1="0,-5.19485559301651"
+                    Point2="0,-9.19485559301651"
+                    Point3="4,-9.19485559301651" />
                   <mssgle:LineSegment
-                    End="20.2326547068685,13.9394948269671" />
+                    End="188.523813063596,-9.19485559301651" />
                   <mssgle:CubicBezierSegment
-                    Point1="20.2326547068685,13.9394948269671"
-                    Point2="20.2326547068685,17.9394948269671"
-                    Point3="24.2326547068685,17.9394948269671" />
+                    Point1="188.523813063596,-9.19485559301651"
+                    Point2="192.523813063596,-9.19485559301651"
+                    Point3="192.523813063596,-13.1948555930165" />
                   <mssgle:LineSegment
-                    End="32.965309413737,17.9394948269671" />
+                    End="192.523813063596,-15.1352950185228" />
                 </mssgle:SegmentCollection>
               </mssgle:Curve.Segments>
             </mssgle:Curve>
@@ -1124,7 +1030,7 @@
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    design-time-name="Package\Data Flow Task\Excel Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1137,7 +1043,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Excel Source">
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
