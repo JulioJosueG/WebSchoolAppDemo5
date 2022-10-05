@@ -1,0 +1,83 @@
+﻿@model IEnumerable<WebSchoolAppUI.Models.PersonalDistrito>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Apellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cedula)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCreado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaModificado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreadoPorNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdDistritoNavigation)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModificadoPorNavigation)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cedula)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaCreado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaModificado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreadoPorNavigation.Apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.IdDepartamento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdDistritoNavigation.Codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModificadoPorNavigation.Apellido)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdPersonalDistrito">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPersonalDistrito">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPersonalDistrito">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
