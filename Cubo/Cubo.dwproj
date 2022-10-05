@@ -8,68 +8,64 @@
   </Database>
   <Cubes>
     <ProjectItem>
-      <Name>DW Episcopal.cube</Name>
-      <FullPath>DW Episcopal.cube</FullPath>
+      <Name>DW Episcopal3.cube</Name>
+      <FullPath>DW Episcopal3.cube</FullPath>
       <Dependencies>
         <ProjectItem>
-          <Name>DW Episcopal.partitions</Name>
-          <FullPath>DW Episcopal.partitions</FullPath>
+          <Name>DW Episcopal3.partitions</Name>
+          <FullPath>DW Episcopal3.partitions</FullPath>
         </ProjectItem>
       </Dependencies>
     </ProjectItem>
   </Cubes>
   <Dimensions>
     <ProjectItem>
-      <Name>Ages.dim</Name>
-      <FullPath>Ages.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Conditions.dim</Name>
-      <FullPath>Conditions.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Grades.dim</Name>
-      <FullPath>Grades.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Modalities Type.dim</Name>
-      <FullPath>Modalities Type.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>School Year.dim</Name>
-      <FullPath>School Year.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>States.dim</Name>
-      <FullPath>States.dim</FullPath>
-    </ProjectItem>
-    <ProjectItem>
-      <Name>Students.dim</Name>
-      <FullPath>Students.dim</FullPath>
+      <Name>Time.dim</Name>
+      <FullPath>Time.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
       <Name>Students Type.dim</Name>
       <FullPath>Students Type.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
+      <Name>Conditions.dim</Name>
+      <FullPath>Conditions.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Modalities Type.dim</Name>
+      <FullPath>Modalities Type.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Grades.dim</Name>
+      <FullPath>Grades.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
       <Name>Teachers.dim</Name>
       <FullPath>Teachers.dim</FullPath>
     </ProjectItem>
     <ProjectItem>
-      <Name>Time.dim</Name>
-      <FullPath>Time.dim</FullPath>
+      <Name>School Year.dim</Name>
+      <FullPath>School Year.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Students.dim</Name>
+      <FullPath>Students.dim</FullPath>
+    </ProjectItem>
+    <ProjectItem>
+      <Name>Age.dim</Name>
+      <FullPath>Age.dim</FullPath>
     </ProjectItem>
   </Dimensions>
   <DataSources>
     <ProjectItem>
-      <Name>DW Episcopal.ds</Name>
-      <FullPath>DW Episcopal.ds</FullPath>
+      <Name>DW Episcopal3.ds</Name>
+      <FullPath>DW Episcopal3.ds</FullPath>
     </ProjectItem>
   </DataSources>
   <DataSourceViews>
     <ProjectItem>
-      <Name>DW Episcopal.dsv</Name>
-      <FullPath>DW Episcopal.dsv</FullPath>
+      <Name>DW Episcopal3.dsv</Name>
+      <FullPath>DW Episcopal3.dsv</FullPath>
     </ProjectItem>
   </DataSourceViews>
   <Configurations>
@@ -78,15 +74,15 @@
       <Options>
         <ConnectionMappings>
           <ConfigurationSetting>
-            <Id>DW Episcopal</Id>
-            <Name>DW Episcopal</Name>
-            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=.;Integrated Security=SSPI;Initial Catalog=DW_Episcopal</Value>
+            <Id>DW Episcopal3</Id>
+            <Name>DW Episcopal3</Name>
+            <Value xsi:type="xsd:string">Provider=SQLNCLI11.1;Data Source=.;Integrated Security=SSPI;Initial Catalog=DW_Episcopal3</Value>
           </ConfigurationSetting>
         </ConnectionMappings>
         <ConnectionSecurityMappings>
           <ConfigurationSetting>
-            <Id>DW Episcopal</Id>
-            <Name>DW Episcopal</Name>
+            <Id>DW Episcopal3</Id>
+            <Name>DW Episcopal3</Name>
             <Value xsi:type="xsd:int">0</Value>
           </ConfigurationSetting>
         </ConnectionSecurityMappings>
