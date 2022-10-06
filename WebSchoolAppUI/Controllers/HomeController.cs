@@ -33,6 +33,11 @@ namespace WebSchoolAppUI.Controllers
             return View();
         }
         [HttpGet]
+        public ActionResult Centros()
+        {
+            return RedirectToAction("CrearCentros","Centros");
+        }
+        [HttpGet]
         public ActionResult Configuracion()
         {
             return View();
