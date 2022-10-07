@@ -1,45 +1,29 @@
 ﻿@model IEnumerable<WebSchoolAppUI.Models.PersonalCentro>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Personal";
 }
 
-<h1>Index</h1>
+<h1>Personal</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear Nuevo Personal</a>
 </p>
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                Nombre
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Apellido)
+                Apellido
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Cedula)
+                Cedula
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaCreado)
+                Departamento
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaModificado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreadoPorNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdCentroNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModificadoPorNavigation)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -55,27 +39,12 @@
                 @Html.DisplayFor(modelItem => item.Cedula)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaCreado)
+                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Nombre)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaModificado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreadoPorNavigation.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdCentroNavigation.IdCentroEducativo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.IdDepartamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModificadoPorNavigation.Apellido)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPersonalCentro">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPersonalCentro">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPersonalCentro">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdPersonalCentro">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdPersonalCentro">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdPersonalCentro">Eliminar</a>
             </td>
         </tr>
 }
