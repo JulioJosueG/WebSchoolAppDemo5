@@ -9,6 +9,7 @@ namespace WebSchoolAppUI.Models
     {
         public Distrito()
         {
+            Archivos = new HashSet<Archivo>();
             CentrosEducativos = new HashSet<CentrosEducativo>();
             Departamentos = new HashSet<Departamento>();
             PersonalDistritos = new HashSet<PersonalDistrito>();
@@ -27,6 +28,7 @@ namespace WebSchoolAppUI.Models
         public virtual Municipio IdMunicipioNavigation { get; set; }
         public virtual Provincia IdProvinciaNavigation { get; set; }
         public virtual Usuario ModificadoPorNavigation { get; set; }
+        public virtual ICollection<Archivo> Archivos { get; set; }
         public virtual ICollection<CentrosEducativo> CentrosEducativos { get; set; }
         public virtual ICollection<Departamento> Departamentos { get; set; }
         public virtual ICollection<PersonalDistrito> PersonalDistritos { get; set; }

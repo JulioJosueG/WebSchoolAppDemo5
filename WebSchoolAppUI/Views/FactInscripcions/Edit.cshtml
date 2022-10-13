@@ -1,0 +1,104 @@
+﻿@model WebSchoolAppUI.Models.FactInscripcion
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>FactInscripcion</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="IdFactInscripcion" />
+            <div class="form-group">
+                <label asp-for="IdEstudiante" class="control-label"></label>
+                <select asp-for="IdEstudiante" class="form-control" asp-items="ViewBag.IdEstudiante"></select>
+                <span asp-validation-for="IdEstudiante" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstudianteTipo" class="control-label"></label>
+                <select asp-for="IdEstudianteTipo" class="form-control" asp-items="ViewBag.IdEstudianteTipo"></select>
+                <span asp-validation-for="IdEstudianteTipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdModalidadTipo" class="control-label"></label>
+                <select asp-for="IdModalidadTipo" class="form-control" asp-items="ViewBag.IdModalidadTipo"></select>
+                <span asp-validation-for="IdModalidadTipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdFecha" class="control-label"></label>
+                <select asp-for="IdFecha" class="form-control" asp-items="ViewBag.IdFecha"></select>
+                <span asp-validation-for="IdFecha" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdAnioEscolar" class="control-label"></label>
+                <select asp-for="IdAnioEscolar" class="form-control" asp-items="ViewBag.IdAnioEscolar"></select>
+                <span asp-validation-for="IdAnioEscolar" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCurso" class="control-label"></label>
+                <select asp-for="IdCurso" class="form-control" asp-items="ViewBag.IdCurso"></select>
+                <span asp-validation-for="IdCurso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProfesor" class="control-label"></label>
+                <select asp-for="IdProfesor" class="form-control" asp-items="ViewBag.IdProfesor"></select>
+                <span asp-validation-for="IdProfesor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEdad" class="control-label"></label>
+                <select asp-for="IdEdad" class="form-control" asp-items="ViewBag.IdEdad"></select>
+                <span asp-validation-for="IdEdad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCondicion" class="control-label"></label>
+                <select asp-for="IdCondicion" class="form-control" asp-items="ViewBag.IdCondicion"></select>
+                <span asp-validation-for="IdCondicion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCentro" class="control-label"></label>
+                <select asp-for="IdCentro" class="form-control" asp-items="ViewBag.IdCentro"></select>
+                <span asp-validation-for="IdCentro" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImporteInscripcion" class="control-label"></label>
+                <input asp-for="ImporteInscripcion" class="form-control" />
+                <span asp-validation-for="ImporteInscripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CreadoPor" class="control-label"></label>
+                <select asp-for="CreadoPor" class="form-control" asp-items="ViewBag.CreadoPor"></select>
+                <span asp-validation-for="CreadoPor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaCreado" class="control-label"></label>
+                <input asp-for="FechaCreado" class="form-control" />
+                <span asp-validation-for="FechaCreado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModificadoPor" class="control-label"></label>
+                <select asp-for="ModificadoPor" class="form-control" asp-items="ViewBag.ModificadoPor"></select>
+                <span asp-validation-for="ModificadoPor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaModificado" class="control-label"></label>
+                <input asp-for="FechaModificado" class="form-control" />
+                <span asp-validation-for="FechaModificado" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

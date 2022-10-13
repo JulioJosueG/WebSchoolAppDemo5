@@ -1,0 +1,78 @@
+﻿@model WebSchoolAppUI.Models.FactInscripcion
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>FactInscripcion</h4>
+<hr />
+<form asp-action="Create">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="IdEstudiante" class="control-label">Estudiante</label>
+                <select asp-for="IdEstudiante" class="form-control" asp-items="ViewBag.IdEstudiante"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEstudianteTipo" class="control-label">Tipo de Estudiante</label>
+                <select asp-for="IdEstudianteTipo" class="form-control" asp-items="ViewBag.IdEstudianteTipo"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdModalidadTipo" class="control-label">Modalidad</label>
+                <select asp-for="IdModalidadTipo" class="form-control" asp-items="ViewBag.IdModalidadTipo"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdFecha" class="control-label">Fecha</label>
+                <select asp-for="IdFecha" class="form-control" asp-items="ViewBag.IdFecha"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdAnioEscolar" class="control-label">Año Escolar</label>
+                <select asp-for="IdAnioEscolar" class="form-control" asp-items="ViewBag.IdAnioEscolar"></select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="IdCurso" class="control-label">Curso</label>
+                <select asp-for="IdCurso" class="form-control" asp-items="ViewBag.IdCurso"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdProfesor" class="control-label">Profesor</label>
+                <select asp-for="IdProfesor" class="form-control" asp-items="ViewBag.IdProfesor"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdEdad" class="control-label">Edad</label>
+                <select asp-for="IdEdad" class="form-control" asp-items="ViewBag.IdEdad"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="IdCondicion" class="control-label">Condicion</label>
+                <select asp-for="IdCondicion" class="form-control" asp-items="ViewBag.IdCondicion"></select>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label asp-for="IdCentro" class="control-label">Centro</label>
+                <select asp-for="IdCentro" class="form-control" asp-items="ViewBag.IdCentro"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImporteInscripcion" class="control-label">Importe de Inscripcion</label>
+                <input asp-for="ImporteInscripcion" class="form-control" />
+                <span asp-validation-for="ImporteInscripcion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

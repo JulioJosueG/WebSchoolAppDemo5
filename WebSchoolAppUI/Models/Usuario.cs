@@ -46,7 +46,9 @@ namespace WebSchoolAppUI.Models
         public DateTime? FechaModificado { get; set; }
         public string Contrasena { get; set; }
         public int? Perfil { get; set; }
-        //public string Correo { get; set; }
+        public string NombreUsuario { get; set; }
+        public string Correo { get; set; }
+
         public virtual Perfile PerfilNavigation { get; set; }
         public virtual ICollection<AnioEscolar> AnioEscolarCreadoPorNavigations { get; set; }
         public virtual ICollection<AnioEscolar> AnioEscolarModificadoPorNavigations { get; set; }

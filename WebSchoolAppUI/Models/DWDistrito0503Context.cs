@@ -62,7 +62,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<AnioEscolar>(entity =>
             {
                 entity.HasKey(e => e.IdAnioEscolar)
-                    .HasName("PK__AnioEsco__48B63D25E35AF6A3");
+                    .HasName("PK__AnioEsco__48B63D2557340FD7");
 
                 entity.ToTable("AnioEscolar");
 
@@ -89,7 +89,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Archivo>(entity =>
             {
                 entity.HasKey(e => e.IdArchivo)
-                    .HasName("PK__Archivos__26B92111D6470E86");
+                    .HasName("PK__Archivos__26B92111E072F10E");
 
                 entity.Property(e => e.Fecha).HasColumnType("datetime");
 
@@ -101,6 +101,16 @@ namespace WebSchoolAppUI.Models
                     .WithMany(p => p.Archivos)
                     .HasForeignKey(d => d.IdAnioEscolar)
                     .HasConstraintName("FK_FileAnioEscolar");
+
+                entity.HasOne(d => d.IdCentroNavigation)
+                    .WithMany(p => p.Archivos)
+                    .HasForeignKey(d => d.IdCentro)
+                    .HasConstraintName("FK_FileCentro");
+
+                entity.HasOne(d => d.IdDistritoNavigation)
+                    .WithMany(p => p.Archivos)
+                    .HasForeignKey(d => d.IdDistrito)
+                    .HasConstraintName("FK_ArchivoDistrito");
 
                 entity.HasOne(d => d.IdEstadoNavigation)
                     .WithMany(p => p.Archivos)
@@ -149,7 +159,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Asignatura>(entity =>
             {
                 entity.HasKey(e => e.IdAsignatura)
-                    .HasName("PK__Asignatu__94F174B8A33DA53B");
+                    .HasName("PK__Asignatu__94F174B8F0895843");
 
                 entity.Property(e => e.FechaCreado)
                     .HasColumnType("datetime")
@@ -211,7 +221,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Condicione>(entity =>
             {
                 entity.HasKey(e => e.IdCondicion)
-                    .HasName("PK__Condicio__7BCB6514E5F9476D");
+                    .HasName("PK__Condicio__7BCB6514BBD013D2");
 
                 entity.Property(e => e.FechaCreado)
                     .HasColumnType("datetime")
@@ -236,7 +246,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Curso>(entity =>
             {
                 entity.HasKey(e => e.IdCurso)
-                    .HasName("PK__Cursos__085F27D6DD002EAE");
+                    .HasName("PK__Cursos__085F27D69185CEE3");
 
                 entity.Property(e => e.Nombre).HasMaxLength(255);
 
@@ -254,7 +264,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Departamento>(entity =>
             {
                 entity.HasKey(e => e.IdDepartamento)
-                    .HasName("PK__Departam__787A433DEBDC4D3C");
+                    .HasName("PK__Departam__787A433D03F05FEC");
 
                 entity.Property(e => e.FechaCreado)
                     .HasColumnType("datetime")
@@ -284,7 +294,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Distrito>(entity =>
             {
                 entity.HasKey(e => e.IdDistrito)
-                    .HasName("PK__Distrito__DE8EED59DB51107F");
+                    .HasName("PK__Distrito__DE8EED59F106815F");
 
                 entity.Property(e => e.Codigo)
                     .IsRequired()
@@ -322,7 +332,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Edade>(entity =>
             {
                 entity.HasKey(e => e.IdEdad)
-                    .HasName("PK__Edades__0BBCEBD4E6A791E1");
+                    .HasName("PK__Edades__0BBCEBD4D28A8272");
 
                 entity.Property(e => e.Edad)
                     .HasMaxLength(2)
@@ -334,7 +344,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Estado>(entity =>
             {
                 entity.HasKey(e => e.IdEstado)
-                    .HasName("PK__Estados__FBB0EDC1C21B59D8");
+                    .HasName("PK__Estados__FBB0EDC12FF0C866");
 
                 entity.Property(e => e.FechaCreado)
                     .HasColumnType("datetime")
@@ -359,7 +369,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Estudiante>(entity =>
             {
                 entity.HasKey(e => e.IdEstudiante)
-                    .HasName("PK__Estudian__B5007C247068097F");
+                    .HasName("PK__Estudian__B5007C24046E5162");
 
                 entity.Property(e => e.Apellido).HasMaxLength(255);
 
@@ -397,7 +407,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<EstudiantesTipo>(entity =>
             {
                 entity.HasKey(e => e.IdEstudianteTipo)
-                    .HasName("PK__Estudian__E279F0BB850CDB9C");
+                    .HasName("PK__Estudian__E279F0BB25D145F4");
 
                 entity.ToTable("EstudiantesTipo");
 
@@ -407,7 +417,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<FactInscripcion>(entity =>
             {
                 entity.HasKey(e => e.IdFactInscripcion)
-                    .HasName("PK__FactInsc__854BD311FB279E5E");
+                    .HasName("PK__FactInsc__854BD3119B4C1EA1");
 
                 entity.ToTable("FactInscripcion");
 
@@ -485,7 +495,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<ModalidadesTipo>(entity =>
             {
                 entity.HasKey(e => e.IdModalidadTipo)
-                    .HasName("PK__Modalida__C219930D5F7CECDF");
+                    .HasName("PK__Modalida__C219930D9AC277C5");
 
                 entity.ToTable("ModalidadesTipo");
 
@@ -495,7 +505,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Municipio>(entity =>
             {
                 entity.HasKey(e => e.IdMunicipio)
-                    .HasName("PK__Municipi__61005978CCA05524");
+                    .HasName("PK__Municipi__61005978137DE65D");
 
                 entity.Property(e => e.Nombre).HasMaxLength(255);
 
@@ -508,7 +518,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Nivele>(entity =>
             {
                 entity.HasKey(e => e.IdNivel)
-                    .HasName("PK__Niveles__A7F93DEC3DCF4E75");
+                    .HasName("PK__Niveles__A7F93DEC79DD629B");
 
                 entity.Property(e => e.Nombre).HasMaxLength(255);
             });
@@ -516,7 +526,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Perfile>(entity =>
             {
                 entity.HasKey(e => e.IdPerfil)
-                    .HasName("PK__Perfiles__C7BD5CC1AFB643AE");
+                    .HasName("PK__Perfiles__C7BD5CC14A407631");
 
                 entity.Property(e => e.FechaCreado)
                     .HasColumnType("datetime")
@@ -550,7 +560,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<PersonalCentro>(entity =>
             {
                 entity.HasKey(e => e.IdPersonalCentro)
-                    .HasName("PK__Personal__53273D9E7A2E4934");
+                    .HasName("PK__Personal__53273D9E98220EE2");
 
                 entity.ToTable("PersonalCentro");
 
@@ -592,7 +602,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<PersonalDistrito>(entity =>
             {
                 entity.HasKey(e => e.IdPersonalDistrito)
-                    .HasName("PK__Personal__078F584253EA8D37");
+                    .HasName("PK__Personal__078F584202673F79");
 
                 entity.ToTable("PersonalDistrito");
 
@@ -634,7 +644,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Profesore>(entity =>
             {
                 entity.HasKey(e => e.IdProfesor)
-                    .HasName("PK__Profesor__C377C3A172807E01");
+                    .HasName("PK__Profesor__C377C3A118B0E9DB");
 
                 entity.Property(e => e.Apellido).HasMaxLength(255);
 
@@ -673,7 +683,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Provincia>(entity =>
             {
                 entity.HasKey(e => e.IdProvincia)
-                    .HasName("PK__Provinci__EED74455C33CC911");
+                    .HasName("PK__Provinci__EED7445568700050");
 
                 entity.Property(e => e.Nombre).HasMaxLength(255);
             });
@@ -681,7 +691,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Role>(entity =>
             {
                 entity.HasKey(e => e.IdRol)
-                    .HasName("PK__Roles__2A49584C64EB5E06");
+                    .HasName("PK__Roles__2A49584C2EE6A15A");
 
                 entity.Property(e => e.FechaCreado)
                     .HasColumnType("datetime")
@@ -697,7 +707,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Seccione>(entity =>
             {
                 entity.HasKey(e => e.IdSeccion)
-                    .HasName("PK__Seccione__CD2B049F60FDF90C");
+                    .HasName("PK__Seccione__CD2B049FFBE4DA40");
 
                 entity.Property(e => e.Nombre).HasMaxLength(255);
             });
@@ -705,7 +715,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Sexo>(entity =>
             {
                 entity.HasKey(e => e.IdSexo)
-                    .HasName("PK__Sexo__A7739FA2709579E2");
+                    .HasName("PK__Sexo__A7739FA296A202E4");
 
                 entity.ToTable("Sexo");
 
@@ -718,7 +728,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Tiempo>(entity =>
             {
                 entity.HasKey(e => e.IdFecha)
-                    .HasName("PK__Tiempo__8D0F205AC3021FE4");
+                    .HasName("PK__Tiempo__8D0F205A189A6E09");
 
                 entity.ToTable("Tiempo");
 
@@ -753,7 +763,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<TipoCentro>(entity =>
             {
                 entity.HasKey(e => e.IdTipoCentro)
-                    .HasName("PK__TipoCent__B539A3837B341D9E");
+                    .HasName("PK__TipoCent__B539A3837FAB7CC1");
 
                 entity.ToTable("TipoCentro");
 
@@ -763,13 +773,15 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<Usuario>(entity =>
             {
                 entity.HasKey(e => e.IdUsuario)
-                    .HasName("PK__Usuarios__5B65BF9740A19FC4");
+                    .HasName("PK__Usuarios__5B65BF97D29F3F11");
 
                 entity.Property(e => e.Apellido)
                     .IsRequired()
                     .HasMaxLength(255);
 
                 entity.Property(e => e.Contrasena).HasMaxLength(255);
+
+                entity.Property(e => e.Correo).HasMaxLength(255);
 
                 entity.Property(e => e.FechaCreado)
                     .HasColumnType("datetime")
@@ -780,6 +792,8 @@ namespace WebSchoolAppUI.Models
                 entity.Property(e => e.Nombre)
                     .IsRequired()
                     .HasMaxLength(255);
+
+                entity.Property(e => e.NombreUsuario).HasMaxLength(255);
 
                 entity.Property(e => e.Perfil).HasColumnName("perfil");
 
@@ -792,7 +806,7 @@ namespace WebSchoolAppUI.Models
             modelBuilder.Entity<ValidacionDatum>(entity =>
             {
                 entity.HasKey(e => e.IdValidacion)
-                    .HasName("PK__Validaci__5407AA74A47D7C84");
+                    .HasName("PK__Validaci__5407AA7437695A01");
 
                 entity.Property(e => e.Comment).HasMaxLength(255);
 
