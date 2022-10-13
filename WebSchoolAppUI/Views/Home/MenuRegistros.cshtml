@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Menu de Registros";
+}
+
+<body>
+    <div>
+        <div class="d-flex justify-content-between align-content-center">
+            <div class="card p-2" style="width: 18rem;">
+                <img src="~/img/Calificacion.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Profesores</h5>
+                    <p class="card-text">Gestion de Profesores</p>
+                    <a asp-controller="Profesores" asp-action="index" class="btn btn-primary">Ir</a>
+                </div>
+            </div>
+
+            <div class="card p-2" style="width: 18rem;">
+                <img src="~/img/Calificacion.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Estudiantes</h5>
+                    <p class="card-text">Gestion de Estudiantes</p>
+                    <a asp-controller="Estudiantes" asp-action="index" class="btn btn-primary">Ir</a>
+                </div>
+            </div>
+
+            <div class="card p-2" style="width: 18rem;">
+                <img src="~/img/Calificacion.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">Inscripciones</h5>
+                    <p class="card-text">Gestion de Inscripciones</p>
+                    <a asp-controller="CentrosEducativoes" asp-action="index" class="btn btn-primary">Ir</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>

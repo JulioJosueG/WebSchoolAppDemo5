@@ -1,83 +1,119 @@
-﻿@model IEnumerable<WebSchoolAppUI.Models.PersonalDistrito>
+﻿@model X.PagedList.IPagedList<WebSchoolAppUI.Models.PersonalDistrito>
 
+@using X.PagedList.Mvc.Core;
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Personal del Distrito";
 }
 
-<h1>Index</h1>
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
+
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
+
+<h1>Personal del Distrito</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Crear nuevo Personal</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Cedula)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaCreado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaModificado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CreadoPorNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdDistritoNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModificadoPorNavigation)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Cedula)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaCreado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaModificado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreadoPorNavigation.Apellido)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.IdDepartamento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdDistritoNavigation.Codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ModificadoPorNavigation.Apellido)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdPersonalDistrito">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdPersonalDistrito">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdPersonalDistrito">Delete</a>
-            </td>
-        </tr>
+
+@using (Html.BeginForm("Index", "PersonalDistritoes", FormMethod.Get))
+{
+    <p>
+        Buscar por nombre: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
 }
-    </tbody>
-</table>
+<center>
+
+    <div>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        @Html.ActionLink("Apellido", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+                    <th>
+                        Cedula
+                    </th>
+
+                    <th>
+                        @Html.ActionLink("Departamento", "Index", new { sortOrder = ViewBag.DepartamentoSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Distrito", "Index", new { sortOrder = ViewBag.DistritoSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Apellido)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Cedula)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdDepartamentoNavigation.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.IdDistritoNavigation.Codigo)
+                        </td>
+
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdPersonalDistrito">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.IdPersonalDistrito">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdPersonalDistrito">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</center>
+
+<br />
+<div class="mb-2">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+</div>
+
+<div class="d-flex justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>

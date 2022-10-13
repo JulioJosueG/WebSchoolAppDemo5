@@ -6,8 +6,11 @@
     <title>@ViewData["Title"] - Distrito 0503</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/20.3.47/material.css" />
+    <script src="https://cdn.syncfusion.com/ej2/20.3.47/dist/ej2.min.js"></script>
+
 </head>
-<body >
+<body>
     <header class="bg-white">
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
             <a class="navbar-brand"> <img width="150" src="~/img/Logo.svg" /></a>
@@ -61,5 +64,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
+    <ejs-scripts></ejs-scripts>
+
 </body>
 </html>

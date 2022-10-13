@@ -1,55 +1,114 @@
-﻿@model IEnumerable<WebSchoolAppUI.Models.Estudiante>
+﻿@model X.PagedList.IPagedList<WebSchoolAppUI.Models.Estudiante>
+
+@using X.PagedList.Mvc.Core;
 
 @{
     ViewData["Title"] = "Estudiantes";
 }
+<style>
+    .ul.pagination {
+        display: inline-block;
+        padding: 0;
+        margin: 0;
+    }
 
+    ul.pagination li {
+        display: inline;
+    }
+
+        ul.pagination li a {
+            color: black;
+            float: left;
+            padding: 8px 16px;
+            text-decoration: none;
+            transition: background-color .3s;
+        }
+
+            ul.pagination li a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+
+            ul.pagination li a:hover:not(.active) {
+                background-color: #ddd;
+            }
+</style>
 <h1>Estudiantes</h1>
 
 <p>
     <a asp-action="Create">Crear Nuevo Estudiante</a>
 </p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Nombre)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Apellido)
-            </th>
-
-            <th>
-                @Html.DisplayNameFor(model => model.FechaNacimiento)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Sexo)
-            </th>
-
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Apellido)
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Sexo)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdEstudiante">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdEstudiante">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdEstudiante">Eliminar</a>
-            </td>
-        </tr>
+@using (Html.BeginForm("Index", "Estudiantes", FormMethod.Get))
+{
+    <p>
+        Buscar por nombre: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
 }
-    </tbody>
-</table>
+<center>
+
+    <div >
+        <table class="table" style="width:100%" border="1">
+            <thead>
+                <tr>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        @Html.ActionLink("Apellido", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+
+                    <th>
+                        @Html.ActionLink("Fecha de Nacimiento", "Index", new { sortOrder = ViewBag.DateSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+                    <th>
+                        @Html.ActionLink("Sexo", "Index", new { sortOrder = ViewBag.SexSortParm, currentFilter = ViewBag.CurrentFilter })
+                    </th>
+                    <th>
+                        Acciones
+                    </th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr style="border:1px solid black">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Apellido)
+                        </td>
+
+                        <td>
+                            @{
+                                var date = item.FechaNacimiento.Value.Date.ToString("dd/MM/yyyy");
+                           }
+                            @Html.DisplayFor(modelItem => date)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SexoNavigation.Nombre)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.IdEstudiante">Editar</a> |
+                            <a asp-action="Details" asp-route-id="@item.IdEstudiante">Detalles</a> |
+                            <a asp-action="Delete" asp-route-id="@item.IdEstudiante">Eliminar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</center>
+
+<br />
+<div class="mb-2">
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+</div>
+
+<div class="d-flex justify-content-center">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+</div>

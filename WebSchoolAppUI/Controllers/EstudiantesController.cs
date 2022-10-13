@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebSchoolAppUI.Models;
+using X.PagedList;
 
 namespace WebSchoolAppUI.Controllers
 {
@@ -19,10 +20,56 @@ namespace WebSchoolAppUI.Controllers
         }
 
         // GET: Estudiantes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var dWDistrito0503Context = _context.Estudiantes.Include(e => e.CreadoPorNavigation).Include(e => e.ModificadoPorNavigation);
-            return View(await dWDistrito0503Context.ToListAsync());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.SexSortParm = String.IsNullOrEmpty(sortOrder) ? "sex_desc" : "Sex";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var students = from s in _context.Estudiantes.Include(a => a.SexoNavigation)
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                students = students.Where(s => s.Apellido.Contains(searchString)
+                                       || s.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    students = students.OrderByDescending(s => s.Apellido);
+                    break;
+                case "Date":
+                    students = students.OrderBy(s => s.FechaNacimiento);
+                    break;
+               
+                case "date_desc":
+                    students = students.OrderByDescending(s => s.FechaNacimiento);
+                    break;
+                case "Sex":
+                    students = students.OrderBy(s => s.Sexo);
+                    break;
+                case "sex_desc":
+                    students = students.OrderByDescending(s => s.Sexo);
+                    break;
+                default:
+                    students = students.OrderBy(s => s.Apellido);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(await students.ToPagedListAsync(pageNumber, pageSize));
         }
 
         // GET: Estudiantes/Details/5
@@ -50,6 +97,8 @@ namespace WebSchoolAppUI.Controllers
         {
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
+            ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre");
+
             return View();
         }
 
@@ -68,6 +117,8 @@ namespace WebSchoolAppUI.Controllers
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.CreadoPor);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.ModificadoPor);
+            ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
+
             return View(estudiante);
         }
 

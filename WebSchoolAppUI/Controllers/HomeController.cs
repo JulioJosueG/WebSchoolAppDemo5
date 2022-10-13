@@ -32,6 +32,10 @@ namespace WebSchoolAppUI.Controllers
         {
             return View();
         }
+        public IActionResult MenuRegistros()
+        {
+            return View();
+        }
         [HttpGet]
         public ActionResult Configuracion()
         {

@@ -1,12 +1,12 @@
 ﻿@model WebSchoolAppUI.Models.Profesore
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Profesor";
 }
 
-<h1>Create</h1>
+<h1>Crear</h1>
 
-<h4>Profesore</h4>
+<h4>Profesor</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -24,15 +24,15 @@
             </div>
             <div class="form-group">
                 <label asp-for="Cedula" class="control-label"></label>
-                <input asp-for="Cedula" class="form-control" />
+                <ejs-maskedtextbox id="Cedula" mask="000-0000000-0" promptChar=" "></ejs-maskedtextbox>
                 <span asp-validation-for="Cedula" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="IdAsignatura" class="control-label"></label>
+                <label asp-for="IdAsignatura" class="control-label">Asignatura</label>
                 <select asp-for="IdAsignatura" class ="form-control" asp-items="ViewBag.IdAsignatura"></select>
             </div>
             <div class="form-group">
-                <label asp-for="IdCentro" class="control-label"></label>
+                <label asp-for="IdCentro" class="control-label">Centro</label>
                 <select asp-for="IdCentro" class ="form-control" asp-items="ViewBag.IdCentro"></select>
             </div>
 

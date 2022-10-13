@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebSchoolAppUI.Models;
+using X.PagedList;
 
 namespace WebSchoolAppUI.Controllers
 {
@@ -19,10 +20,56 @@ namespace WebSchoolAppUI.Controllers
         }
 
         // GET: PersonalDistritoes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var dWDistrito0503Context = _context.PersonalDistritos.Include(p => p.CreadoPorNavigation).Include(p => p.IdDepartamentoNavigation).Include(p => p.IdDistritoNavigation).Include(p => p.ModificadoPorNavigation);
-            return View(await dWDistrito0503Context.ToListAsync());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DepartamentoSortParm = String.IsNullOrEmpty(sortOrder) ? "dept_desc" : "Departamento";
+            ViewBag.DistritoSortParm = String.IsNullOrEmpty(sortOrder) ? "distr_desc" : "Distrito";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var personalD = from s in _context.PersonalDistritos.Include(a => a.IdDepartamentoNavigation).Include(b => b.IdDistritoNavigation)
+                             select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                personalD = personalD.Where(s => s.Apellido.Contains(searchString)
+                                       || s.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    personalD = personalD.OrderByDescending(s => s.Apellido);
+                    break;
+                case "Departamento":
+                    personalD = personalD.OrderBy(s => s.IdDepartamento);
+                    break;
+
+                case "dept_desc":
+                    personalD = personalD.OrderByDescending(s => s.IdDepartamento);
+                    break;
+                case "Distrito":
+                    personalD = personalD.OrderBy(s => s.IdDistrito);
+                    break;
+                case "distr_desc":
+                    personalD = personalD.OrderByDescending(s => s.IdDistrito);
+                    break;
+                default:
+                    personalD = personalD.OrderBy(s => s.Apellido);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(await personalD.ToPagedListAsync(pageNumber, pageSize));
         }
 
         // GET: PersonalDistritoes/Details/5
@@ -51,7 +98,7 @@ namespace WebSchoolAppUI.Controllers
         public IActionResult Create()
         {
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre");
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo");
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             return View();
@@ -71,7 +118,7 @@ namespace WebSchoolAppUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalDistrito.CreadoPor);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalDistrito.IdDepartamento);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre", personalDistrito.IdDepartamento);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", personalDistrito.IdDistrito);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalDistrito.ModificadoPor);
             return View(personalDistrito);

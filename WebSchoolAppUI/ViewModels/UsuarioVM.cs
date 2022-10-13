@@ -8,9 +8,16 @@ namespace WebSchoolAppUI.ViewModels
 {
     public class UsuarioVM
     {
-        [Required, MinLength(3)]
+        [Required, MinLength(3),]
         public string Nombre { get; set; }
         [Required, MinLength(3)]
         public string Apellido { get; set; }
+        [Required, MinLength(8),EmailAddress]
+        public string Correo { get; set; }
+        [Required, MinLength(8)]
+        public string Contrasena { get; set; }
+        [Required]
+        public int Perfil { get; set; }
+
     }
 }

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebSchoolAppUI.Models;
+using X.PagedList;
 
 namespace WebSchoolAppUI.Controllers
 {
@@ -19,10 +20,56 @@ namespace WebSchoolAppUI.Controllers
         }
 
         // GET: Profesores
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var dWDistrito0503Context = _context.Profesores.Include(p => p.CreadoPorNavigation).Include(p => p.IdAsignaturaNavigation).Include(p => p.IdCentroNavigation).Include(p => p.ModificadoPorNavigation);
-            return View(await dWDistrito0503Context.ToListAsync());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.AsignaturaSortParm = String.IsNullOrEmpty(sortOrder) ? "asign_desc" : "Asignatura";
+            ViewBag.CentroSortParm = String.IsNullOrEmpty(sortOrder) ? "centro_desc" : "Centro";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var profesores = from s in _context.Profesores.Include(a => a.IdAsignaturaNavigation).Include(b=> b.IdCentroNavigation)
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                profesores = profesores.Where(s => s.Apellido.Contains(searchString)
+                                       || s.Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    profesores = profesores.OrderByDescending(s => s.Apellido);
+                    break;
+                case "Asignatura":
+                    profesores = profesores.OrderBy(s => s.IdAsignatura);
+                    break;
+
+                case "asign_desc":
+                    profesores = profesores.OrderByDescending(s => s.IdAsignatura);
+                    break;
+                case "Centro":
+                    profesores = profesores.OrderBy(s => s.IdCentro);
+                    break;
+                case "centro_desc":
+                    profesores = profesores.OrderByDescending(s => s.IdCentro);
+                    break;
+                default:
+                    profesores = profesores.OrderBy(s => s.Apellido);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(await profesores.ToPagedListAsync(pageNumber, pageSize));
         }
 
         // GET: Profesores/Details/5
@@ -51,8 +98,8 @@ namespace WebSchoolAppUI.Controllers
         public IActionResult Create()
         {
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
-            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "IdAsignatura");
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo");
+            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             return View();
         }
@@ -71,8 +118,8 @@ namespace WebSchoolAppUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.CreadoPor);
-            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "IdAsignatura", profesore.IdAsignatura);
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", profesore.IdCentro);
+            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre", profesore.IdAsignatura);
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", profesore.IdCentro);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.ModificadoPor);
             return View(profesore);
         }
