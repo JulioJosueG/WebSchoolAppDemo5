@@ -25,7 +25,7 @@ namespace WebSchoolAppUI.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.SexSortParm = String.IsNullOrEmpty(sortOrder) ? "sex_desc" : "Sex";
+            ViewBag.SexSortParm = sortOrder == "Sex" ? "sex_desc" : "Sex";
 
             if (searchString != null)
             {

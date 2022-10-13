@@ -23,13 +23,13 @@ namespace WebSchoolAppUI.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.CentroSortParm = String.IsNullOrEmpty(sortOrder) ? "centro_desc" : "Centro";
-            ViewBag.AnioSortParm = String.IsNullOrEmpty(sortOrder) ? "anio_desc" : "Anio";
-            ViewBag.CondicionSortParm = String.IsNullOrEmpty(sortOrder) ? "condicion_desc" : "Condicion";
-            ViewBag.CursoSortParm = String.IsNullOrEmpty(sortOrder) ? "curso_desc" : "Curso";
-            ViewBag.EdadSortParm = String.IsNullOrEmpty(sortOrder) ? "edad_desc" : "Edad";
-            ViewBag.TipoSortParm = String.IsNullOrEmpty(sortOrder) ? "tipo_desc" : "Tipo";
-            ViewBag.ModalidadSortParm = String.IsNullOrEmpty(sortOrder) ? "modalidad_desc" : "Modalidad";
+            ViewBag.CentroSortParm = sortOrder == "Centro" ? "centro_desc" : "Centro";
+            ViewBag.AnioSortParm = sortOrder == "Anio" ? "anio_desc" : "Anio";
+            ViewBag.CondicionSortParm = sortOrder == "Condicion" ? "condicion_desc" : "Condicion";
+            ViewBag.CursoSortParm = sortOrder == "Curso" ? "curso_desc" : "Curso";
+            ViewBag.EdadSortParm = sortOrder == "Edad" ? "edad_desc" : "Edad";
+            ViewBag.TipoSortParm = sortOrder == "Tipo" ? "tipo_desc" : "Tipo";
+            ViewBag.ModalidadSortParm = sortOrder == "Modalidad" ? "modalidad_desc" : "Modalidad";
 
 
             if (searchString != null)
@@ -71,6 +71,43 @@ namespace WebSchoolAppUI.Controllers
                     break;
                 case "centro_desc":
                     inscripcion = inscripcion.OrderByDescending(s => s.IdCentro);
+                    break;
+
+                case "Anio":
+                    inscripcion = inscripcion.OrderBy(s => s.IdAnioEscolar);
+                    break;
+                case "anio_desc":
+                    inscripcion = inscripcion.OrderByDescending(s => s.IdAnioEscolar);
+                    break;
+                case "Condicion":
+                    inscripcion = inscripcion.OrderBy(s => s.IdCondicion);
+                    break;
+                case "condicion_desc":
+                    inscripcion = inscripcion.OrderByDescending(s => s.IdCondicion);
+                    break;
+                case "Curso":
+                    inscripcion = inscripcion.OrderBy(s => s.IdCurso);
+                    break;
+                case "curso_desc":
+                    inscripcion = inscripcion.OrderByDescending(s => s.IdCurso);
+                    break;
+                case "Edad":
+                    inscripcion = inscripcion.OrderBy(s => s.IdEdad);
+                    break;
+                case "edad_desc":
+                    inscripcion = inscripcion.OrderByDescending(s => s.IdEdad);
+                    break;
+                case "Tipo":
+                    inscripcion = inscripcion.OrderBy(s => s.IdEstudianteTipo);
+                    break;
+                case "tipo_desc":
+                    inscripcion = inscripcion.OrderByDescending(s => s.IdEstudianteTipo);
+                    break;
+                case "Modalidad":
+                    inscripcion = inscripcion.OrderBy(s => s.IdModalidadTipo);
+                    break;
+                case "modalidad_desc":
+                    inscripcion = inscripcion.OrderByDescending(s => s.IdModalidadTipo);
                     break;
                 default:
                     inscripcion = inscripcion.OrderBy(s => s.IdEstudianteNavigation.Nombre);

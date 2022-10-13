@@ -1,70 +1,71 @@
 ﻿@model WebSchoolAppUI.Models.PersonalDistrito
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar";
 }
 
-<h1>Delete</h1>
+<h1>Eliminar</h1>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Estas seguro de eliminar este registro?</h3>
 <div>
-    <h4>PersonalDistrito</h4>
+    <h4>Personal del Distrito</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.Apellido)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.Apellido)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.Cedula)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.Cedula)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCreado)
+        <dt class="col-sm-4">
+            Departamento
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdDepartamentoNavigation.Nombre)
+        </dd>
+        <dt class="col-sm-4">
+            Distrito
+        </dt>
+        <dd class="col-sm-8">
+            @Html.DisplayFor(model => model.IdDistritoNavigation.Codigo)
+        </dd>
+        <dt class="col-sm-4">
+            Fecha de Creacion
+        </dt>
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.FechaCreado)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaModificado)
+        <dt class="col-sm-4">
+            Fecha de Modificacion
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.FechaModificado)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreadoPorNavigation)
+        <dt class="col-sm-4">
+            Creado Por
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.CreadoPorNavigation.Apellido)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
+        </dd>
+
+        <dt class="col-sm-4">
+            Modificado Por
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdDepartamentoNavigation.IdDepartamento)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdDistritoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdDistritoNavigation.Codigo)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModificadoPorNavigation)
-        </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-8">
             @Html.DisplayFor(model => model.ModificadoPorNavigation.Apellido)
-        </dd class>
+        </dd>
     </dl>
     
     <form asp-action="Delete">

@@ -24,8 +24,8 @@ namespace WebSchoolAppUI.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.AsignaturaSortParm = String.IsNullOrEmpty(sortOrder) ? "asign_desc" : "Asignatura";
-            ViewBag.CentroSortParm = String.IsNullOrEmpty(sortOrder) ? "centro_desc" : "Centro";
+            ViewBag.AsignaturaSortParm = sortOrder == "Asignatura" ? "asign_desc" : "Asignatura";
+            ViewBag.CentroSortParm = sortOrder == "Centro" ? "centro_desc" : "Centro";
 
             if (searchString != null)
             {

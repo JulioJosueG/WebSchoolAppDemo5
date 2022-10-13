@@ -10,58 +10,59 @@
     <h4>PersonalDistrito</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-9">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.Apellido)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Apellido)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-4">
             @Html.DisplayNameFor(model => model.Cedula)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cedula)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCreado)
+        <dt class="col-sm-4">
+            Departamento
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaCreado)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdDepartamentoNavigation.Nombre)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaModificado)
+        <dt class="col-sm-4">
+            Distrito
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaModificado)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreadoPorNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreadoPorNavigation.Apellido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdDepartamentoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdDepartamentoNavigation.IdDepartamento)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdDistritoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.IdDistritoNavigation.Codigo)
         </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModificadoPorNavigation)
+        <dt class="col-sm-4">
+            Fecha de Creacion
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaCreado)
+        </dd>
+        <dt class="col-sm-4">
+            Fecha de Modificacion
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaModificado)
+        </dd>
+        <dt class="col-sm-4">
+            Creado Por
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CreadoPorNavigation.Apellido)
+        </dd>
+
+        <dt class="col-sm-4">
+            Modificado Por
+        </dt>
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ModificadoPorNavigation.Apellido)
         </dd>
     </dl>

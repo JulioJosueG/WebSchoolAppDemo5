@@ -40,7 +40,7 @@
 @using (Html.BeginForm("Index", "FactInscripcions", FormMethod.Get))
 {
     <p>
-        Buscar por nombre: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        Buscar por nombre de Estudiante: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
         <input type="submit" value="Search" />
     </p>
 }
