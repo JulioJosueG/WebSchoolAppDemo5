@@ -5,16 +5,16 @@ using System.Collections.Generic;
 
 namespace WebSchoolAppUI.Models
 {
-    public partial class AnioEscolar
+    public partial class Perfile
     {
-        public AnioEscolar()
+        public Perfile()
         {
-            Archivos = new HashSet<Archivo>();
-            FactInscripcions = new HashSet<FactInscripcion>();
+            Usuarios = new HashSet<Usuario>();
         }
 
-        public int IdAnioEscolar { get; set; }
-        public string Anio { get; set; }
+        public int IdPerfil { get; set; }
+        public string Nombre { get; set; }
+        public int? Rol { get; set; }
         public int CreadoPor { get; set; }
         public DateTime FechaCreado { get; set; }
         public int? ModificadoPor { get; set; }
@@ -22,7 +22,7 @@ namespace WebSchoolAppUI.Models
 
         public virtual Usuario CreadoPorNavigation { get; set; }
         public virtual Usuario ModificadoPorNavigation { get; set; }
-        public virtual ICollection<Archivo> Archivos { get; set; }
-        public virtual ICollection<FactInscripcion> FactInscripcions { get; set; }
+        public virtual Role RolNavigation { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

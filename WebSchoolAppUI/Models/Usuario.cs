@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -28,6 +27,8 @@ namespace WebSchoolAppUI.Models
             EstudianteModificadoPorNavigations = new HashSet<Estudiante>();
             FactInscripcionCreadoPorNavigations = new HashSet<FactInscripcion>();
             FactInscripcionModificadoPorNavigations = new HashSet<FactInscripcion>();
+            PerfileCreadoPorNavigations = new HashSet<Perfile>();
+            PerfileModificadoPorNavigations = new HashSet<Perfile>();
             PersonalCentroCreadoPorNavigations = new HashSet<PersonalCentro>();
             PersonalCentroModificadoPorNavigations = new HashSet<PersonalCentro>();
             PersonalDistritoCreadoPorNavigations = new HashSet<PersonalDistrito>();
@@ -43,7 +44,10 @@ namespace WebSchoolAppUI.Models
         public string Apellido { get; set; }
         public DateTime FechaCreado { get; set; }
         public DateTime? FechaModificado { get; set; }
+        public string Contrasena { get; set; }
+        public int? Perfil { get; set; }
 
+        public virtual Perfile PerfilNavigation { get; set; }
         public virtual ICollection<AnioEscolar> AnioEscolarCreadoPorNavigations { get; set; }
         public virtual ICollection<AnioEscolar> AnioEscolarModificadoPorNavigations { get; set; }
         public virtual ICollection<Asignatura> AsignaturaCreadoPorNavigations { get; set; }
@@ -62,6 +66,8 @@ namespace WebSchoolAppUI.Models
         public virtual ICollection<Estudiante> EstudianteModificadoPorNavigations { get; set; }
         public virtual ICollection<FactInscripcion> FactInscripcionCreadoPorNavigations { get; set; }
         public virtual ICollection<FactInscripcion> FactInscripcionModificadoPorNavigations { get; set; }
+        public virtual ICollection<Perfile> PerfileCreadoPorNavigations { get; set; }
+        public virtual ICollection<Perfile> PerfileModificadoPorNavigations { get; set; }
         public virtual ICollection<PersonalCentro> PersonalCentroCreadoPorNavigations { get; set; }
         public virtual ICollection<PersonalCentro> PersonalCentroModificadoPorNavigations { get; set; }
         public virtual ICollection<PersonalDistrito> PersonalDistritoCreadoPorNavigations { get; set; }

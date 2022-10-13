@@ -21,6 +21,11 @@ namespace WebSchoolAppUI.Models
         public string Condicion { get; set; }
         public string Curso { get; set; }
         public int? IdEstado { get; set; }
+        public int? Profesor { get; set; }
+        public string IdSigerd { get; set; }
+        public string Comment { get; set; }
+        public string Apellido { get; set; }
+        public string Sexo { get; set; }
 
         public virtual Archivo IdArchivoNavigation { get; set; }
         public virtual Estado IdEstadoNavigation { get; set; }
