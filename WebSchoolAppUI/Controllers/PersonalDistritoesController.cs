@@ -24,8 +24,8 @@ namespace WebSchoolAppUI.Controllers
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DepartamentoSortParm = String.IsNullOrEmpty(sortOrder) ? "dept_desc" : "Departamento";
-            ViewBag.DistritoSortParm = String.IsNullOrEmpty(sortOrder) ? "distr_desc" : "Distrito";
+            ViewBag.DepartamentoSortParm =sortOrder == "Departamento" ? "dept_desc" : "Departamento";
+            ViewBag.DistritoSortParm = sortOrder == "Distrito" ? "distr_desc" : "Distrito";
 
             if (searchString != null)
             {
@@ -97,10 +97,8 @@ namespace WebSchoolAppUI.Controllers
         // GET: PersonalDistritoes/Create
         public IActionResult Create()
         {
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre");
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo");
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             return View();
         }
 
@@ -109,18 +107,18 @@ namespace WebSchoolAppUI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdPersonalDistrito,Nombre,Apellido,Cedula,IdDepartamento,IdDistrito,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] PersonalDistrito personalDistrito)
+        public async Task<IActionResult> Create([Bind("IdPersonalDistrito,Nombre,Apellido,Cedula,IdDepartamento,IdDistrito")] PersonalDistrito personalDistrito)
         {
             if (ModelState.IsValid)
             {
+                personalDistrito.CreadoPor = 1;
+                personalDistrito.FechaCreado = DateTime.Now;
                 _context.Add(personalDistrito);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalDistrito.CreadoPor);
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre", personalDistrito.IdDepartamento);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", personalDistrito.IdDistrito);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalDistrito.ModificadoPor);
             return View(personalDistrito);
         }
 
@@ -132,15 +130,19 @@ namespace WebSchoolAppUI.Controllers
                 return NotFound();
             }
 
-            var personalDistrito = await _context.PersonalDistritos.FindAsync(id);
+            var personalDistrito = await _context.PersonalDistritos
+                .Include(p => p.CreadoPorNavigation)
+                .Include(p => p.IdDepartamentoNavigation)
+                .Include(p => p.IdDistritoNavigation)
+                .Include(p => p.ModificadoPorNavigation)
+                .FirstOrDefaultAsync(m => m.IdPersonalDistrito == id);
             if (personalDistrito == null)
             {
                 return NotFound();
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalDistrito.CreadoPor);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalDistrito.IdDepartamento);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre", personalDistrito.IdDepartamento);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", personalDistrito.IdDistrito);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalDistrito.ModificadoPor);
+            
             return View(personalDistrito);
         }
 
@@ -149,7 +151,7 @@ namespace WebSchoolAppUI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdPersonalDistrito,Nombre,Apellido,Cedula,IdDepartamento,IdDistrito,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] PersonalDistrito personalDistrito)
+        public async Task<IActionResult> Edit(int id, [Bind("IdPersonalDistrito,Nombre,Apellido,Cedula,IdDepartamento,IdDistrito")] PersonalDistrito personalDistrito)
         {
             if (id != personalDistrito.IdPersonalDistrito)
             {
@@ -160,7 +162,15 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
-                    _context.Update(personalDistrito);
+                    var oldpersonal = await _context.PersonalDistritos.FindAsync(personalDistrito.IdPersonalDistrito);
+                    oldpersonal.Apellido = personalDistrito.Apellido;
+                    oldpersonal.Cedula = personalDistrito.Cedula;
+                        oldpersonal.IdDepartamento = personalDistrito.IdDepartamento;
+                        oldpersonal.IdDistrito = personalDistrito.IdDistrito;
+                        oldpersonal.FechaModificado = DateTime.Now;
+                        oldpersonal.ModificadoPor = 1;
+                        oldpersonal.Nombre = personalDistrito.Nombre;
+                    oldpersonal.IdPersonalDistrito = personalDistrito.IdPersonalDistrito;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -176,10 +186,9 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalDistrito.CreadoPor);
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalDistrito.IdDepartamento);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", personalDistrito.IdDistrito);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalDistrito.ModificadoPor);
+ 
             return View(personalDistrito);
         }
 

@@ -25,7 +25,7 @@ namespace WebSchoolAppUI.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.SexSortParm = String.IsNullOrEmpty(sortOrder) ? "sex_desc" : "Sex";
+            ViewBag.SexSortParm = sortOrder == "Sex" ? "sex_desc" : "Sex";
 
             if (searchString != null)
             {
@@ -135,6 +135,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
+            ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.CreadoPor);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.ModificadoPor);
             return View(estudiante);
@@ -172,6 +173,7 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.CreadoPor);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.ModificadoPor);
             return View(estudiante);

@@ -21,7 +21,7 @@ namespace WebSchoolAppUI.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Usuarios.ToListAsync());
+            return View(await _context.Usuarios.Include(p => p.PerfilNavigation).ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -43,25 +43,25 @@ namespace WebSchoolAppUI.Controllers
 
         public IActionResult Create()
         {
+            ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre");
+
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Nombre,Apellido")] UsuarioVM usuario)
+        public async Task<IActionResult> Create([Bind("IdUsuario,Nombre,Apellido,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
         {
+
             if (ModelState.IsValid)
             {
-
-                _context.Add(new Usuario
-                {
-                    Nombre = usuario.Nombre,
-                    Apellido = usuario.Apellido,
-                    FechaCreado = DateTime.UtcNow.Date
-                }) ;
+                usuario.FechaCreado = DateTime.Now;
+                _context.Add(usuario) ;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
+
             return View(usuario);
         }
 
@@ -77,12 +77,14 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
+            ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
+
             return View(usuario);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nombre,Apellido,FechaCreado,FechaModificado")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nombre,Apellido,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {
@@ -93,7 +95,13 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
-                    _context.Update(usuario);
+                    var oldUsuario = await _context.Usuarios.FindAsync(usuario.IdUsuario);
+                    oldUsuario.Nombre = usuario.Nombre;
+                    oldUsuario.Apellido = usuario.Apellido;
+                    oldUsuario.NombreUsuario = usuario.NombreUsuario;
+                    oldUsuario.Perfil = usuario.Perfil;
+                    oldUsuario.Correo = usuario.Correo;
+                    oldUsuario.FechaModificado = usuario.FechaModificado;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -109,6 +117,8 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
+
             return View(usuario);
         }
 
