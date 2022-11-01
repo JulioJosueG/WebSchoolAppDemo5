@@ -11,8 +11,8 @@
   DTS:LocaleID="7178"
   DTS:ObjectName="Package"
   DTS:PackageType="5"
-  DTS:VersionBuild="45"
-  DTS:VersionGUID="{8DB6D780-FDB9-4E2A-A1EF-52DBDD853796}">
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{273043C4-8672-4A9B-B5DF-E03861092BBB}">
   <DTS:Property
     DTS:Name="PackageFormatVersion">8</DTS:Property>
   <DTS:ConnectionManagers>
@@ -25,7 +25,7 @@
         <DTS:ConnectionManager
           DTS:ConnectRetryCount="0"
           DTS:ConnectRetryInterval="0"
-          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=E:\C# Projects\WebSchoolAppDemo5\WebSchoolAppUI\UploadedFiles\Listado estudiantes 2021-2022.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
+          DTS:ConnectionString="Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Documents\UCE2021\Enero-Abril 2022\Proyecto Integrador\WebSchoolAppDemo5\WebSchoolAppUI\UploadedFiles\Listado estudiantes 2021-2022.xls;Extended Properties=&quot;EXCEL 8.0;HDR=YES&quot;;" />
       </DTS:ObjectData>
     </DTS:ConnectionManager>
     <DTS:ConnectionManager
@@ -691,8 +691,8 @@
               <connections>
                 <connection
                   refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
-                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_Episcopal3]"
-                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_Episcopal3]"
+                  connectionManagerID="Package.ConnectionManagers[LocalHost.DW_Episcopal2]"
+                  connectionManagerRefId="Package.ConnectionManagers[LocalHost.DW_Episcopal2]"
                   description="The OLE DB runtime connection used to access the database."
                   name="OleDbConnection" />
               </connections>
@@ -962,6 +962,10 @@
       <GraphLayout
         Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
         <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="482.857151080151,195.764708627879" />
+        <NodeLayout
           Size="152.8,41.6"
           Id="Package\Data Flow Task\Derived Column"
           TopLeft="282.142861947722,248.529415250237" />
@@ -969,44 +973,6 @@
           Size="138.4,41.6"
           Id="Package\Data Flow Task\Excel Source"
           TopLeft="132.142859393237,151.411766829375" />
-        <EdgeLayout
-          Id="Package\Data Flow Task.Paths[Excel Source Output]"
-          TopLeft="201.342859393237,193.011766829375">
-          <EdgeLayout.Curve>
-            <mssgle:Curve
-              StartConnector="{assembly:Null}"
-              EndConnector="133.066669221151,55.517648420862"
-              Start="0,0"
-              End="133.066669221151,48.017648420862">
-              <mssgle:Curve.Segments>
-                <mssgle:SegmentCollection
-                  Capacity="5">
-                  <mssgle:LineSegment
-                    End="0,28.9654016011958" />
-                  <mssgle:CubicBezierSegment
-                    Point1="0,28.9654016011958"
-                    Point2="0,32.9654016011958"
-                    Point3="4,32.9654016011958" />
-                  <mssgle:LineSegment
-                    End="129.066669221151,32.9654016011958" />
-                  <mssgle:CubicBezierSegment
-                    Point1="129.066669221151,32.9654016011958"
-                    Point2="133.066669221151,32.9654016011958"
-                    Point3="133.066669221151,36.9654016011958" />
-                  <mssgle:LineSegment
-                    End="133.066669221151,48.017648420862" />
-                </mssgle:SegmentCollection>
-              </mssgle:Curve.Segments>
-            </mssgle:Curve>
-          </EdgeLayout.Curve>
-          <EdgeLayout.Labels>
-            <EdgeLabelCollection />
-          </EdgeLayout.Labels>
-        </EdgeLayout>
-        <NodeLayout
-          Size="170.4,41.6"
-          Id="Package\Data Flow Task\OLE DB Destination"
-          TopLeft="482.857151080151,195.764708627879" />
         <EdgeLayout
           Id="Package\Data Flow Task.Paths[Derived Column Output]"
           TopLeft="434.942861947722,269.329415250237">
@@ -1041,11 +1007,45 @@
             <EdgeLabelCollection />
           </EdgeLayout.Labels>
         </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="201.342859393237,193.011766829375">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="133.066669221151,55.517648420862"
+              Start="0,0"
+              End="133.066669221151,48.017648420862">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.9654016011958" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.9654016011958"
+                    Point2="0,32.9654016011958"
+                    Point3="4,32.9654016011958" />
+                  <mssgle:LineSegment
+                    End="129.066669221151,32.9654016011958" />
+                  <mssgle:CubicBezierSegment
+                    Point1="129.066669221151,32.9654016011958"
+                    Point2="133.066669221151,32.9654016011958"
+                    Point3="133.066669221151,36.9654016011958" />
+                  <mssgle:LineSegment
+                    End="133.066669221151,48.017648420862" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
       </GraphLayout>
     </LayoutInfo>
   </TaskHost>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\Excel Source">
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
@@ -1058,7 +1058,7 @@
     </Properties>
   </PipelineComponentMetadata>
   <PipelineComponentMetadata
-    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    design-time-name="Package\Data Flow Task\Excel Source">
     <Properties>
       <Property>
         <Name>DataSourceViewID</Name>
