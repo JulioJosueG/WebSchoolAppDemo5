@@ -11,6 +11,23 @@ Project("{F14B399A-7131-4C87-9E4B-1186C45EF12D}") = "Report Project1", "Report P
 EndProject
 Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "Cubo", "Cubo\Cubo.dwproj", "{C434709A-6D82-4BC7-8DB9-6249979A1D8E}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQL Scripts", "SQL Scripts", "{864533B0-229A-4A03-AF17-7487724C0DA1}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DataPersonalDptoAsig.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DataPersonalDptoAsig.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.1.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.1.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.2.1.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.2.1.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.2.2.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.2.2.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.2.3.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.2.3.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.2.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.2.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\DWDistrito_GenScript V1.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\InsertAsignaturas.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\InsertAsignaturas.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\InsertDepto.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\InsertDepto.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\InsertPersonalCentro.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\InsertPersonalCentro.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\InsertPersonalDistrito.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\InsertPersonalDistrito.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\Script_DWDistrito_V1.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\Script_DWDistrito_V1.sql
+		..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\UpdateProfCursos.sql = ..\..\..\..\..\OneDrive - Universidad Central del Este\UCE\2022\UpdateProfCursos.sql
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
