@@ -285,6 +285,11 @@ namespace WebSchoolAppUI.Models
                     .HasForeignKey(d => d.IdDistrito)
                     .HasConstraintName("FK_DistritoDpto");
 
+                entity.HasOne(d => d.IdEstadoNavigation)
+                    .WithMany(p => p.DepartamentoNavigation)
+                    .HasForeignKey(d => d.Estado)
+                    .HasConstraintName("FK_DptoEstado");
+
                 entity.HasOne(d => d.ModificadoPorNavigation)
                     .WithMany(p => p.DepartamentoModificadoPorNavigations)
                     .HasForeignKey(d => d.ModificadoPor)

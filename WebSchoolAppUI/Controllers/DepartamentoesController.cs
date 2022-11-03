@@ -22,7 +22,8 @@ namespace WebSchoolAppUI.Views
         public async Task<IActionResult> Index()
         {
             var dWDistrito0503Context = _context.Departamentos.Include(d => d.CreadoPorNavigation)
-                .Include(d => d.IdDistritoNavigation);
+                .Include(d => d.IdDistritoNavigation)
+                .Where(d => d.Estado==1);
             return View(await dWDistrito0503Context.ToListAsync());
         }
 
@@ -35,8 +36,7 @@ namespace WebSchoolAppUI.Views
             }
 
             var departamento = await _context.Departamentos
-                .Include(d => d.CreadoPorNavigation.NombreUsuario)
-                .Include(d => d.IdDistritoNavigation.Codigo)
+                .Include(d => d.IdDistritoNavigation)
                 .FirstOrDefaultAsync(m => m.IdDepartamento == id);
             if (departamento == null)
             {
@@ -61,6 +61,9 @@ namespace WebSchoolAppUI.Views
             if (ModelState.IsValid)
             {
                 departamento.CreadoPor = 1;
+
+                departamento.Estado = 1;
+                    
                 _context.Add(departamento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -79,6 +82,7 @@ namespace WebSchoolAppUI.Views
             }
 
             var departamento = await _context.Departamentos.FindAsync(id);
+            
             if (departamento == null)
             {
                 return NotFound();
@@ -91,7 +95,7 @@ namespace WebSchoolAppUI.Views
         // POST: Departamentoes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdDepartamento,Nombre,IdDistrito,CreadoPor,FechaCreado")] Departamento departamento)
+        public async Task<IActionResult> Edit(int id, [Bind("IdDepartamento,Nombre,IdDistrito,ModificadoPor")] Departamento departamento)
         {
             if (id != departamento.IdDepartamento)
             {
@@ -102,6 +106,58 @@ namespace WebSchoolAppUI.Views
             {
                 try
                 {
+                    var oldDepartamento = await _context.Departamentos.FindAsync(departamento.IdDepartamento);
+                    oldDepartamento.Nombre = departamento.Nombre;
+                    oldDepartamento.IdDistrito = departamento.IdDistrito;
+                    oldDepartamento.ModificadoPor = 1;
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!DepartamentoExists(departamento.IdDepartamento))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", departamento.IdDistrito);
+            return View(departamento);
+        }
+
+        // GET: Departamentoes/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var departamento = await _context.Departamentos
+                .FirstOrDefaultAsync(m => m.IdDepartamento == id);
+            if (departamento == null)
+            {
+                return NotFound();
+            }
+
+            return View(departamento);
+        }
+
+        // POST: Departamentoes/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var departamento = await _context.Departamentos.FindAsync(id);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    departamento.Estado = 2;
                     _context.Update(departamento);
                     await _context.SaveChangesAsync();
                 }
@@ -118,39 +174,6 @@ namespace WebSchoolAppUI.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", departamento.CreadoPor);
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", departamento.IdDistrito);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", departamento.ModificadoPor);
-            return View(departamento);
-        }
-
-        // GET: Departamentoes/Delete/5
-        public async Task<IActionResult> Delete(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var departamento = await _context.Departamentos
-                .Include(d => d.CreadoPorNavigation)
-                .Include(d => d.IdDistritoNavigation)
-                .FirstOrDefaultAsync(m => m.IdDepartamento == id);
-            if (departamento == null)
-            {
-                return NotFound();
-            }
-
-            return View(departamento);
-        }
-
-        // POST: Departamentoes/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
-        {
-            var departamento = await _context.Departamentos.FindAsync(id);
-            _context.Departamentos.Remove(departamento);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
