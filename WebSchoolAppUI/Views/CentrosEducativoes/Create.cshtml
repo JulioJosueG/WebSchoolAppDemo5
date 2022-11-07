@@ -4,9 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
+<h1>Creacion de Centros</h1>
 
-<h4>CentrosEducativo</h4>
+<h4>Centros Educativos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -25,19 +25,7 @@
                 <label asp-for="IdDistrito" class="control-label"></label>
                 <select asp-for="IdDistrito" class ="form-control" asp-items="ViewBag.IdDistrito"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="CreadoPor" class="control-label"></label>
-                <select asp-for="CreadoPor" class ="form-control" asp-items="ViewBag.CreadoPor"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModificadoPor" class="control-label"></label>
-                <select asp-for="ModificadoPor" class ="form-control" asp-items="ViewBag.ModificadoPor"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaModificado" class="control-label"></label>
-                <input asp-for="FechaModificado" class="form-control" />
-                <span asp-validation-for="FechaModificado" class="text-danger"></span>
-            </div>
+           
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>

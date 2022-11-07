@@ -52,7 +52,7 @@ namespace WebSchoolAppUI.Controllers
         {
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo");
-            ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "IdTipoCentro");
+            ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "Nombre");
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             return View();
         }
@@ -62,18 +62,21 @@ namespace WebSchoolAppUI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCentroEducativo,Nombre,IdTipoCentro,IdDistrito,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] CentrosEducativo centrosEducativo)
+        public async Task<IActionResult> Create([Bind("IdCentroEducativo,Nombre,IdTipoCentro,IdDistrito")] CentrosEducativo centrosEducativo)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(centrosEducativo);
+                _context.Add(new CentrosEducativo { 
+                Nombre = centrosEducativo.Nombre,
+                IdTipoCentro = centrosEducativo.IdTipoCentro,
+                IdDistrito = centrosEducativo.IdDistrito,
+                CreadoPor = centrosEducativo.CreadoPor = 1
+                });
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.CreadoPor);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", centrosEducativo.IdDistrito);
             ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "IdTipoCentro", centrosEducativo.IdTipoCentro);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.ModificadoPor);
             return View(centrosEducativo);
         }
 
@@ -102,7 +105,7 @@ namespace WebSchoolAppUI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCentroEducativo,Nombre,IdTipoCentro,IdDistrito,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] CentrosEducativo centrosEducativo)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCentroEducativo,Nombre,IdTipoCentro,IdDistrito,ModificadoPor,FechaModificado")] CentrosEducativo centrosEducativo)
         {
             if (id != centrosEducativo.IdCentroEducativo)
             {
@@ -113,7 +116,16 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
-                    _context.Update(centrosEducativo);
+                    _context.Update(new CentrosEducativo
+                    {
+                        Nombre = centrosEducativo.Nombre,
+                        IdTipoCentro = centrosEducativo.IdTipoCentro,
+                        IdDistrito = centrosEducativo.IdDistrito,
+                        CreadoPor = 1,
+                        ModificadoPor =  1,
+                       FechaModificado = DateTime.UtcNow.Date
+
+                    });
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -131,7 +143,7 @@ namespace WebSchoolAppUI.Controllers
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.CreadoPor);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", centrosEducativo.IdDistrito);
-            ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "IdTipoCentro", centrosEducativo.IdTipoCentro);
+            ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "Nombre", centrosEducativo.IdTipoCentro);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.ModificadoPor);
             return View(centrosEducativo);
         }

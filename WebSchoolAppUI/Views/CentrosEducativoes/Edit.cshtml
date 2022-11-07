@@ -4,9 +4,9 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Editar</h1>
 
-<h4>CentrosEducativo</h4>
+<h4>Centros Educativos</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,26 +29,6 @@
                 <span asp-validation-for="IdDistrito" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="CreadoPor" class="control-label"></label>
-                <select asp-for="CreadoPor" class="form-control" asp-items="ViewBag.CreadoPor"></select>
-                <span asp-validation-for="CreadoPor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaCreado" class="control-label"></label>
-                <input asp-for="FechaCreado" class="form-control" />
-                <span asp-validation-for="FechaCreado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModificadoPor" class="control-label"></label>
-                <select asp-for="ModificadoPor" class="form-control" asp-items="ViewBag.ModificadoPor"></select>
-                <span asp-validation-for="ModificadoPor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaModificado" class="control-label"></label>
-                <input asp-for="FechaModificado" class="form-control" />
-                <span asp-validation-for="FechaModificado" class="text-danger"></span>
-            </div>
-            <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </form>
@@ -56,7 +36,7 @@
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Regresar</a>
 </div>
 
 @section Scripts {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 
 #nullable disable
 
@@ -17,16 +18,26 @@ namespace WebSchoolAppUI.Models
 
         public int IdCentroEducativo { get; set; }
         public string Nombre { get; set; }
-        public int IdTipoCentro { get; set; }
-        public int IdDistrito { get; set; }
-        public int CreadoPor { get; set; }
-        public DateTime FechaCreado { get; set; }
-        public int? ModificadoPor { get; set; }
-        public DateTime? FechaModificado { get; set; }
+        [DisplayName("Tipo Centro")]
 
+        public int IdTipoCentro { get; set; }
+        [DisplayName("Distrito")]
+        public int IdDistrito { get; set; }
+        [DisplayName("Creado Por")]
+        public int CreadoPor { get; set; }
+        [DisplayName("Fecha Creacion")]
+        public DateTime FechaCreado { get; set; }
+        [DisplayName("Modificado Por")]
+        public int? ModificadoPor { get; set; }
+        [DisplayName("Fecha de Modificación")]
+        public DateTime? FechaModificado { get; set; }
+        [DisplayName("Creado Por")]
         public virtual Usuario CreadoPorNavigation { get; set; }
+        [DisplayName("Distrito")]
         public virtual Distrito IdDistritoNavigation { get; set; }
+        [DisplayName("Tipo Centro")]
         public virtual TipoCentro IdTipoCentroNavigation { get; set; }
+        [DisplayName("Modificado Por")]
         public virtual Usuario ModificadoPorNavigation { get; set; }
         public virtual ICollection<Archivo> Archivos { get; set; }
         public virtual ICollection<FactInscripcion> FactInscripcions { get; set; }
