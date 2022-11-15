@@ -37,6 +37,14 @@
     <a asp-action="Create">Crear Nuevo</a>
 </p>
 
+@using (Html.BeginForm("Index", "CentrosEducativoes", FormMethod.Get))
+{
+    <p>
+        Buscar por nombre: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Search" />
+    </p>
+}
+
 
 <center>
     <div>
