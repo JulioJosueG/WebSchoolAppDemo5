@@ -18,7 +18,10 @@ namespace WebSchoolAppUI.Models
 
         public int IdCentroEducativo { get; set; }
         public string Nombre { get; set; }
+        [DisplayName("Tipo Centro")]
+
         public int IdTipoCentro { get; set; }
+        [DisplayName("Distrito")]
         public int IdDistrito { get; set; }
         [DisplayName("Creado Por")]
         public int CreadoPor { get; set; }
