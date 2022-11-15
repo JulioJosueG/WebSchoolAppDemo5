@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebSchoolAppUI.Models;
+using X.PagedList;
 
 namespace WebSchoolAppUI.Controllers
 {
@@ -19,10 +20,44 @@ namespace WebSchoolAppUI.Controllers
         }
 
         // GET: CentrosEducativoes
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var dWDistrito0503Context = _context.CentrosEducativos.Include(c => c.CreadoPorNavigation).Include(c => c.IdDistritoNavigation).Include(c => c.IdTipoCentroNavigation).Include(c => c.ModificadoPorNavigation);
-            return View(await dWDistrito0503Context.ToListAsync());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var centros = from s in _context.CentrosEducativos.Include(a => a.IdDistritoNavigation)
+                           select s;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                centros = centros.Where(s => s.Nombre.Contains(searchString));
+            }
+
+
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    centros = centros.OrderByDescending(s => s.IdDistritoNavigation);
+                    break;
+                default:
+                    centros = centros.OrderBy(s => s.IdDistritoNavigation);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(await centros.ToPagedListAsync(pageNumber, pageSize));
+
         }
 
         // GET: CentrosEducativoes/Details/5
