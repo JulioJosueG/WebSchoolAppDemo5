@@ -22,7 +22,7 @@ namespace WebSchoolAppUI.Views
         public async Task<IActionResult> Index()
         {
             var dWDistrito0503Context = _context.Departamentos.Include(d => d.CreadoPorNavigation)
-                .Include(d => d.IdDistritoNavigation)
+                .Include(d => d.IdCentroNavigation)
                 .Where(d => d.Estado==1);
             return View(await dWDistrito0503Context.ToListAsync());
         }
@@ -36,7 +36,7 @@ namespace WebSchoolAppUI.Views
             }
 
             var departamento = await _context.Departamentos
-                .Include(d => d.IdDistritoNavigation)
+                .Include(d => d.IdCentroNavigation)
                 .FirstOrDefaultAsync(m => m.IdDepartamento == id);
             if (departamento == null)
             {
@@ -49,14 +49,14 @@ namespace WebSchoolAppUI.Views
         // GET: Departamentoes/Create
         public IActionResult Create()
         {
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
             return View();
         }
 
         // POST: Departamentoes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdDepartamento,Nombre,IdDistrito,CreadoPor,FechaCreado")] Departamento departamento)
+        public async Task<IActionResult> Create([Bind("IdDepartamento,Nombre,IdCentro,CreadoPor,FechaCreado")] Departamento departamento)
         {
             if (ModelState.IsValid)
             {
@@ -69,7 +69,7 @@ namespace WebSchoolAppUI.Views
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", departamento.CreadoPor);
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", departamento.IdDistrito);
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", departamento.IdCentro);
             return View(departamento);
         }
 
@@ -88,14 +88,14 @@ namespace WebSchoolAppUI.Views
                 return NotFound();
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", departamento.CreadoPor);
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", departamento.IdDistrito);
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", departamento.IdCentro);
             return View(departamento);
         }
 
         // POST: Departamentoes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdDepartamento,Nombre,IdDistrito,ModificadoPor")] Departamento departamento)
+        public async Task<IActionResult> Edit(int id, [Bind("IdDepartamento,Nombre,IdCentro,ModificadoPor")] Departamento departamento)
         {
             if (id != departamento.IdDepartamento)
             {
@@ -108,7 +108,7 @@ namespace WebSchoolAppUI.Views
                 {
                     var oldDepartamento = await _context.Departamentos.FindAsync(departamento.IdDepartamento);
                     oldDepartamento.Nombre = departamento.Nombre;
-                    oldDepartamento.IdDistrito = departamento.IdDistrito;
+                    oldDepartamento.IdCentro = departamento.IdCentro;
                     oldDepartamento.ModificadoPor = 1;
                     await _context.SaveChangesAsync();
                 }
@@ -125,7 +125,7 @@ namespace WebSchoolAppUI.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", departamento.IdDistrito);
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", departamento.IdCentro);
             return View(departamento);
         }
 

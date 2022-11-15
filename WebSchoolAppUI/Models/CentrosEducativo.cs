@@ -40,5 +40,7 @@ namespace WebSchoolAppUI.Models
         public virtual ICollection<FactInscripcion> FactInscripcions { get; set; }
         public virtual ICollection<PersonalCentro> PersonalCentros { get; set; }
         public virtual ICollection<Profesore> Profesores { get; set; }
+        public virtual ICollection<Departamento> DepartamentoCentroNavigations { get; set; }
+
     }
 }

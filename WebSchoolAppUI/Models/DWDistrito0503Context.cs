@@ -280,13 +280,13 @@ namespace WebSchoolAppUI.Models
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_CreadoDpto");
 
-                entity.HasOne(d => d.IdDistritoNavigation)
-                    .WithMany(p => p.Departamentos)
-                    .HasForeignKey(d => d.IdDistrito)
-                    .HasConstraintName("FK_DistritoDpto");
+                entity.HasOne(d => d.IdCentroNavigation)
+                    .WithMany(p => p.DepartamentoCentroNavigations)
+                    .HasForeignKey(d => d.IdCentro)
+                    .HasConstraintName("FK_CentroDpto");
 
                 entity.HasOne(d => d.IdEstadoNavigation)
-                    .WithMany(p => p.DepartamentoNavigation)
+                    .WithMany(p => p.DepartamentoNavigations)
                     .HasForeignKey(d => d.Estado)
                     .HasConstraintName("FK_DptoEstado");
 

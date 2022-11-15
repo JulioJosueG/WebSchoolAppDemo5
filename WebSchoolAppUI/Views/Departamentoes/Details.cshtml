@@ -17,14 +17,14 @@
             @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt class = "col-sm-2">
-            Distrito
+            Centro Educativo
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdDistritoNavigation.Codigo)
+            @Html.DisplayFor(model => model.IdCentroNavigation.Nombre)
         </dd>
     </dl>
 </div>
 <div>
     <a asp-action="Edit" asp-route-id="@Model.IdDepartamento">Editar</a> |
-    <a asp-action="Index">Volver al listado</a>
+    <a asp-action="Index">Volver</a>
 </div>

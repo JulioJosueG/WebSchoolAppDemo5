@@ -7,7 +7,7 @@
 <h1>Lista de Centros</h1>
 
 <p>
-    <a asp-action="Create">Crear Nuevo</a>
+    <a asp-action="Create">Crear centro</a>
 </p>
 <table class="table">
     <thead>
@@ -16,22 +16,16 @@
                 @Html.DisplayNameFor(model => model.Nombre)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.FechaCreado)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.FechaModificado)
+                Fecha de cración
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.CreadoPorNavigation)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdDistritoNavigation)
+                Distrito
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdTipoCentroNavigation)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ModificadoPorNavigation)
+                Tipo de centro
             </th>
             <th></th>
         </tr>
@@ -46,23 +40,14 @@
                 @Html.DisplayFor(modelItem => item.FechaCreado)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.FechaModificado)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreadoPorNavigation.Apellido)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.IdDistritoNavigation.Codigo)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.IdTipoCentroNavigation.IdTipoCentro)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ModificadoPorNavigation.Apellido)
-            </td>
-            <td>
                 <a asp-action="Edit" asp-route-id="@item.IdCentroEducativo">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdCentroEducativo">Detalles</a> |
+                <a asp-action="Details" asp-route-id="@item.IdCentroEducativo">Ver detalle</a> |
                 <a asp-action="Delete" asp-route-id="@item.IdCentroEducativo">Eliminar</a>
             </td>
         </tr>
