@@ -40,8 +40,8 @@
                         <div class="d-flex align-items-center">
                             <img src="~/img/User_cicrle.png" style="height:70px;" alt="PFP" />
                             <div class="flex-column">
-                                <span class="d-block">Usuario</span>
-                                <span class="d-block">Nombre del Centro</span>
+                                <span class="d-block">@User.Identity.Name</span>
+                                <span class="d-block">@User.Claims.FirstOrDefault(c => c.Type == "Centro").Value</span>
                             </div>
                         </div>
                     </li>

@@ -8,18 +8,26 @@ using System.Threading.Tasks;
 using System.IO;
 using WebSchoolAppUI.Models;
 using Microsoft.AspNetCore.Http;
+using WebSchoolAppUI.ViewModels;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebSchoolAppUI.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly DWDistrito0503Context _context;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, DWDistrito0503Context context)
         {
+            _context = context;
             _logger = logger;
         }
 
+        [Authorize(Roles ="Administrador")]
         public IActionResult Index()
         {
             return View();
@@ -32,6 +40,64 @@ namespace WebSchoolAppUI.Controllers
         {
             return View();
         }
+        [HttpPost]
+        public IActionResult Login(UsuarioAuth usuario)
+        {
+            
+            //if (isValid(usuario))
+            //{
+            //    return RedirectToAction("index","Home");
+            //}
+
+            if (!string.IsNullOrEmpty(usuario.NombreUsuario) && string.IsNullOrEmpty(usuario.Contrasena))
+            {
+                return RedirectToAction("Login");
+            }
+            var user =  _context.Usuarios.Where(x => x.NombreUsuario == usuario.NombreUsuario).FirstOrDefault();
+
+            if (user == null)
+            {
+                return BadRequest("Usuario no encontrado");
+            }
+
+            if (usuario.Contrasena != user.Contrasena)
+            {
+                return BadRequest("Contraseña incorrecta");
+            }
+            var perfil = _context.Perfiles.Where(x => x.IdPerfil == user.Perfil).FirstOrDefault();
+
+            ClaimsIdentity identity = null;
+            bool isAuthenticate = false;
+
+            if (!(user == null))
+            {
+                identity = new ClaimsIdentity(new[]
+                {
+                    new Claim(ClaimTypes.Name,user.NombreUsuario),
+                    new Claim(ClaimTypes.Role,user.PerfilNavigation.Nombre),
+                    new Claim("Centro", user.Correo)
+                }, CookieAuthenticationDefaults.AuthenticationScheme);
+                isAuthenticate = true;
+            }
+           
+            if (isAuthenticate)
+            {
+                var principal = new ClaimsPrincipal(identity);
+                var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                return RedirectToAction("Index", "Home");
+            }
+            return View();
+        }
+
+        private bool isValid(UsuarioAuth usuario)
+        {
+            if (usuario.NombreUsuario == "admin" && usuario.Contrasena == "admin")
+            {
+                return true;
+            }
+            return false;
+        }
+
         public IActionResult MenuRegistros()
         {
             return View();
