@@ -26,6 +26,6 @@ namespace WebSchoolAppUI.Models
         public virtual ICollection<Archivo> Archivos { get; set; }
         public virtual ICollection<ArchivosDetalle> ArchivosDetalles { get; set; }
         public virtual ICollection<ValidacionDatum> ValidacionData { get; set; }
-        public virtual ICollection<Departamento> DepartamentoNavigation { get; set; }
+        public virtual ICollection<Departamento> DepartamentoNavigations { get; set; }
     }
 }

@@ -4,11 +4,11 @@
     ViewData["Title"] = "Delete";
 }
 
-<h1>Delete</h1>
+<h1>Una vez eliminado no podrá ser recuperado el centro educativo</h1>
 
-<h3>Seguro que quieres eliminar este archivo?</h3>
+<h3>¿Seguro que quieres eliminar este archivo?</h3>
 <div>
-    <h4>CentrosEducativo</h4>
+    <h4>Centros Educativo</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -18,46 +18,28 @@
             @Html.DisplayFor(model => model.Nombre)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCreado)
+            Fecha de creación
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.FechaCreado)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaModificado)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaModificado)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CreadoPorNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CreadoPorNavigation.Apellido)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdDistritoNavigation)
+            Distrito
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IdDistritoNavigation.Codigo)
         </dd class>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdTipoCentroNavigation)
+            Tipo de centro
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.IdTipoCentroNavigation.IdTipoCentro)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ModificadoPorNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ModificadoPorNavigation.Apellido)
         </dd class>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="IdCentroEducativo" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Regresar</a>
+        <input type="submit" value="Eliminar" class="btn btn-danger" style="background-color: #dc3545a6;" /> |
+        <a asp-action="Index">Volver</a>
     </form>
 </div>

@@ -21,13 +21,13 @@
             Distrito
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdDistritoNavigation.Codigo)
+            @Html.DisplayFor(model => model.IdCentroNavigation.Nombre)
         </dd class>
     </dl>
     
     <form asp-action="Delete">
         <input type="hidden" asp-for="IdDepartamento" />
         <input type="submit" value="Eliminar" class="btn btn-danger" style="background-color: #dc3545a6;" /> |
-        <a asp-action="Index">Volver al listado</a>
+        <a asp-action="Index">Volver</a>
     </form>
 </div>
