@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
 #nullable disable
 
@@ -10,7 +9,10 @@ namespace WebSchoolAppUI.Models
     {
         public CentrosEducativo()
         {
-            Archivos = new HashSet<Archivo>();
+            CentrosProfesores = new HashSet<CentrosProfesore>();
+            CursosProfesores = new HashSet<CursosProfesore>();
+            Departamentos = new HashSet<Departamento>();
+            Estudiantes = new HashSet<Estudiante>();
             FactInscripcions = new HashSet<FactInscripcion>();
             PersonalCentros = new HashSet<PersonalCentro>();
             Profesores = new HashSet<Profesore>();
@@ -18,32 +20,25 @@ namespace WebSchoolAppUI.Models
 
         public int IdCentroEducativo { get; set; }
         public string Nombre { get; set; }
-        [DisplayName("Tipo Centro")]
-
         public int IdTipoCentro { get; set; }
-        [DisplayName("Distrito")]
         public int IdDistrito { get; set; }
-        [DisplayName("Creado Por")]
         public int CreadoPor { get; set; }
-        [DisplayName("Fecha Creacion")]
         public DateTime FechaCreado { get; set; }
-        [DisplayName("Modificado Por")]
         public int? ModificadoPor { get; set; }
-        [DisplayName("Fecha de Modificación")]
         public DateTime? FechaModificado { get; set; }
-        [DisplayName("Creado Por")]
+        public int? Estado { get; set; }
+
         public virtual Usuario CreadoPorNavigation { get; set; }
-        [DisplayName("Distrito")]
+        public virtual Estado EstadoNavigation { get; set; }
         public virtual Distrito IdDistritoNavigation { get; set; }
-        [DisplayName("Tipo Centro")]
         public virtual TipoCentro IdTipoCentroNavigation { get; set; }
-        [DisplayName("Modificado Por")]
         public virtual Usuario ModificadoPorNavigation { get; set; }
-        public virtual ICollection<Archivo> Archivos { get; set; }
+        public virtual ICollection<CentrosProfesore> CentrosProfesores { get; set; }
+        public virtual ICollection<CursosProfesore> CursosProfesores { get; set; }
+        public virtual ICollection<Departamento> Departamentos { get; set; }
+        public virtual ICollection<Estudiante> Estudiantes { get; set; }
         public virtual ICollection<FactInscripcion> FactInscripcions { get; set; }
         public virtual ICollection<PersonalCentro> PersonalCentros { get; set; }
         public virtual ICollection<Profesore> Profesores { get; set; }
-        public virtual ICollection<Departamento> DepartamentoCentroNavigations { get; set; }
-
     }
 }

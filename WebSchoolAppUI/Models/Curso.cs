@@ -9,6 +9,7 @@ namespace WebSchoolAppUI.Models
     {
         public Curso()
         {
+            CursosProfesores = new HashSet<CursosProfesore>();
             FactInscripcions = new HashSet<FactInscripcion>();
         }
 
@@ -16,9 +17,12 @@ namespace WebSchoolAppUI.Models
         public string Nombre { get; set; }
         public int? IdSeccion { get; set; }
         public int? IdNivel { get; set; }
+        public int? Estado { get; set; }
 
+        public virtual Estado EstadoNavigation { get; set; }
         public virtual Nivele IdNivelNavigation { get; set; }
         public virtual Seccione IdSeccionNavigation { get; set; }
+        public virtual ICollection<CursosProfesore> CursosProfesores { get; set; }
         public virtual ICollection<FactInscripcion> FactInscripcions { get; set; }
     }
 }

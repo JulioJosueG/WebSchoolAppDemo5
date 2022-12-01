@@ -14,7 +14,9 @@ namespace WebSchoolAppUI.Models
 
         public int IdNivel { get; set; }
         public string Nombre { get; set; }
+        public int? Estado { get; set; }
 
+        public virtual Estado EstadoNavigation { get; set; }
         public virtual ICollection<Curso> Cursos { get; set; }
     }
 }

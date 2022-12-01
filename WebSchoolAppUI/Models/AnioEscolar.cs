@@ -9,7 +9,6 @@ namespace WebSchoolAppUI.Models
     {
         public AnioEscolar()
         {
-            Archivos = new HashSet<Archivo>();
             FactInscripcions = new HashSet<FactInscripcion>();
         }
 
@@ -19,10 +18,11 @@ namespace WebSchoolAppUI.Models
         public DateTime FechaCreado { get; set; }
         public int? ModificadoPor { get; set; }
         public DateTime? FechaModificado { get; set; }
+        public int? Estado { get; set; }
 
         public virtual Usuario CreadoPorNavigation { get; set; }
+        public virtual Estado EstadoNavigation { get; set; }
         public virtual Usuario ModificadoPorNavigation { get; set; }
-        public virtual ICollection<Archivo> Archivos { get; set; }
         public virtual ICollection<FactInscripcion> FactInscripcions { get; set; }
     }
 }

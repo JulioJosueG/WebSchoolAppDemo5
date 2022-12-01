@@ -5,18 +5,18 @@ using System.Collections.Generic;
 
 namespace WebSchoolAppUI.Models
 {
-    public partial class EstudiantesTipo
+    public partial class TipoUsuario
     {
-        public EstudiantesTipo()
+        public TipoUsuario()
         {
-            FactInscripcions = new HashSet<FactInscripcion>();
+            Usuarios = new HashSet<Usuario>();
         }
 
-        public int IdEstudianteTipo { get; set; }
+        public int IdTipoUsuario { get; set; }
         public string Nombre { get; set; }
         public int? Estado { get; set; }
 
         public virtual Estado EstadoNavigation { get; set; }
-        public virtual ICollection<FactInscripcion> FactInscripcions { get; set; }
+        public virtual ICollection<Usuario> Usuarios { get; set; }
     }
 }

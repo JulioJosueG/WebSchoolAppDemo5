@@ -19,8 +19,10 @@ namespace WebSchoolAppUI.Models
         public DateTime FechaCreado { get; set; }
         public int? ModificadoPor { get; set; }
         public DateTime? FechaModificado { get; set; }
+        public int? Estado { get; set; }
 
         public virtual Usuario CreadoPorNavigation { get; set; }
+        public virtual Estado EstadoNavigation { get; set; }
         public virtual Usuario ModificadoPorNavigation { get; set; }
         public virtual Role RolNavigation { get; set; }
         public virtual ICollection<Usuario> Usuarios { get; set; }
