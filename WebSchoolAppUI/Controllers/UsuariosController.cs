@@ -50,7 +50,7 @@ namespace WebSchoolAppUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,Nombre,Apellido,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("IdUsuario,Personal,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
         {
 
             if (ModelState.IsValid)
@@ -84,7 +84,7 @@ namespace WebSchoolAppUI.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Nombre,Apellido,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Personal,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {
@@ -96,8 +96,7 @@ namespace WebSchoolAppUI.Controllers
                 try
                 {
                     var oldUsuario = await _context.Usuarios.FindAsync(usuario.IdUsuario);
-                    oldUsuario.Nombre = usuario.Nombre;
-                    oldUsuario.Apellido = usuario.Apellido;
+                    oldUsuario.Personal = usuario.Personal;
                     oldUsuario.NombreUsuario = usuario.NombreUsuario;
                     oldUsuario.Perfil = usuario.Perfil;
                     oldUsuario.Correo = usuario.Correo;

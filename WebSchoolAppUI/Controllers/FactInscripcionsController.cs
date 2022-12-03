@@ -51,7 +51,6 @@ namespace WebSchoolAppUI.Controllers
                 .Include(f => f.IdEdadNavigation)
                 .Include(f => f.IdEstudianteNavigation)
                 .Include(f => f.IdEstudianteTipoNavigation)
-                .Include(f => f.IdFechaNavigation)
                 .Include(f => f.IdModalidadTipoNavigation)
                 .Include(f => f.IdProfesorNavigation)
                 .Include(f => f.ModificadoPorNavigation)
@@ -134,7 +133,6 @@ namespace WebSchoolAppUI.Controllers
                 .Include(f => f.IdEdadNavigation)
                 .Include(f => f.IdEstudianteNavigation)
                 .Include(f => f.IdEstudianteTipoNavigation)
-                .Include(f => f.IdFechaNavigation)
                 .Include(f => f.IdModalidadTipoNavigation)
                 .Include(f => f.IdProfesorNavigation)
                 .Include(f => f.ModificadoPorNavigation)
@@ -158,7 +156,6 @@ namespace WebSchoolAppUI.Controllers
             ViewData["IdEdad"] = new SelectList(_context.Edades, "IdEdad", "Edad");
             ViewData["IdEstudiante"] = new SelectList(_context.Estudiantes, "IdEstudiante", "Nombre");
             ViewData["IdEstudianteTipo"] = new SelectList(_context.EstudiantesTipos, "IdEstudianteTipo", "Nombre");
-            ViewData["IdFecha"] = new SelectList(_context.Tiempos, "IdFecha", "Fecha");
             ViewData["IdModalidadTipo"] = new SelectList(_context.ModalidadesTipos, "IdModalidadTipo", "Nombre");
             ViewData["IdProfesor"] = new SelectList(_context.Profesores, "IdProfesor", "Nombre");
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
@@ -186,7 +183,6 @@ namespace WebSchoolAppUI.Controllers
             ViewData["IdEdad"] = new SelectList(_context.Edades, "IdEdad", "IdEdad", factInscripcion.IdEdad);
             ViewData["IdEstudiante"] = new SelectList(_context.Estudiantes, "IdEstudiante", "IdEstudiante", factInscripcion.IdEstudiante);
             ViewData["IdEstudianteTipo"] = new SelectList(_context.EstudiantesTipos, "IdEstudianteTipo", "IdEstudianteTipo", factInscripcion.IdEstudianteTipo);
-            ViewData["IdFecha"] = new SelectList(_context.Tiempos, "IdFecha", "IdFecha", factInscripcion.IdFecha);
             ViewData["IdModalidadTipo"] = new SelectList(_context.ModalidadesTipos, "IdModalidadTipo", "IdModalidadTipo", factInscripcion.IdModalidadTipo);
             ViewData["IdProfesor"] = new SelectList(_context.Profesores, "IdProfesor", "IdProfesor", factInscripcion.IdProfesor);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", factInscripcion.ModificadoPor);
@@ -214,7 +210,6 @@ namespace WebSchoolAppUI.Controllers
             ViewData["IdEdad"] = new SelectList(_context.Edades, "IdEdad", "IdEdad", factInscripcion.IdEdad);
             ViewData["IdEstudiante"] = new SelectList(_context.Estudiantes, "IdEstudiante", "IdEstudiante", factInscripcion.IdEstudiante);
             ViewData["IdEstudianteTipo"] = new SelectList(_context.EstudiantesTipos, "IdEstudianteTipo", "IdEstudianteTipo", factInscripcion.IdEstudianteTipo);
-            ViewData["IdFecha"] = new SelectList(_context.Tiempos, "IdFecha", "IdFecha", factInscripcion.IdFecha);
             ViewData["IdModalidadTipo"] = new SelectList(_context.ModalidadesTipos, "IdModalidadTipo", "IdModalidadTipo", factInscripcion.IdModalidadTipo);
             ViewData["IdProfesor"] = new SelectList(_context.Profesores, "IdProfesor", "IdProfesor", factInscripcion.IdProfesor);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", factInscripcion.ModificadoPor);
@@ -261,7 +256,6 @@ namespace WebSchoolAppUI.Controllers
             ViewData["IdEdad"] = new SelectList(_context.Edades, "IdEdad", "IdEdad", factInscripcion.IdEdad);
             ViewData["IdEstudiante"] = new SelectList(_context.Estudiantes, "IdEstudiante", "IdEstudiante", factInscripcion.IdEstudiante);
             ViewData["IdEstudianteTipo"] = new SelectList(_context.EstudiantesTipos, "IdEstudianteTipo", "IdEstudianteTipo", factInscripcion.IdEstudianteTipo);
-            ViewData["IdFecha"] = new SelectList(_context.Tiempos, "IdFecha", "IdFecha", factInscripcion.IdFecha);
             ViewData["IdModalidadTipo"] = new SelectList(_context.ModalidadesTipos, "IdModalidadTipo", "IdModalidadTipo", factInscripcion.IdModalidadTipo);
             ViewData["IdProfesor"] = new SelectList(_context.Profesores, "IdProfesor", "IdProfesor", factInscripcion.IdProfesor);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", factInscripcion.ModificadoPor);
@@ -285,7 +279,6 @@ namespace WebSchoolAppUI.Controllers
                 .Include(f => f.IdEdadNavigation)
                 .Include(f => f.IdEstudianteNavigation)
                 .Include(f => f.IdEstudianteTipoNavigation)
-                .Include(f => f.IdFechaNavigation)
                 .Include(f => f.IdModalidadTipoNavigation)
                 .Include(f => f.IdProfesorNavigation)
                 .Include(f => f.ModificadoPorNavigation)
