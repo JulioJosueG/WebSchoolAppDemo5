@@ -105,7 +105,8 @@ namespace WebSchoolAppUI.Controllers
                 Nombre = centrosEducativo.Nombre,
                 IdTipoCentro = centrosEducativo.IdTipoCentro,
                 IdDistrito = centrosEducativo.IdDistrito,
-                CreadoPor = centrosEducativo.CreadoPor = 1
+                CreadoPor = centrosEducativo.CreadoPor = 1,
+                Estado = centrosEducativo.Estado = 1,
                 });
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -211,7 +212,10 @@ namespace WebSchoolAppUI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var centrosEducativo = await _context.CentrosEducativos.FindAsync(id);
-            _context.CentrosEducativos.Remove(centrosEducativo);
+            _context.CentrosEducativos.Update(new CentrosEducativo
+            {
+                Estado = centrosEducativo.Estado = 2,
+            });
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

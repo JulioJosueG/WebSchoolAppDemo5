@@ -28,6 +28,8 @@ namespace WebSchoolAppUI.Models
         [DisplayName("Fecha Creacion")]
         public DateTime FechaCreado { get; set; }
         [DisplayName("Modificado Por")]
+        public int? Estado { get; set; }
+        [DisplayName("Fecha de Modificación")]
         public int? ModificadoPor { get; set; }
         [DisplayName("Fecha de Modificación")]
         public DateTime? FechaModificado { get; set; }

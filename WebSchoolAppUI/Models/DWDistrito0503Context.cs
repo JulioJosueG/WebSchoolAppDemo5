@@ -775,9 +775,6 @@ namespace WebSchoolAppUI.Models
                 entity.HasKey(e => e.IdUsuario)
                     .HasName("PK__Usuarios__5B65BF97D29F3F11");
 
-                entity.Property(e => e.Apellido)
-                    .IsRequired()
-                    .HasMaxLength(255);
 
                 entity.Property(e => e.Contrasena).HasMaxLength(255);
 
@@ -789,9 +786,6 @@ namespace WebSchoolAppUI.Models
 
                 entity.Property(e => e.FechaModificado).HasColumnType("datetime");
 
-                entity.Property(e => e.Nombre)
-                    .IsRequired()
-                    .HasMaxLength(255);
 
                 entity.Property(e => e.NombreUsuario).HasMaxLength(255);
 

@@ -41,10 +41,8 @@ namespace WebSchoolAppUI.Models
         }
 
         public int IdUsuario { get; set; }
-        [Required]
-        public string Nombre { get; set; }
-        [Required]
 
+        public string Nombre { get; set; }
         public string Apellido { get; set; }
         public DateTime FechaCreado { get; set; }
         public DateTime? FechaModificado { get; set; }
