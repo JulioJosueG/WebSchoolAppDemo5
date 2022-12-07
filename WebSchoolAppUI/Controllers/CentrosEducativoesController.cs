@@ -133,7 +133,7 @@ namespace WebSchoolAppUI.Controllers
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.CreadoPor);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", centrosEducativo.IdDistrito);
-            ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "IdTipoCentro", centrosEducativo.IdTipoCentro);
+            ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "Nombre", centrosEducativo.IdTipoCentro);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.ModificadoPor);
             return View(centrosEducativo);
         }
@@ -154,16 +154,13 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
-                    _context.Update(new CentrosEducativo
-                    {
-                        Nombre = centrosEducativo.Nombre,
-                        IdTipoCentro = centrosEducativo.IdTipoCentro,
-                        IdDistrito = centrosEducativo.IdDistrito,
-                        CreadoPor = 1,
-                        ModificadoPor =  1,
-                       FechaModificado = DateTime.UtcNow.Date
-
-                    });
+                    var oldcentro = await _context.CentrosEducativos.FindAsync(centrosEducativo.IdCentroEducativo);
+                    oldcentro.Nombre = centrosEducativo.Nombre;
+                    oldcentro.IdTipoCentro = centrosEducativo.IdTipoCentro ;
+                    oldcentro.IdDistrito = centrosEducativo.IdDistrito;
+                    oldcentro.CreadoPor = 1;
+                    oldcentro.ModificadoPor = 1;
+                    oldcentro.FechaModificado = DateTime.UtcNow.Date;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
