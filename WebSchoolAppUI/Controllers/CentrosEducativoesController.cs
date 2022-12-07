@@ -37,7 +37,9 @@ namespace WebSchoolAppUI.Controllers
             ViewBag.CurrentFilter = searchString;
 
             var centros = from s in _context.CentrosEducativos.Include(a => a.IdDistritoNavigation)
-                           select s;
+                          .Include(a => a.IdTipoCentroNavigation)
+                          .Where(d => d.Estado == 1)
+            select s;
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -105,8 +107,7 @@ namespace WebSchoolAppUI.Controllers
                 Nombre = centrosEducativo.Nombre,
                 IdTipoCentro = centrosEducativo.IdTipoCentro,
                 IdDistrito = centrosEducativo.IdDistrito,
-                CreadoPor = centrosEducativo.CreadoPor = 1,
-                Estado = centrosEducativo.Estado = 1,
+                CreadoPor = centrosEducativo.CreadoPor = 1
                 });
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -131,7 +132,7 @@ namespace WebSchoolAppUI.Controllers
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.CreadoPor);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", centrosEducativo.IdDistrito);
-            ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "IdTipoCentro", centrosEducativo.IdTipoCentro);
+            ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "Nombre", centrosEducativo.IdTipoCentro);
             ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.ModificadoPor);
             return View(centrosEducativo);
         }
@@ -211,11 +212,28 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var centrosEducativo = await _context.CentrosEducativos.FindAsync(id);
-            _context.CentrosEducativos.Update(new CentrosEducativo
+            var centros = await _context.CentrosEducativos.FindAsync(id);
+            if (ModelState.IsValid)
             {
-                Estado = centrosEducativo.Estado = 2,
-            });
+                try
+                {
+                    centros.Estado = 2;
+                    _context.Update(centros);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CentrosEducativoExists(centros.IdCentroEducativo))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
