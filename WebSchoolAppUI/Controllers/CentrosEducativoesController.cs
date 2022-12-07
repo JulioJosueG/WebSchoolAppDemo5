@@ -37,7 +37,10 @@ namespace WebSchoolAppUI.Controllers
             ViewBag.CurrentFilter = searchString;
 
             var centros = from s in _context.CentrosEducativos.Include(a => a.IdDistritoNavigation)
-                           select s;
+                          .Include(d => d.IdTipoCentroNavigation)
+                          .Where(d => d.Estado == 1)
+                          select s;
+
 
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -210,8 +213,28 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var centrosEducativo = await _context.CentrosEducativos.FindAsync(id);
-            _context.CentrosEducativos.Remove(centrosEducativo);
+            var centros = await _context.CentrosEducativos.FindAsync(id);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    centros.Estado = 2;
+                    _context.Update(centros);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!CentrosEducativoExists(centros.IdCentroEducativo))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
