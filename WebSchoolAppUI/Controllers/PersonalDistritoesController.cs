@@ -216,7 +216,7 @@ namespace WebSchoolAppUI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var personalDistrito = await _context.PersonalDistritos.FindAsync(id);
-            _context.PersonalDistritos.Remove(personalDistrito);
+            personalDistrito.Estado = 9;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

@@ -170,7 +170,7 @@ namespace WebSchoolAppUI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
-            _context.Usuarios.Remove(usuario);
+            usuario.Estado = 9;
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
