@@ -157,7 +157,7 @@ namespace WebSchoolAppUI.Views
             {
                 try
                 {
-                    departamento.Estado = 2;
+                    departamento.Estado = 9;
                     _context.Update(departamento);
                     await _context.SaveChangesAsync();
                 }

@@ -216,7 +216,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
-                    centros.Estado = 2;
+                    centros.Estado = 9;
                     _context.Update(centros);
                     await _context.SaveChangesAsync();
                 }

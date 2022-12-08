@@ -97,10 +97,8 @@ namespace WebSchoolAppUI.Controllers
         // GET: Profesores/Create
         public IActionResult Create()
         {
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             return View();
         }
 
@@ -114,13 +112,13 @@ namespace WebSchoolAppUI.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(profesore);
+                profesore.Estado = 1;
+                profesore.FechaCreado = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.CreadoPor);
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre", profesore.IdAsignatura);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", profesore.IdCentro);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.ModificadoPor);
             return View(profesore);
         }
 
@@ -133,14 +131,13 @@ namespace WebSchoolAppUI.Controllers
             }
 
             var profesore = await _context.Profesores.FindAsync(id);
+            profesore.FechaModificado = DateTime.Now;
             if (profesore == null)
             {
                 return NotFound();
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.CreadoPor);
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "IdAsignatura", profesore.IdAsignatura);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", profesore.IdCentro);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.ModificadoPor);
             return View(profesore);
         }
 
@@ -176,10 +173,8 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.CreadoPor);
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "IdAsignatura", profesore.IdAsignatura);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", profesore.IdCentro);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.ModificadoPor);
             return View(profesore);
         }
 
