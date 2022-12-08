@@ -45,7 +45,7 @@
             <div class=" navbar-brand ">
                 <ul class="navbar-nav flex-grow-1">
                     <li class="nav-item">
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center ">
                             <img src="~/img/User_cicrle.png" style="height:70px;" alt="PFP" />
                             <div class="flex-column">
                                 <span class="d-block">@User.Identity.Name</span>
@@ -53,8 +53,12 @@
                                 <span class="d-block">@User.Claims.FirstOrDefault(c => c.Type == "Distrito").Value</span>
 
                             </div>
+                            <div class="flex-column ml-5">
+                                <a class="  text-dark" asp-area="" asp-controller="Home" asp-action="Login">Cerrar Sesión</a>
+                            </div>
+
                         </div>
-                    </li>
+</li>
                 </ul>
             </div>
         </nav>

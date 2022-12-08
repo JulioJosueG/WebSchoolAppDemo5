@@ -39,6 +39,14 @@ namespace WebSchoolAppUI.Controllers
         {
             return View();
         }
+        [HttpGet]
+        public IActionResult SignOut()
+        {
+
+            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+            return RedirectToAction("Login","Home",null);
+        }
+
         [HttpPost]
         public IActionResult Login(UsuarioAuth usuario)
         {
