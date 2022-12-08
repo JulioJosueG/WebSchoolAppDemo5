@@ -19,7 +19,6 @@ namespace WebSchoolAppUI.Controllers
             _context = context;
         }
 
-        // GET: Profesores
         public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -72,7 +71,6 @@ namespace WebSchoolAppUI.Controllers
             return View(await profesores.ToPagedListAsync(pageNumber, pageSize));
         }
 
-        // GET: Profesores/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -94,7 +92,6 @@ namespace WebSchoolAppUI.Controllers
             return View(profesore);
         }
 
-        // GET: Profesores/Create
         public IActionResult Create()
         {
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
@@ -102,9 +99,6 @@ namespace WebSchoolAppUI.Controllers
             return View();
         }
 
-        // POST: Profesores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdProfesor,Nombre,Apellido,Cedula,IdAsignatura,IdCentro,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Profesore profesore)
@@ -141,9 +135,6 @@ namespace WebSchoolAppUI.Controllers
             return View(profesore);
         }
 
-        // POST: Profesores/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdProfesor,Nombre,Apellido,Cedula,IdAsignatura,IdCentro,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Profesore profesore)
