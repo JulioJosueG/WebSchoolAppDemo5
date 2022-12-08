@@ -60,12 +60,14 @@ namespace WebSchoolAppUI.Views
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdDepartamento,Nombre,IdCentro,CreadoPor,FechaCreado")] Departamento departamento)
         {
+            string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
+
             if (ModelState.IsValid)
             {
                 departamento.CreadoPor = 1;
                 departamento.FechaCreado = DateTime.Now;
                 departamento.Estado = 1;
-                    
+                departamento.IdCentro = Convert.ToInt32(centro);
                 _context.Add(departamento);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -89,7 +91,6 @@ namespace WebSchoolAppUI.Views
                 return NotFound();
             }
             ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", departamento.CreadoPor);
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", departamento.IdCentro);
             return View(departamento);
         }
 
@@ -128,7 +129,6 @@ namespace WebSchoolAppUI.Views
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", departamento.IdCentro);
             return View(departamento);
         }
 
