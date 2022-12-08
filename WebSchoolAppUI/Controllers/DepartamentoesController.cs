@@ -21,7 +21,9 @@ namespace WebSchoolAppUI.Views
         // GET: Departamentoes
         public async Task<IActionResult> Index()
         {
-            var dWDistrito0503Context = _context.Departamentos.Where(x => x.Estado == 1).Include(d => d.CreadoPorNavigation)
+            string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
+
+            var dWDistrito0503Context = _context.Departamentos.Where(x => x.Estado == 1 && x.IdCentro.ToString() == centro).Include(d => d.CreadoPorNavigation)
                 .Include(d => d.IdCentroNavigation)
                 .Where(d => d.Estado==1);
             return View(await dWDistrito0503Context.ToListAsync());

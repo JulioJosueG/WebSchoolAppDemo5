@@ -42,6 +42,7 @@ namespace WebSchoolAppUI.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
+            string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
 
             var inscripcion = from s in _context.FactInscripcions.Include(f => f.CreadoPorNavigation)
                 .Include(f => f.IdAnioEscolarNavigation)
@@ -53,7 +54,7 @@ namespace WebSchoolAppUI.Controllers
                 .Include(f => f.IdEstudianteTipoNavigation)
                 .Include(f => f.IdModalidadTipoNavigation)
                 .Include(f => f.IdProfesorNavigation)
-                .Include(f => f.ModificadoPorNavigation)
+                .Include(f => f.ModificadoPorNavigation).Where( x=>  x.IdCentro.ToString() == centro)
                               select s;
             if (!String.IsNullOrEmpty(searchString))
             {

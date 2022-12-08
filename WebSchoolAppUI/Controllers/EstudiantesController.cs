@@ -37,8 +37,9 @@ namespace WebSchoolAppUI.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
+            string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
 
-            var students = from s in _context.Estudiantes.Where(x => x.Estado == 1).Include(a => a.SexoNavigation)
+            var students = from s in _context.Estudiantes.Where(x => x.Estado == 1 && x.Centro.ToString() == centro).Include(a => a.SexoNavigation)
                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {
