@@ -23,6 +23,8 @@ namespace WebSchoolAppUI.Controllers
         // GET: CentrosEducativoes
         public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            string distrito = User.Claims.FirstOrDefault(x => x.Type == "DistritoId").Value;
+
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
 
@@ -37,7 +39,7 @@ namespace WebSchoolAppUI.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var centros = from s in _context.CentrosEducativos.Where(x => x.Estado == 1).Include(a => a.IdDistritoNavigation)
+            var centros = from s in _context.CentrosEducativos.Where(x => x.Estado == 1 && x.IdDistrito.ToString() == distrito).Include(a => a.IdDistritoNavigation)
                           .Include(d => d.IdTipoCentroNavigation)
                           .Where(d => d.Estado == 1)
                           select s;
@@ -89,10 +91,10 @@ namespace WebSchoolAppUI.Controllers
         // GET: CentrosEducativoes/Create
         public IActionResult Create()
         {
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
+            
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo");
             ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "Nombre");
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
+            
             return View();
         }
 
@@ -103,12 +105,14 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdCentroEducativo,Nombre,IdTipoCentro,IdDistrito")] CentrosEducativo centrosEducativo)
         {
+            string distrito = User.Claims.FirstOrDefault(x => x.Type == "DistritoId").Value;
+
             if (ModelState.IsValid)
             {
                 _context.Add(new CentrosEducativo { 
                 Nombre = centrosEducativo.Nombre,
                 IdTipoCentro = centrosEducativo.IdTipoCentro,
-                IdDistrito = centrosEducativo.IdDistrito,
+                IdDistrito = Convert.ToInt32(distrito),
                 CreadoPor = centrosEducativo.CreadoPor = 1,
                 FechaCreado = DateTime.Now
                 
@@ -134,10 +138,8 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.CreadoPor);
             ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", centrosEducativo.IdDistrito);
             ViewData["IdTipoCentro"] = new SelectList(_context.TipoCentros, "IdTipoCentro", "Nombre", centrosEducativo.IdTipoCentro);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", centrosEducativo.ModificadoPor);
             return View(centrosEducativo);
         }
 
