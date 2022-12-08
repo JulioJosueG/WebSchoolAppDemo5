@@ -131,6 +131,8 @@ namespace WebSchoolAppUI.Controllers
             }
 
             var estudiante = await _context.Estudiantes.FindAsync(id);
+            estudiante.FechaCreado = DateTime.Now;
+            estudiante.Estado = 1;
             if (estudiante == null)
             {
                 return NotFound();
@@ -157,6 +159,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    estudiante.FechaModificado = DateTime.Now;
                     _context.Update(estudiante);
                     await _context.SaveChangesAsync();
                 }

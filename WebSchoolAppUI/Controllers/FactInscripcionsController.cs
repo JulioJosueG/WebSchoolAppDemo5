@@ -172,6 +172,8 @@ namespace WebSchoolAppUI.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(factInscripcion);
+                factInscripcion.Estado = 1;
+                factInscripcion.FechaCreado = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -232,6 +234,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    factInscripcion.FechaModificado = DateTime.Now;
                     _context.Update(factInscripcion);
                     await _context.SaveChangesAsync();
                 }

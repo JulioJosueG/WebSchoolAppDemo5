@@ -148,6 +148,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    profesore.FechaModificado = DateTime.Now;
                     _context.Update(profesore);
                     await _context.SaveChangesAsync();
                 }
