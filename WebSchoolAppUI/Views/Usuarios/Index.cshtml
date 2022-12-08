@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebSchoolAppUI.Models.Usuario>
+﻿@model IEnumerable<WebSchoolAppUI.ViewModels.UsuarioDistritoVM>
 
 @{
     ViewData["Title"] = "Usuarios";
@@ -6,7 +6,7 @@
 <h1>Usuarios</h1>
 
 <p>
-    <a asp-action="Create">Crear Nuevo Usuario</a>
+    <a asp-action="Create"  asp-route-id="@User.Claims.FirstOrDefault(c => c.Type == "DistritoId").Value">Crear Nuevo Usuario</a>
 </p>
 <table class="table">
     <thead>
@@ -17,14 +17,16 @@
             <th>
                 @Html.DisplayNameFor(model => model.Personal)
             </th>
-            
+
             <th>
                 Correo
             </th>
             <th>
                 Perfil
             </th>
-
+            <th>
+                Distrito
+            </th>
 
         </tr>
     </thead>
@@ -37,12 +39,15 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Personal)
             </td>
-           
+
             <td>
                 @Html.DisplayFor(modelItem => item.Correo)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.PerfilNavigation.Nombre)
+                @Html.DisplayFor(modelItem => item.Perfil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Distrito)
             </td>
 
             <td>

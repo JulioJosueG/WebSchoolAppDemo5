@@ -38,7 +38,7 @@ namespace WebSchoolAppUI.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var personalD = from s in _context.PersonalDistritos.Include(a => a.IdDepartamentoNavigation).Include(b => b.IdDistritoNavigation)
+            var personalD = from s in _context.PersonalDistritos.Where(x => x.Estado == 1).Include(a => a.IdDepartamentoNavigation).Include(b => b.IdDistritoNavigation)
                              select s;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -102,9 +102,6 @@ namespace WebSchoolAppUI.Controllers
             return View();
         }
 
-        // POST: PersonalDistritoes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdPersonalDistrito,Nombre,Apellido,Cedula,IdDepartamento,IdDistrito")] PersonalDistrito personalDistrito)
@@ -122,7 +119,6 @@ namespace WebSchoolAppUI.Controllers
             return View(personalDistrito);
         }
 
-        // GET: PersonalDistritoes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

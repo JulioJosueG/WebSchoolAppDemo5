@@ -4,27 +4,69 @@
 
 
 <body>
-    <div>
-        <div class="d-flex justify-content-between align-content-center">
-            <div class="card p-2" style="width: 18rem;">
-                <img src="~/img/Usuarios.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Usuarios</h5>
-                    <p class="card-text">Gestion de Usuarios</p>
-                    <a asp-controller="Usuarios" asp-action="index" class="btn btn-primary">Ir</a>
+    @{ if (User.IsInRole("Administrador"))
+        {
+            <div>
+                <div class="d-flex justify-content-between align-content-center">
+                    <div class="card p-2" style="width: 18rem;">
+                        <img src="~/img/Usuarios.png" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Usuarios</h5>
+                            <p class="card-text">Gestion de Usuarios</p>
+                            @{ if (User.Claims.FirstOrDefault(c => c.Type == "Centro").Value == "")
+                                {
+                                    <a asp-controller="Usuarios" asp-action="index" class="btn btn-primary">Ir</a>
+                                }
+                                else
+                                {
+                                    <a asp-controller="UsuariosCentro" asp-action="index" class="btn btn-primary">Ir</a>
+
+                                }
+                            }
+                        </div>
+                    </div>
                 </div>
-            </div>
+                </div>
+                }
+
+                else
+                {
+<div class="d-flex justify-content-between align-content-center">
 
 
-            <div class="card p-2" style="width: 18rem;">
-                <img src="~/img/Profesor2.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Personal</h5>
-                    <p class="card-text">Gestion de Personal</p>
+
+
+
+    <div class="card p-2" style="width: 18rem;">
+        <img src="~/img/Profesor2.png" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">Personal</h5>
+            <p class="card-text">Gestion de Personal</p>
+            @{ if (User.Claims.FirstOrDefault(c => c.Type == "Centro").Value == "")
+                {
                     <a asp-controller="PersonalDistritoes" asp-action="index" class="btn btn-primary">Ir</a>
-                </div>
-            </div>
 
+                }
+                else
+                {
+                    <a asp-controller="PersonalCentroes" asp-action="index" class="btn btn-primary">Ir</a>
+
+                }
+            }
+        </div>
+    </div>
+
+    @{ if (User.Claims.FirstOrDefault(c => c.Type == "Distrito").Value == "")
+        {
+
+                <div class="card p-2" style="margin-right: 2rem; width: 18rem;">
+                    <img src="~/img/icon-centros.png" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Departamentos</h5>
+                        <p class="card-text">Gestion de Departamento</p>
+                        <a asp-controller="Departamentoes" asp-action="index" class="btn btn-primary">Ir</a>
+                    </div>
+                </div>
             <div class="card p-2" style="width: 18rem;">
                 <img src="~/img/Calificacion.png" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -33,9 +75,9 @@
                     <a asp-controller="Home" asp-action="MenuRegistros" class="btn btn-primary">Ir</a>
                 </div>
             </div>
-        </div>
-        
-        <div class="d-flex justify-content-start align-content-center mt-5">
+        }
+        else
+        {
             <div class="card p-2" style="margin-right: 2rem; width: 18rem;">
                 <img src="~/img/icon-centros.png" class="card-img-top" alt="...">
                 <div class="card-body">
@@ -44,16 +86,20 @@
                     <a asp-controller="CentrosEducativoes" asp-action="index" class="btn btn-primary">Ir</a>
                 </div>
             </div>
+        }
 
-            <div class="card p-2" style="margin-right: 2rem; width: 18rem;">
-                <img src="~/img/icon-centros.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Departamentos</h5>
-                    <p class="card-text">Gestion de Departamento</p>
-                    <a asp-controller="Departamentoes" asp-action="index" class="btn btn-primary">Ir</a>
-                </div>
-            </div>
-        </div>
 
-    </div>
+    }
+
+
+
+
+
+
+</div>
+
+          
+        }
+
+    }
 </body>

@@ -11,30 +11,32 @@ using WebSchoolAppUI.ViewModels;
 
 namespace WebSchoolAppUI.Controllers
 {
-    [Authorize(Roles = "Personal Distrito,Administrador")]
-    public class UsuariosController : Controller
+    [Authorize(Roles = "Personal Centro,Administrador")]
+
+    public class UsuariosCentroController : Controller
     {
         private readonly DWDistrito0503Context _context;
 
-        public UsuariosController(DWDistrito0503Context context)
+        public UsuariosCentroController(DWDistrito0503Context context)
         {
             _context = context;
         }
 
+       
+
         public async Task<IActionResult> Index()
         {
-            var context = _context.Usuarios.Where(x=> x.TipoUsuario == 1 && x.Estado==1).Select(x => new UsuarioDistritoVM
+            var context = _context.Usuarios.Where(x=> x.TipoUsuario==2 && x.Estado == 1).Select(x => new UsuarioCentroVM
             {
                 IdUsuario = x.IdUsuario,
                 Perfil = x.PerfilNavigation.Nombre,
                 NombreUsuario = x.NombreUsuario,
                 Correo = x.Correo,
                 Estado = x.Estado,
-                Personal = _context.PersonalDistritos.Where(u => u.IdPersonalDistrito == x.Personal).Select(x => x.Nombre + " " + x.Apellido).FirstOrDefault(),
+                Personal = _context.PersonalCentros.Where(u => u.IdPersonalCentro == x.Personal).Select(x => x.Nombre + " " + x.Apellido).FirstOrDefault(),
                 TipoUsuario = x.TipoUsuarioNavigation.Nombre,
-                Distrito = _context.Distritos.Where(z => z.IdDistrito == _context.PersonalDistritos.Where(u => u.IdPersonalDistrito == x.Personal).Select(t => t.IdDistrito).FirstOrDefault()).Select(x => x.Codigo).FirstOrDefault()
+                Centro = _context.CentrosEducativos.Where(z=> z.IdCentroEducativo == _context.PersonalCentros.Where(u => u.IdPersonalCentro == x.Personal).Select(t=> t.IdCentro).FirstOrDefault()).Select(x=> x.Nombre).FirstOrDefault()
             });
-
             return View(await context.ToListAsync());
         }
 
@@ -46,6 +48,9 @@ namespace WebSchoolAppUI.Controllers
             }
 
             var usuario = await _context.Usuarios
+                .Include(u => u.EstadoNavigation)
+                .Include(u => u.PerfilNavigation)
+                .Include(u => u.TipoUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdUsuario == id);
             if (usuario == null)
             {
@@ -57,28 +62,34 @@ namespace WebSchoolAppUI.Controllers
 
         public IActionResult Create(int? id)
         {
-            ViewData["Perfil"] = new SelectList(_context.Perfiles.Where(i => i.Nombre.Contains("Distrito") || i.Nombre =="Administrador"), "IdPerfil", "Nombre");
-            ViewData["Personal"] = new SelectList(_context.PersonalDistritos.Where(x=> x.IdDistrito == id), "IdPersonalDistrito", "Nombre");
+            var personal = _context.PersonalCentros.Where(x => x.IdCentro == id).Select(s => new
+            {
+                IdPersonalCentro = s.IdPersonalCentro,
+                NombreCompleto = s.Nombre + " " + s.Apellido
+            });
 
+            ViewData["Perfil"] = new SelectList(_context.Perfiles.Where(x=> !x.Nombre.Contains("Distrito") ), "IdPerfil", "Nombre");
+            ViewData["Personal"] = new SelectList(personal, "IdPersonalCentro", "NombreCompleto");
 
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdUsuario,Personal,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
+        public async Task<IActionResult> Create([Bind("IdUsuario,FechaCreado,FechaModificado,Contrasena,Perfil,NombreUsuario,Correo,Estado,Personal,TipoUsuario")] Usuario usuario)
         {
-
             if (ModelState.IsValid)
             {
+                _context.Add(usuario);
+                usuario.Estado = 1;
+                usuario.TipoUsuario = 2;
                 usuario.FechaCreado = DateTime.Now;
-                usuario.TipoUsuario = 1;
-                _context.Add(usuario) ;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Estado"] = new SelectList(_context.Estados, "IdEstado", "IdEstado", usuario.Estado);
             ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
-
+            ViewData["TipoUsuario"] = new SelectList(_context.TipoUsuarios, "IdTipoUsuario", "IdTipoUsuario", usuario.TipoUsuario);
             return View(usuario);
         }
 
@@ -94,14 +105,14 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
+            ViewData["Estado"] = new SelectList(_context.Estados, "IdEstado", "IdEstado", usuario.Estado);
             ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
-
+            ViewData["TipoUsuario"] = new SelectList(_context.TipoUsuarios, "IdTipoUsuario", "IdTipoUsuario", usuario.TipoUsuario);
             return View(usuario);
         }
 
-        [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,Personal,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
+        public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,FechaCreado,FechaModificado,Contrasena,Perfil,NombreUsuario,Correo,Estado,Personal,TipoUsuario")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
             {
@@ -112,12 +123,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
-                    var oldUsuario = await _context.Usuarios.FindAsync(usuario.IdUsuario);
-                    oldUsuario.Personal = usuario.Personal;
-                    oldUsuario.NombreUsuario = usuario.NombreUsuario;
-                    oldUsuario.Perfil = usuario.Perfil;
-                    oldUsuario.Correo = usuario.Correo;
-                    oldUsuario.FechaModificado = DateTime.Now;
+                    _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -133,8 +139,9 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["Estado"] = new SelectList(_context.Estados, "IdEstado", "IdEstado", usuario.Estado);
             ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
-
+            ViewData["TipoUsuario"] = new SelectList(_context.TipoUsuarios, "IdTipoUsuario", "IdTipoUsuario", usuario.TipoUsuario);
             return View(usuario);
         }
 
@@ -146,6 +153,9 @@ namespace WebSchoolAppUI.Controllers
             }
 
             var usuario = await _context.Usuarios
+                .Include(u => u.EstadoNavigation)
+                .Include(u => u.PerfilNavigation)
+                .Include(u => u.TipoUsuarioNavigation)
                 .FirstOrDefaultAsync(m => m.IdUsuario == id);
             if (usuario == null)
             {
@@ -160,7 +170,7 @@ namespace WebSchoolAppUI.Controllers
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var usuario = await _context.Usuarios.FindAsync(id);
-            usuario.Estado = 9; 
+            _context.Usuarios.Remove(usuario);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

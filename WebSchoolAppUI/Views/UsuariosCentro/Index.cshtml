@@ -1,0 +1,67 @@
+﻿@model IEnumerable<WebSchoolAppUI.ViewModels.UsuarioCentroVM>
+
+@{
+    ViewData["Title"] = "Usuarios Centros educativos";
+}
+
+<h1>Usuarios de @User.Claims.FirstOrDefault(c => c.Type == "Centro").Value</h1>
+
+<p>
+    <a asp-action="Create" asp-route-id="@User.Claims.FirstOrDefault(c => c.Type == "CentroId").Value">Create nuevo Usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+         
+            <th>
+                Usuario
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Personal)
+            </th>
+            <th>
+               Perfil
+            </th>
+            <th>
+                Tipo de Usuario
+            </th>
+            <th>
+                Centro
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Correo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Personal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Perfil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoUsuario)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Centro)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

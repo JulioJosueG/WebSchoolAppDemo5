@@ -18,14 +18,12 @@ namespace WebSchoolAppUI.Controllers
             _context = context;
         }
 
-        // GET: PersonalCentroes
         public async Task<IActionResult> Index()
         {
-            var dWDistrito0503Context = _context.PersonalCentros.Include(p => p.CreadoPorNavigation).Include(p => p.IdCentroNavigation).Include(p => p.IdDepartamentoNavigation).Include(p => p.ModificadoPorNavigation);
+            var dWDistrito0503Context = _context.PersonalCentros.Where(x => x.Estado == 1).Include(p => p.CreadoPorNavigation).Include(p => p.IdCentroNavigation).Include(p => p.IdDepartamentoNavigation).Include(p => p.ModificadoPorNavigation);
             return View(await dWDistrito0503Context.ToListAsync());
         }
 
-        // GET: PersonalCentroes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -47,19 +45,13 @@ namespace WebSchoolAppUI.Controllers
             return View(personalCentro);
         }
 
-        // GET: PersonalCentroes/Create
         public IActionResult Create()
         {
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo");
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento");
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre");
             return View();
         }
 
-        // POST: PersonalCentroes/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdPersonalCentro,Nombre,Apellido,Cedula,IdDepartamento,IdCentro,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] PersonalCentro personalCentro)
@@ -70,14 +62,11 @@ namespace WebSchoolAppUI.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalCentro.CreadoPor);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentro);
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamento);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalCentro.ModificadoPor);
             return View(personalCentro);
         }
 
-        // GET: PersonalCentroes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,16 +79,11 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalCentro.CreadoPor);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentro);
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamento);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalCentro.ModificadoPor);
             return View(personalCentro);
         }
 
-        // POST: PersonalCentroes/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdPersonalCentro,Nombre,Apellido,Cedula,IdDepartamento,IdCentro,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] PersonalCentro personalCentro)
@@ -129,10 +113,8 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalCentro.CreadoPor);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentro);
             ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamento);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", personalCentro.ModificadoPor);
             return View(personalCentro);
         }
 
