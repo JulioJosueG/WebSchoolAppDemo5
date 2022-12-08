@@ -73,6 +73,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 usuario.FechaCreado = DateTime.Now;
                 usuario.TipoUsuario = 1;
+                usuario.Estado = 1;
                 _context.Add(usuario) ;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

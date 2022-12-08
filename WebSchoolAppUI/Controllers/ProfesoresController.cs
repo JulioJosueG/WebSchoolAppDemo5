@@ -19,7 +19,6 @@ namespace WebSchoolAppUI.Controllers
             _context = context;
         }
 
-        // GET: Profesores
         public async Task<IActionResult> Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -72,7 +71,6 @@ namespace WebSchoolAppUI.Controllers
             return View(await profesores.ToPagedListAsync(pageNumber, pageSize));
         }
 
-        // GET: Profesores/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -94,19 +92,13 @@ namespace WebSchoolAppUI.Controllers
             return View(profesore);
         }
 
-        // GET: Profesores/Create
         public IActionResult Create()
         {
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             return View();
         }
 
-        // POST: Profesores/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdProfesor,Nombre,Apellido,Cedula,IdAsignatura,IdCentro,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Profesore profesore)
@@ -114,13 +106,13 @@ namespace WebSchoolAppUI.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(profesore);
+                profesore.Estado = 1;
+                profesore.FechaCreado = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.CreadoPor);
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre", profesore.IdAsignatura);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", profesore.IdCentro);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.ModificadoPor);
             return View(profesore);
         }
 
@@ -133,20 +125,16 @@ namespace WebSchoolAppUI.Controllers
             }
 
             var profesore = await _context.Profesores.FindAsync(id);
+            profesore.FechaModificado = DateTime.Now;
             if (profesore == null)
             {
                 return NotFound();
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.CreadoPor);
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "IdAsignatura", profesore.IdAsignatura);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", profesore.IdCentro);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.ModificadoPor);
             return View(profesore);
         }
 
-        // POST: Profesores/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("IdProfesor,Nombre,Apellido,Cedula,IdAsignatura,IdCentro,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Profesore profesore)
@@ -160,6 +148,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    profesore.FechaModificado = DateTime.Now;
                     _context.Update(profesore);
                     await _context.SaveChangesAsync();
                 }
@@ -176,10 +165,8 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.CreadoPor);
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "IdAsignatura", profesore.IdAsignatura);
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", profesore.IdCentro);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", profesore.ModificadoPor);
             return View(profesore);
         }
 

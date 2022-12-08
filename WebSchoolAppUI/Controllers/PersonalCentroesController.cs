@@ -59,6 +59,8 @@ namespace WebSchoolAppUI.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(personalCentro);
+                personalCentro.Estado = 1;
+                personalCentro.FechaCreado = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -97,6 +99,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    personalCentro.FechaModificado = DateTime.Now;
                     _context.Update(personalCentro);
                     await _context.SaveChangesAsync();
                 }

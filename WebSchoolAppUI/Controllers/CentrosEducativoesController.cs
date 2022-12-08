@@ -109,7 +109,9 @@ namespace WebSchoolAppUI.Controllers
                 Nombre = centrosEducativo.Nombre,
                 IdTipoCentro = centrosEducativo.IdTipoCentro,
                 IdDistrito = centrosEducativo.IdDistrito,
-                CreadoPor = centrosEducativo.CreadoPor = 1
+                CreadoPor = centrosEducativo.CreadoPor = 1,
+                FechaCreado = DateTime.Now
+                
                 });
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -216,7 +218,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
-                    centros.Estado = 2;
+                    centros.Estado = 9;
                     _context.Update(centros);
                     await _context.SaveChangesAsync();
                 }

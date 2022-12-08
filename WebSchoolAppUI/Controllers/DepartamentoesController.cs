@@ -61,7 +61,7 @@ namespace WebSchoolAppUI.Views
             if (ModelState.IsValid)
             {
                 departamento.CreadoPor = 1;
-
+                departamento.FechaCreado = DateTime.Now;
                 departamento.Estado = 1;
                     
                 _context.Add(departamento);
@@ -82,7 +82,6 @@ namespace WebSchoolAppUI.Views
             }
 
             var departamento = await _context.Departamentos.FindAsync(id);
-            
             if (departamento == null)
             {
                 return NotFound();
@@ -109,6 +108,8 @@ namespace WebSchoolAppUI.Views
                     var oldDepartamento = await _context.Departamentos.FindAsync(departamento.IdDepartamento);
                     oldDepartamento.Nombre = departamento.Nombre;
                     oldDepartamento.IdCentro = departamento.IdCentro;
+                    departamento.FechaModificado = DateTime.Now;
+
                     oldDepartamento.ModificadoPor = 1;
                     await _context.SaveChangesAsync();
                 }
@@ -157,7 +158,7 @@ namespace WebSchoolAppUI.Views
             {
                 try
                 {
-                    departamento.Estado = 2;
+                    departamento.Estado = 9;
                     _context.Update(departamento);
                     await _context.SaveChangesAsync();
                 }

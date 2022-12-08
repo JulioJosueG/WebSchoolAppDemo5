@@ -123,6 +123,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    usuario.FechaModificado = DateTime.Now;
                     _context.Update(usuario);
                     await _context.SaveChangesAsync();
                 }
