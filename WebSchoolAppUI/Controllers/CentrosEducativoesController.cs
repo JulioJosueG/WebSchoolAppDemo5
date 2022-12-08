@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -36,7 +37,7 @@ namespace WebSchoolAppUI.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var centros = from s in _context.CentrosEducativos.Include(a => a.IdDistritoNavigation)
+            var centros = from s in _context.CentrosEducativos.Where(x => x.Estado == 1).Include(a => a.IdDistritoNavigation)
                           .Include(d => d.IdTipoCentroNavigation)
                           .Where(d => d.Estado == 1)
                           select s;

@@ -124,7 +124,7 @@ namespace WebSchoolAppUI.Controllers
                 return NotFound();
             }
 
-            var factInscripcion = await _context.FactInscripcions
+            var factInscripcion = await _context.FactInscripcions.Where(x => x.Estado == 1)
                 .Include(f => f.CreadoPorNavigation)
                 .Include(f => f.IdAnioEscolarNavigation)
                 .Include(f => f.IdCentroNavigation)

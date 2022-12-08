@@ -27,9 +27,17 @@
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Reportes">Reportes</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Configuracion">Subida de Archivos</a>
-                        </li>
+                        @{
+                            if (User.Claims.FirstOrDefault(c => c.Type == "Centro").Value != "")
+                            {
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Configuracion">Subida de Archivos</a>
+                                </li>
+                            }
+
+
+                        }
+
                     </ul>
                 </div>
 
@@ -42,6 +50,8 @@
                             <div class="flex-column">
                                 <span class="d-block">@User.Identity.Name</span>
                                 <span class="d-block">@User.Claims.FirstOrDefault(c => c.Type == "Centro").Value</span>
+                                <span class="d-block">@User.Claims.FirstOrDefault(c => c.Type == "Distrito").Value</span>
+
                             </div>
                         </div>
                     </li>

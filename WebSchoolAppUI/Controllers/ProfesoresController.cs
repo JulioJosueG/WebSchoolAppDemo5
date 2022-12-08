@@ -38,7 +38,7 @@ namespace WebSchoolAppUI.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var profesores = from s in _context.Profesores.Include(a => a.IdAsignaturaNavigation).Include(b=> b.IdCentroNavigation)
+            var profesores = from s in _context.Profesores.Where(x=> x.Estado == 1).Include(a => a.IdAsignaturaNavigation).Include(b=> b.IdCentroNavigation)
                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {

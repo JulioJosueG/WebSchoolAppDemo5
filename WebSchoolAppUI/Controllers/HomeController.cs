@@ -27,7 +27,6 @@ namespace WebSchoolAppUI.Controllers
             _logger = logger;
         }
 
-        [Authorize(Roles ="Administrador")]
         public IActionResult Index()
         {
             return View();
@@ -65,18 +64,29 @@ namespace WebSchoolAppUI.Controllers
                 return BadRequest("Contraseña incorrecta");
             }
             var perfil = _context.Perfiles.Where(x => x.IdPerfil == user.Perfil).FirstOrDefault();
-
+            var personalCentro = user.TipoUsuario == 2 ? _context.PersonalCentros.Where(x => x.IdPersonalCentro == user.Personal).FirstOrDefault() : null;
+            var personalDistrito = user.TipoUsuario == 1 ? _context.PersonalDistritos.Where(x => x.IdPersonalDistrito == user.Personal).FirstOrDefault() : null;
+            var distrito = personalDistrito != null ? _context.Distritos.Where(x => x.IdDistrito == personalDistrito.IdDistrito).FirstOrDefault() : null;
+                var centro = personalCentro != null ? _context.CentrosEducativos.Where(x => x.IdCentroEducativo == personalCentro.IdCentro).FirstOrDefault() : null;
+            var tipoUsuario = _context.TipoUsuarios.Where(x => x.IdTipoUsuario == user.TipoUsuario).FirstOrDefault();
             ClaimsIdentity identity = null;
             bool isAuthenticate = false;
 
             if (!(user == null))
             {
-                identity = new ClaimsIdentity(new[]
-                {
+                    identity = new ClaimsIdentity(new[]
+               {
                     new Claim(ClaimTypes.Name,user.NombreUsuario),
                     new Claim(ClaimTypes.Role,user.PerfilNavigation.Nombre),
-                    new Claim("Centro", user.Correo)
+                    new Claim("Centro", centro != null ? centro.Nombre : "" ),
+                    new Claim("Tipo", tipoUsuario.Nombre),
+                    new Claim("Distrito", distrito != null ? distrito.Codigo : ""),
+                    new Claim("DistritoId", personalDistrito != null ? personalDistrito.IdDistrito.ToString() : ""),
+                    new Claim("CentroId", personalCentro != null ? personalCentro.IdCentro.ToString() : ""),
+
+
                 }, CookieAuthenticationDefaults.AuthenticationScheme);
+               
                 isAuthenticate = true;
             }
            
@@ -108,7 +118,7 @@ namespace WebSchoolAppUI.Controllers
             return View();
         }
         [HttpPost]
-        public async  Task<ActionResult> Configuracion(List<IFormFile> files)
+        public async  Task<ActionResult> Configuracion(List<IFormFile> files ,int idCentro)
         {
             long size = files.Sum(f => f.Length);
 
@@ -125,7 +135,7 @@ namespace WebSchoolAppUI.Controllers
                     }
                 }
             }
-            return Ok(new { count = files.Count, size, filePaths });
+            return Ok(new { count = files.Count, size, filePaths , Centro=idCentro});
          
 
         }
