@@ -114,6 +114,7 @@ namespace WebSchoolAppUI.Controllers
                 IdTipoCentro = centrosEducativo.IdTipoCentro,
                 IdDistrito = Convert.ToInt32(distrito),
                 CreadoPor = centrosEducativo.CreadoPor = 1,
+                Estado = 1,
                 FechaCreado = DateTime.Now
                 
                 });
@@ -162,7 +163,6 @@ namespace WebSchoolAppUI.Controllers
                     var oldcentro = await _context.CentrosEducativos.FindAsync(centrosEducativo.IdCentroEducativo);
                     oldcentro.Nombre = centrosEducativo.Nombre;
                     oldcentro.IdTipoCentro = centrosEducativo.IdTipoCentro ;
-                    oldcentro.IdDistrito = centrosEducativo.IdDistrito;
                     oldcentro.CreadoPor = 1;
                     oldcentro.ModificadoPor = 1;
                     oldcentro.FechaModificado = DateTime.UtcNow.Date;
