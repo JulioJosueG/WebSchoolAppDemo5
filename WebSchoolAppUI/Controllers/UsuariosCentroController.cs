@@ -84,6 +84,7 @@ namespace WebSchoolAppUI.Controllers
                 usuario.Estado = 1;
                 usuario.TipoUsuario = 2;
                 usuario.FechaCreado = DateTime.Now;
+                
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
@@ -123,8 +124,12 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
-                    usuario.FechaModificado = DateTime.Now;
-                    _context.Update(usuario);
+                    var oldUsuario = await _context.Usuarios.FindAsync(usuario.IdUsuario);
+                    oldUsuario.Personal = usuario.Personal;
+                    oldUsuario.NombreUsuario = usuario.NombreUsuario;
+                    oldUsuario.Perfil = usuario.Perfil;
+                    oldUsuario.Correo = usuario.Correo;
+                    oldUsuario.FechaModificado = DateTime.Now;
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

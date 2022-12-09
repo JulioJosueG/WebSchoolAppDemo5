@@ -60,12 +60,13 @@ namespace WebSchoolAppUI.Controllers
             {
                 _context.Add(personalCentro);
                 personalCentro.Estado = 1;
+                personalCentro.CreadoPor = 1;
                 personalCentro.FechaCreado = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentro);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamento);
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentroNavigation.Nombre);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamentoNavigation.Nombre);
             return View(personalCentro);
         }
 
@@ -81,8 +82,8 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentro);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamento);
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre");
             return View(personalCentro);
         }
 
@@ -99,8 +100,13 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    var oldpersonal = await _context.PersonalCentros.FindAsync(personalCentro.IdPersonalCentro);
+                    oldpersonal.Apellido = personalCentro.Apellido;
+                    oldpersonal.Cedula = personalCentro.Cedula;
+                    oldpersonal.IdDepartamento = personalCentro.IdDepartamento;
+                    oldpersonal.ModificadoPor = 1;
+                    oldpersonal.Nombre = personalCentro.Nombre;
                     personalCentro.FechaModificado = DateTime.Now;
-                    _context.Update(personalCentro);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -116,8 +122,8 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentro);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamento);
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentroNavigation.Nombre);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamentoNavigation.Nombre);
             return View(personalCentro);
         }
 

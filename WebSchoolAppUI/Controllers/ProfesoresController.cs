@@ -104,16 +104,21 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdProfesor,Nombre,Apellido,Cedula,IdAsignatura,IdCentro,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Profesore profesore)
         {
+            string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
+
             if (ModelState.IsValid)
             {
                 _context.Add(profesore);
+                profesore.CreadoPor = 1;
                 profesore.Estado = 1;
+                profesore.IdCentro = Convert.ToInt32(centro);
                 profesore.FechaCreado = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre", profesore.IdAsignatura);
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre", profesore.IdCentro);
+
+            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
             return View(profesore);
         }
 
@@ -126,13 +131,16 @@ namespace WebSchoolAppUI.Controllers
             }
 
             var profesore = await _context.Profesores.FindAsync(id);
+
             profesore.FechaModificado = DateTime.Now;
             if (profesore == null)
             {
                 return NotFound();
             }
-            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "IdAsignatura", profesore.IdAsignatura);
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", profesore.IdCentro);
+
+            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
+
             return View(profesore);
         }
 
@@ -149,8 +157,14 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    var oldprofesore = await _context.Profesores.FindAsync(profesore.IdProfesor);
+                    oldprofesore.Nombre = profesore.Nombre;
+                    oldprofesore.Apellido = profesore.Apellido;
+                    oldprofesore.Cedula = profesore.Cedula;
+                    oldprofesore.IdAsignatura = profesore.IdAsignatura;
+                    oldprofesore.IdCentro = profesore.IdCentro;
+                    oldprofesore.ModificadoPor = 1;
                     profesore.FechaModificado = DateTime.Now;
-                    _context.Update(profesore);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -166,8 +180,10 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "IdAsignatura", profesore.IdAsignatura);
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", profesore.IdCentro);
+
+            ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
+
             return View(profesore);
         }
 

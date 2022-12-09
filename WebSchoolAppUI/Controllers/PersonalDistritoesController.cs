@@ -111,6 +111,7 @@ namespace WebSchoolAppUI.Controllers
                 personalDistrito.CreadoPor = 1;
                 personalDistrito.FechaCreado = DateTime.Now;
                 personalDistrito.Estado = 1;
+                personalDistrito.CreadoPor = 1;
                 _context.Add(personalDistrito);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

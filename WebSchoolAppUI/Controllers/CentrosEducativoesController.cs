@@ -221,7 +221,6 @@ namespace WebSchoolAppUI.Controllers
                 try
                 {
                     centros.Estado = 9;
-                    _context.Update(centros);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)

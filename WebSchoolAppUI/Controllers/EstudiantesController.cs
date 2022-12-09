@@ -96,8 +96,6 @@ namespace WebSchoolAppUI.Controllers
         // GET: Estudiantes/Create
         public IActionResult Create()
         {
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido");
             ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre");
 
             return View();
@@ -110,16 +108,18 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdEstudiante,Nombre,Apellido,Idsigerd,FechaNacimiento,Sexo,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Estudiante estudiante)
         {
+            string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
+
             if (ModelState.IsValid)
             {
                 _context.Add(estudiante);
+                estudiante.Centro = Convert.ToInt32(centro);
                 estudiante.Estado = 1;
+                estudiante.CreadoPor = 1;
                 estudiante.FechaCreado = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.CreadoPor);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.ModificadoPor);
             ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
 
             return View(estudiante);
@@ -134,15 +134,11 @@ namespace WebSchoolAppUI.Controllers
             }
 
             var estudiante = await _context.Estudiantes.FindAsync(id);
-            estudiante.FechaCreado = DateTime.Now;
-            estudiante.Estado = 1;
             if (estudiante == null)
             {
                 return NotFound();
             }
             ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.CreadoPor);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.ModificadoPor);
             return View(estudiante);
         }
 
@@ -162,8 +158,15 @@ namespace WebSchoolAppUI.Controllers
             {
                 try
                 {
+                    var oldEstudiante = await _context.Estudiantes.FindAsync(estudiante.IdEstudiante);
+                    oldEstudiante.Nombre = estudiante.Nombre;
+                    oldEstudiante.Apellido = estudiante.Apellido;
+                    oldEstudiante.Idsigerd = estudiante.Idsigerd;
+                    oldEstudiante.FechaNacimiento = estudiante.FechaNacimiento;
+                    oldEstudiante.Sexo = estudiante.Sexo;
+
+                    oldEstudiante.ModificadoPor = 1;
                     estudiante.FechaModificado = DateTime.Now;
-                    _context.Update(estudiante);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
@@ -180,8 +183,6 @@ namespace WebSchoolAppUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
-            ViewData["CreadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.CreadoPor);
-            ViewData["ModificadoPor"] = new SelectList(_context.Usuarios, "IdUsuario", "Apellido", estudiante.ModificadoPor);
             return View(estudiante);
         }
 
