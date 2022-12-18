@@ -101,6 +101,7 @@ namespace WebSchoolAppUI.Controllers
             return View();
         }
 
+
         // POST: Estudiantes/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
@@ -109,8 +110,9 @@ namespace WebSchoolAppUI.Controllers
         public async Task<IActionResult> Create([Bind("IdEstudiante,Nombre,Apellido,Idsigerd,FechaNacimiento,Sexo,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Estudiante estudiante)
         {
             string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
-
-            if (ModelState.IsValid)
+            var sigerdval = from s in _context.Estudiantes.Where(x => x.Idsigerd == estudiante.Idsigerd).ToList()
+                           select s;
+            if (ModelState.IsValid && !sigerdval.Any())
             {
                 _context.Add(estudiante);
                 estudiante.Centro = Convert.ToInt32(centro);
@@ -119,6 +121,10 @@ namespace WebSchoolAppUI.Controllers
                 estudiante.FechaCreado = DateTime.Now;
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
+            }
+            else
+            { 
+                return BadRequest("El Sigerd debe ser Unico!");
             }
             ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
 
