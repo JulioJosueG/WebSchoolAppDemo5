@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<WebSchoolAppUI.ViewModels.UsuarioCentroVM>
 
 @{
-    ViewData["Title"] = "Usuarios Centros educativos";
+    ViewData["Title"] = "Usuarios de Centros educativos";
 }
 
 <h1>Usuarios de @User.Claims.FirstOrDefault(c => c.Type == "Centro").Value</h1>
@@ -57,9 +57,9 @@
                 @Html.DisplayFor(modelItem => item.Centro)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.IdUsuario">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.IdUsuario">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdUsuario">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.IdUsuario">Editar</a> |
+                <a asp-action="Details" asp-route-id="@item.IdUsuario">Detalles</a> |
+                <a asp-action="Delete" asp-route-id="@item.IdUsuario">Eliminar</a>
             </td>
         </tr>
 }
