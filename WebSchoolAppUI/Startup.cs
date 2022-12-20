@@ -31,7 +31,13 @@ namespace WebSchoolAppUI
             {
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie();
+            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(
+                options =>
+                {
+                    options.LoginPath = "/home/login";
+                options.Cookie.Name = "my_app_auth_cookie";
+                }
+                );
 
             services.AddControllersWithViews();
             services.AddDbContext<DWDistrito0503Context>(options =>

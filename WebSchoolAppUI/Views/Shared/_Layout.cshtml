@@ -54,11 +54,11 @@
 
                             </div>
                             <div class="flex-column ml-5">
-                                <a class="  text-dark" asp-area="" asp-controller="Home" asp-action="Login">Cerrar Sesión</a>
+                                <a onclick="noBack()" class="text-dark" asp-area="" asp-controller="Home" asp-action="Login">Cerrar Sesión</a>
                             </div>
 
                         </div>
-</li>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -74,6 +74,10 @@
             &copy; 2022 - MINERD - <a asp-area="" asp-controller="Home" asp-action="Privacy">Política de privacidad</a>
         </div>
     </footer>
+    <Script type="text/javascript">
+        window.history.forward();
+        function noBack() { window.history.forward(); }
+    </Script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>

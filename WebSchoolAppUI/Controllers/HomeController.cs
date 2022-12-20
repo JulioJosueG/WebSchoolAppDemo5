@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace WebSchoolAppUI.Controllers
 {
@@ -35,20 +36,15 @@ namespace WebSchoolAppUI.Controllers
         {
             return View();
         }
+        [HttpGet]
         public IActionResult Login()
         {
             return View();
         }
-        [HttpGet]
-        public IActionResult SignOut()
-        {
-
-            HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-            return RedirectToAction("Login","Home",null);
-        }
+     
 
         [HttpPost]
-        public IActionResult Login(UsuarioAuth usuario)
+        public async Task<IActionResult> Login(UsuarioAuth usuario)
         {
             
             //if (isValid(usuario))
@@ -101,12 +97,20 @@ namespace WebSchoolAppUI.Controllers
             if (isAuthenticate)
             {
                 var principal = new ClaimsPrincipal(identity);
-                var login = HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
+                await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, principal);
                 return RedirectToAction("Index", "Home");
             }
             return View();
         }
+       
+        [HttpGet]
+        public async Task<IActionResult> SignOut()
+        {
+            HttpContext.Response.Cookies.Delete("my_app_auth_cookie");
+            await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 
+            return RedirectToActionPermanent("Login", "Home", null);
+        }
         private bool isValid(UsuarioAuth usuario)
         {
             if (usuario.NombreUsuario == "admin" && usuario.Contrasena == "admin")
