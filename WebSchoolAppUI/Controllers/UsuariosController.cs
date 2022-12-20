@@ -125,7 +125,6 @@ namespace WebSchoolAppUI.Controllers
                 try
                 {
                     var oldUsuario = await _context.Usuarios.FindAsync(usuario.IdUsuario);
-                    oldUsuario.Personal = usuario.Personal;
                     oldUsuario.NombreUsuario = usuario.NombreUsuario;
                     oldUsuario.Perfil = usuario.Perfil;
                     oldUsuario.Correo = usuario.Correo;

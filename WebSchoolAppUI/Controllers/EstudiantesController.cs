@@ -110,7 +110,7 @@ namespace WebSchoolAppUI.Controllers
         public async Task<IActionResult> Create([Bind("IdEstudiante,Nombre,Apellido,Idsigerd,FechaNacimiento,Sexo,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Estudiante estudiante)
         {
             string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
-            var sigerdval = _context.Estudiantes.Where(x => x.Idsigerd == estudiante.Idsigerd).FirstOrDefault();
+            var sigerdval = _context.Estudiantes.Where(x => x.Idsigerd == estudiante.Idsigerd && x.Estado==1).FirstOrDefault();
             
             if(sigerdval != null)
             {
@@ -133,7 +133,7 @@ namespace WebSchoolAppUI.Controllers
             }
             ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
 
-            return View(estudiante);
+            return RedirectToAction("index");
         }
 
         // GET: Estudiantes/Edit/5

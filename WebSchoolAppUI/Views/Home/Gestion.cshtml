@@ -34,7 +34,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Usuarios - Centros</h5>
                                         <p class="card-text">Gestion de Usuarios Centros</p>
-                                        <a asp-controller="UsuariosCentro" asp-action="index" class="btn btn-primary">Ir</a>
+                                        <a asp-controller="UsuariosCentro"   asp-action="index" class="btn btn-primary">Ir</a>
                                     </div>
                                 </div>
                             }
@@ -45,7 +45,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">Usuarios</h5>
                                         <p class="card-text">Gestion de Usuarios</p>
-                                        <a asp-controller="UsuariosCentro" asp-action="index" class="btn btn-primary">Ir</a>
+                                        <a asp-controller="UsuariosCentro" asp-route-id="@User.Claims.FirstOrDefault(c => c.Type == "CentroId").Value" asp-action="index" class="btn btn-primary">Ir</a>
                                     </div>
                                 </div>
                             }
