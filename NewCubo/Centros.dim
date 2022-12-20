@@ -1,14 +1,14 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="34266422-9831-4840-9d6c-16e139d43d5a" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="531f0310-f1b5-4842-8c3b-83a07ecd95be" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Centros</ID>
   <Name>Centros</Name>
-  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
-  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <CreatedTimestamp>0001-01-01T04:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T04:00:00Z</LastSchemaUpdate>
   <Annotations>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="4" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-3084" scrolltop="-2928" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="9208" y="12150" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="7" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-3084" scrolltop="-2928" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="9208" y="12150" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
@@ -19,7 +19,7 @@
           <layoutmanager>
             <ddsxmlobj />
           </layoutmanager>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Centros" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3000" height="1947" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Centros" left="-890" top="0" logicalid="4" controlid="1" masterid="0" hint1="0" hint2="0" width="3000" height="1947" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000e0000b80b00009b070000" />
             </control>
@@ -29,37 +29,6 @@
               </ddsxmlobj>
             </layoutobject>
             <shape groupshapeid="0" groupnode="0" />
-          </ddscontrol>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Distritos" left="-890" top="4178" logicalid="2" controlid="2" masterid="0" hint1="0" hint2="0" width="3000" height="1947" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
-            <control>
-              <ddsxmlobjectstreaminitwrapper binary="000e0000b80b00009b070000" />
-            </control>
-            <layoutobject>
-              <ddsxmlobj>
-                <property name="LogicalObject" value="dbo_Distritos" vartype="8" />
-              </ddsxmlobj>
-            </layoutobject>
-            <shape groupshapeid="0" groupnode="0" />
-          </ddscontrol>
-          <ddscontrol controlprogid="MSDDS.Polyline" left="120" top="1647" logicalid="3" controlid="3" masterid="0" hint1="0" hint2="0" width="890" height="3031" noresize="0" nomove="0" nodefaultattachpoints="1" autodrag="0" usedefaultiddshape="0" selectable="1" showselectionhandles="0" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
-            <control>
-              <ddsxmlobj>
-                <polyline endtypedst="6" endtypesrc="3" usercolor="15856113" linestyle="0" linerender="1" customendtypedstid="0" customendtypesrcid="0" adornsvisible="1" />
-              </ddsxmlobj>
-            </control>
-            <layoutobject>
-              <ddsxmlobj>
-                <property name="LogicalObject" value="dataSet.Relations[FK_DistritoCentro]" vartype="8" />
-                <property name="Virtual" value="0" vartype="11" />
-                <property name="VisibleAP" value="0" vartype="3" />
-              </ddsxmlobj>
-            </layoutobject>
-            <connector lineroutestyle="MSDDS.Rectilinear" sourceid="2" destid="1" sourceattachpoint="4" destattachpoint="1" segmenteditmode="0" bendpointeditmode="0" bendpointvisibility="0" relatedid="0" virtual="0">
-              <point x="610" y="4178" />
-              <point x="610" y="3063" />
-              <point x="420" y="3063" />
-              <point x="420" y="1947" />
-            </connector>
           </ddscontrol>
         </dds>
       </Value>
@@ -97,80 +66,55 @@
       <Value>100</Value>
     </Annotation>
   </Annotations>
-  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <LastProcessed>0001-01-01T04:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="7e7d8ee9-edac-4ae5-bd86-cc438404e94c">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="e36d74df-9a0b-4caf-a223-4a8ba40463a5">
     <DataSourceViewID>DW Episcopal2</DataSourceViewID>
   </Source>
   <UnknownMember>Visible</UnknownMember>
-  <ErrorConfiguration dwd:design-time-name="b8d98261-3f10-46e3-8c55-d56f57f5f70c">
+  <ErrorConfiguration dwd:design-time-name="3dae2626-d80e-4061-9865-c660d7a08e3e">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="29c03f14-fafc-4e6a-853b-0e23894217d1">
+    <Attribute dwd:design-time-name="d04692d3-c26d-4ded-ac02-63ae42839fbf">
       <ID>Id Centro</ID>
       <Name>Id Centro</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="b3908756-2c0e-412b-a26b-79bb562b5711">
+        <KeyColumn dwd:design-time-name="3df6406e-d5fe-48b7-a1e2-e1d023fe3922">
           <DataType>Integer</DataType>
           <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="37d2bfa9-4f06-4232-987d-657de58cb8c0">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="f1f7150e-179d-46a3-b6c4-df8ed2d31053">
             <TableID>dbo_Centros</TableID>
             <ColumnID>IdCentro</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="75b2ed9c-8676-441c-b36d-048c37563367">
-          <AttributeID>Id Distrito</AttributeID>
-          <Name>Id Distrito</Name>
-        </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="dace923a-0682-4c3f-90fa-83ff6576ce8c">
+        <AttributeRelationship dwd:design-time-name="879eed36-d692-48ea-8816-2b915dc3dbbe">
           <AttributeID>Nombre</AttributeID>
           <Name>Nombre</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="9276d3a9-8ee0-44fa-b880-eebdf0546207">
-          <AttributeID>Codigo</AttributeID>
-          <Name>Codigo</Name>
-        </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="836b4c76-261f-492a-8bc9-1c08aa5b9a63">
-          <AttributeID>Nombre 1</AttributeID>
-          <Name>Nombre Distrito</Name>
+        <AttributeRelationship dwd:design-time-name="81cbf239-71fd-4414-bc1d-a8f394b7d089">
+          <AttributeID>Codigo Centro</AttributeID>
+          <Name>Codigo Centro</Name>
         </AttributeRelationship>
       </AttributeRelationships>
       <OrderBy>Key</OrderBy>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="4c48bc6f-a15f-42d7-9585-824269c03bb6">
-      <ID>Id Distrito</ID>
-      <Name>Id Distrito</Name>
-      <KeyColumns>
-        <KeyColumn dwd:design-time-name="804fc20b-66c2-41b0-a363-1d3b6e62509e">
-          <DataType>Integer</DataType>
-          <NullProcessing>UnknownMember</NullProcessing>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="5bd19fea-172f-4465-ae1b-5748532deaf8">
-            <TableID>dbo_Distritos</TableID>
-            <ColumnID>IdDistrito</ColumnID>
-          </Source>
-        </KeyColumn>
-      </KeyColumns>
-      <OrderBy>Key</OrderBy>
-      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
-      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
-    </Attribute>
-    <Attribute dwd:design-time-name="446fdcc4-2728-4938-bfb2-9201bbb2b8f1">
+    <Attribute dwd:design-time-name="4fa1c361-db7c-4c39-9eea-a01b14c84671">
       <ID>Nombre</ID>
       <Name>Nombre</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="425e84cb-6fcc-487a-8a7d-98b9f9851fd4">
+        <KeyColumn dwd:design-time-name="fd2ba141-3d8c-4c6e-921e-790123fe58c2">
           <DataType>WChar</DataType>
           <DataSize>150</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="3ad4d2f1-312b-40cf-aab2-a3e76a2508d4">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="93f3171e-1136-46b7-9022-2ae00bb90486">
             <TableID>dbo_Centros</TableID>
             <ColumnID>Nombre</ColumnID>
           </Source>
@@ -179,32 +123,15 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="5d6bab1e-9654-48a3-be33-78f703513a8a">
-      <ID>Codigo</ID>
-      <Name>Codigo</Name>
+    <Attribute dwd:design-time-name="f501b3b7-56ed-4048-bb71-e61fc78c18e0">
+      <ID>Codigo Centro</ID>
+      <Name>Codigo Centro</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="707c14e6-b478-41b2-aaaf-1e9fb4125409">
-          <DataType>WChar</DataType>
-          <DataSize>20</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="197dabfe-5c5d-46b0-a674-9ad645f33f01">
-            <TableID>dbo_Distritos</TableID>
-            <ColumnID>Codigo</ColumnID>
-          </Source>
-        </KeyColumn>
-      </KeyColumns>
-      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
-      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
-    </Attribute>
-    <Attribute dwd:design-time-name="278129f4-4bec-4130-a5e9-e65ba282e3b0">
-      <ID>Nombre 1</ID>
-      <Name>Nombre Distrito</Name>
-      <KeyColumns>
-        <KeyColumn dwd:design-time-name="22980d7f-9fef-4335-816e-6ab9c93d23ae">
-          <DataType>WChar</DataType>
-          <DataSize>150</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="9fc686dc-a470-498c-a654-e74b46baca80">
-            <TableID>dbo_Distritos</TableID>
-            <ColumnID>Nombre</ColumnID>
+        <KeyColumn dwd:design-time-name="ea12c279-b2c2-452b-9d25-2814c998b493">
+          <DataType>Integer</DataType>
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="0e26553c-eff9-4aca-9a2d-e5448d9f634a">
+            <TableID>dbo_Centros</TableID>
+            <ColumnID>CodigoCentro</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
