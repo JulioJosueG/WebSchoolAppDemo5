@@ -106,7 +106,7 @@ namespace WebSchoolAppUI.Controllers
         public async Task<IActionResult> Create([Bind("IdCentroEducativo,Nombre,IdTipoCentro,CodigoCentro,IdDistrito")] CentrosEducativo centrosEducativo)
         {
             string distrito = User.Claims.FirstOrDefault(x => x.Type == "DistritoId").Value;
-            var oldCentro = _context.CentrosEducativos.Where(x => x.Nombre == centrosEducativo.Nombre && x.Estado == 1).FirstOrDefault();
+            var oldCentro = _context.CentrosEducativos.Where(x => x.Nombre.Trim() == centrosEducativo.Nombre.Trim() && x.Estado == 1).FirstOrDefault();
             if (oldCentro != null)
             {
                 return BadRequest("Ya existe dicho centro");
@@ -160,7 +160,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-            var oldCentro = _context.CentrosEducativos.Where(x => x.Nombre == centrosEducativo.Nombre && x.Estado ==1 && id != x.IdCentroEducativo).FirstOrDefault();
+            var oldCentro = _context.CentrosEducativos.Where(x => x.Nombre.Trim() == centrosEducativo.Nombre.Trim() && x.Estado ==1 && id != x.IdCentroEducativo).FirstOrDefault();
             if (oldCentro != null)
             {
                 return BadRequest("Ya existe dicho centro");
