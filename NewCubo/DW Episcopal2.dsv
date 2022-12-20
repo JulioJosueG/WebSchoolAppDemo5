@@ -1,4 +1,4 @@
-﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="3d5b6498-9808-4592-8a7d-e92cf6ab0cd4" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<DataSourceView xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="a243d879-7f7c-4d67-a882-af32cecb2611" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>DW Episcopal2</ID>
   <Name>DW Episcopal2</Name>
   <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
@@ -42,58 +42,58 @@
   <DataSourceID>DW Episcopal2</DataSourceID>
   <Schema>
     <xs:schema id="DW_x0020_Episcopal2" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop">
-      <xs:element name="DW_x0020_Episcopal2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="711cc056-0272-4732-8839-b39804310c23">
+      <xs:element name="DW_x0020_Episcopal2" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:design-time-name="1582efb7-3995-4d42-a834-a037fcaae965">
         <xs:complexType>
           <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element name="dbo_FactInscripciones" msprop:design-time-name="992d706d-acac-40ee-8d6a-052d7690f89b" msprop:DbTableName="FactInscripciones" msprop:FriendlyName="FactInscripciones" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_FactInscripciones" msprop:design-time-name="ddcdfc70-c484-4e8d-8b36-4d9ad8a5695e" msprop:DbTableName="FactInscripciones" msprop:FriendlyName="FactInscripciones" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdFactInscritos" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="6161378b-287b-4cf6-baa3-80addab04c10" msprop:DbColumnName="IdFactInscritos" msprop:FriendlyName="IdFactInscritos" type="xs:int" />
-                  <xs:element name="IdEstudiante" msprop:design-time-name="43a7af0f-d614-4e96-b307-bbe5f0da67b0" msprop:DbColumnName="IdEstudiante" msprop:FriendlyName="IdEstudiante" type="xs:int" />
-                  <xs:element name="IdTipoEstudiante" msprop:design-time-name="0f00328f-c7ce-43ae-9a2f-68e412682382" msprop:DbColumnName="IdTipoEstudiante" msprop:FriendlyName="IdTipoEstudiante" type="xs:int" minOccurs="0" />
-                  <xs:element name="IdModalidad" msprop:design-time-name="c328021b-85e6-4f50-873f-2b77980202fb" msprop:DbColumnName="IdModalidad" msprop:FriendlyName="IdModalidad" type="xs:int" minOccurs="0" />
-                  <xs:element name="IdAnioEscolar" msprop:design-time-name="a544f868-cb78-4758-8e70-cf9166f5b4b1" msprop:DbColumnName="IdAnioEscolar" msprop:FriendlyName="IdAnioEscolar" type="xs:int" minOccurs="0" />
-                  <xs:element name="IdCurso" msprop:design-time-name="6f64b8b8-c3d7-4545-9523-c23cee29f83e" msprop:DbColumnName="IdCurso" msprop:FriendlyName="IdCurso" type="xs:int" minOccurs="0" />
-                  <xs:element name="IdProfesor" msprop:design-time-name="a4cdf45c-0a3c-46cc-8471-4ce3b1020bb9" msprop:DbColumnName="IdProfesor" msprop:FriendlyName="IdProfesor" type="xs:int" minOccurs="0" />
-                  <xs:element name="IdEdad" msprop:design-time-name="8000221d-b65f-4e48-aad4-b130ad01fc98" msprop:DbColumnName="IdEdad" msprop:FriendlyName="IdEdad" type="xs:int" minOccurs="0" />
-                  <xs:element name="IdCondicion" msprop:design-time-name="b35d783e-e6b6-4fc9-b89c-64a8b4ee88df" msprop:DbColumnName="IdCondicion" msprop:FriendlyName="IdCondicion" type="xs:int" minOccurs="0" />
-                  <xs:element name="ImporteAnual" msprop:design-time-name="24572fd4-075a-496c-a2db-4e07f3d70fbb" msprop:DbColumnName="ImporteAnual" msprop:FriendlyName="ImporteAnual" type="xs:int" minOccurs="0" />
-                  <xs:element name="IdFecha" msprop:design-time-name="45ff1e7b-b7de-4771-b2da-a40b64e57486" msprop:DbColumnName="IdFecha" msprop:FriendlyName="IdFecha" type="xs:int" minOccurs="0" />
-                  <xs:element name="IdCentro" msprop:design-time-name="4fb56dbd-a1ba-47be-8195-19e5ff80df8f" msprop:DbColumnName="IdCentro" msprop:FriendlyName="IdCentro" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdFactInscritos" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="c6fae63b-b088-43d1-b1c6-ef75b00bf3ca" msprop:DbColumnName="IdFactInscritos" msprop:FriendlyName="IdFactInscritos" type="xs:int" />
+                  <xs:element name="IdEstudiante" msprop:design-time-name="1c8241b0-d5cb-44fa-8839-3bf10ad822ec" msprop:DbColumnName="IdEstudiante" msprop:FriendlyName="IdEstudiante" type="xs:int" />
+                  <xs:element name="IdTipoEstudiante" msprop:design-time-name="1ca9f06b-edd3-49dc-a4cf-000d27265309" msprop:DbColumnName="IdTipoEstudiante" msprop:FriendlyName="IdTipoEstudiante" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdModalidad" msprop:design-time-name="33f29080-0245-48ce-894c-cb2c9c9aeca8" msprop:DbColumnName="IdModalidad" msprop:FriendlyName="IdModalidad" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdAnioEscolar" msprop:design-time-name="93583859-73c5-4d09-891c-5cb4cd8c5a15" msprop:DbColumnName="IdAnioEscolar" msprop:FriendlyName="IdAnioEscolar" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdCurso" msprop:design-time-name="961bb93d-4453-4ecf-a044-dd11609e61d1" msprop:DbColumnName="IdCurso" msprop:FriendlyName="IdCurso" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdProfesor" msprop:design-time-name="56546a5a-4ef9-465a-a647-65fb61f0a87a" msprop:DbColumnName="IdProfesor" msprop:FriendlyName="IdProfesor" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdEdad" msprop:design-time-name="4c90af36-43ee-4812-8d92-d46819b7e75f" msprop:DbColumnName="IdEdad" msprop:FriendlyName="IdEdad" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdCondicion" msprop:design-time-name="02df286f-81ea-4fd8-a08f-4f4f437cf1c5" msprop:DbColumnName="IdCondicion" msprop:FriendlyName="IdCondicion" type="xs:int" minOccurs="0" />
+                  <xs:element name="ImporteAnual" msprop:design-time-name="6091f4bc-4b40-4cda-aa0d-69ae9f437e49" msprop:DbColumnName="ImporteAnual" msprop:FriendlyName="ImporteAnual" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdFecha" msprop:design-time-name="83017546-4662-4eef-b05f-c8a0964ab6bb" msprop:DbColumnName="IdFecha" msprop:FriendlyName="IdFecha" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdCentro" msprop:design-time-name="68c1cda2-6f5b-4772-b972-b766ee4146d0" msprop:DbColumnName="IdCentro" msprop:FriendlyName="IdCentro" type="xs:int" minOccurs="0" />
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_Profesores" msprop:design-time-name="b8cd8a25-0b6f-4992-8109-f57c9d0dac57" msprop:DbTableName="Profesores" msprop:FriendlyName="Profesores" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_Profesores" msprop:design-time-name="1e63f472-7ece-4a75-a3fe-21f86a4cab67" msprop:DbTableName="Profesores" msprop:FriendlyName="Profesores" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdProfesor" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="45d560f8-73ff-4760-8b07-777b41187445" msprop:DbColumnName="IdProfesor" msprop:FriendlyName="IdProfesor" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="9b978a27-500b-45da-853c-68a5cfb5d3ec" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
+                  <xs:element name="IdProfesor" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="2e791067-2425-4e8f-acb9-77aab0244ba5" msprop:DbColumnName="IdProfesor" msprop:FriendlyName="IdProfesor" type="xs:int" />
+                  <xs:element name="Nombre" msprop:design-time-name="755010cb-aaf1-4712-84d1-5417e79500b1" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="255" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
-                  <xs:element name="Centro" msprop:design-time-name="206fa4a2-0866-416e-92fd-1131d0a15e8d" msprop:DbColumnName="Centro" msprop:FriendlyName="Centro" type="xs:int" minOccurs="0" />
+                  <xs:element name="Centro" msprop:design-time-name="be6ea161-8282-412d-999e-f50ba2d4914c" msprop:DbColumnName="Centro" msprop:FriendlyName="Centro" type="xs:int" minOccurs="0" />
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_Tiempo" msprop:design-time-name="5511c5e5-2e1d-4135-b002-50286e771fcb" msprop:DbTableName="Tiempo" msprop:FriendlyName="Tiempo" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_Tiempo" msprop:design-time-name="6b7551a4-4295-4c6f-ad53-7fb537c1d5fe" msprop:DbTableName="Tiempo" msprop:FriendlyName="Tiempo" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="Fecha" msprop:design-time-name="5b67a984-c20c-43bb-a45c-10bc5830c3c3" msprop:DbColumnName="Fecha" msprop:FriendlyName="Fecha" type="xs:dateTime" />
-                  <xs:element name="IdFecha" msprop:design-time-name="2d663b39-51b6-42f4-93fa-ec5b6990b17e" msprop:DbColumnName="IdFecha" msprop:FriendlyName="IdFecha" type="xs:int" />
-                  <xs:element name="Dia" msprop:design-time-name="956d1b59-9ef9-4c38-8326-802b90ee2e94" msprop:DbColumnName="Dia" msprop:FriendlyName="Dia" type="xs:int" minOccurs="0" />
-                  <xs:element name="Mes" msprop:design-time-name="c82ceddc-ddea-421f-bb19-7fa49d83ff0b" msprop:DbColumnName="Mes" msprop:FriendlyName="Mes" type="xs:int" minOccurs="0" />
-                  <xs:element name="Anio" msprop:design-time-name="4e8279a7-ba89-4f6c-a27a-993a2e15ea66" msprop:DbColumnName="Anio" msprop:FriendlyName="Anio" type="xs:int" minOccurs="0" />
-                  <xs:element name="NombreDia" msprop:design-time-name="ebe0c6d7-47e5-41b1-bf8f-e24b967cae76" msprop:DbColumnName="NombreDia" msprop:FriendlyName="NombreDia" minOccurs="0">
+                  <xs:element name="Fecha" msprop:design-time-name="3f20928b-652a-4304-81a5-cd8478d4e2ce" msprop:DbColumnName="Fecha" msprop:FriendlyName="Fecha" type="xs:dateTime" />
+                  <xs:element name="IdFecha" msprop:design-time-name="bac5a23b-aad2-41fb-a895-ee7f77ea5b05" msprop:DbColumnName="IdFecha" msprop:FriendlyName="IdFecha" type="xs:int" />
+                  <xs:element name="Dia" msprop:design-time-name="3300bfbd-591f-4588-9a1d-0e5d26604b26" msprop:DbColumnName="Dia" msprop:FriendlyName="Dia" type="xs:int" minOccurs="0" />
+                  <xs:element name="Mes" msprop:design-time-name="a61a6dea-61b8-4016-af6a-a96a656cc897" msprop:DbColumnName="Mes" msprop:FriendlyName="Mes" type="xs:int" minOccurs="0" />
+                  <xs:element name="Anio" msprop:design-time-name="d18e2892-48ee-4e58-a7fd-1254ab659974" msprop:DbColumnName="Anio" msprop:FriendlyName="Anio" type="xs:int" minOccurs="0" />
+                  <xs:element name="NombreDia" msprop:design-time-name="ede24d9d-14ce-4928-918e-32b4dceacabd" msprop:DbColumnName="NombreDia" msprop:FriendlyName="NombreDia" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="50" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
-                  <xs:element name="NombreMes" msprop:design-time-name="1491add0-46b1-4e9c-86d3-602c6108a79e" msprop:DbColumnName="NombreMes" msprop:FriendlyName="NombreMes" minOccurs="0">
+                  <xs:element name="NombreMes" msprop:design-time-name="6c3a857f-66e4-4a10-bd48-9a21e0d90e0c" msprop:DbColumnName="NombreMes" msprop:FriendlyName="NombreMes" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="50" />
@@ -103,41 +103,27 @@
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_Centros" msprop:design-time-name="47da3534-66f3-464b-92db-acf732d78bce" msprop:DbTableName="Centros" msprop:FriendlyName="Centros" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_Centros" msprop:design-time-name="c04337fa-41a0-4021-8368-0533c24d4570" msprop:DbTableName="Centros" msprop:FriendlyName="Centros" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdCentro" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="51ea251a-d14c-4649-868b-d865ce47a807" msprop:DbColumnName="IdCentro" msprop:FriendlyName="IdCentro" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="8ed88578-0ad7-45c4-af0d-1daca21c75c5" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
+                  <xs:element name="IdCentro" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="a9a3e1fa-7766-458f-b107-e7341b59e0a6" msprop:DbColumnName="IdCentro" msprop:FriendlyName="IdCentro" type="xs:int" />
+                  <xs:element name="Nombre" msprop:design-time-name="8bd9b1c2-0135-4d67-9ac2-10d5ee2a2bd4" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="150" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
-                  <xs:element name="IdDistrito" msprop:design-time-name="ed7ebffc-6d24-4bc6-835f-c18b00168a7d" msprop:DbColumnName="IdDistrito" msprop:FriendlyName="IdDistrito" type="xs:int" minOccurs="0" />
-                  <xs:element name="CodigoCentro" msprop:design-time-name="c3ab18ca-ce6e-412f-8499-e682eef4f39a" msprop:DbColumnName="CodigoCentro" msprop:FriendlyName="CodigoCentro" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdDistrito" msprop:design-time-name="43958a20-de4d-43d1-b9b0-ec80da9db20c" msprop:DbColumnName="IdDistrito" msprop:FriendlyName="IdDistrito" type="xs:int" minOccurs="0" />
+                  <xs:element name="CodigoCentro" msprop:design-time-name="15c52a84-670f-496e-b0c6-9ca04b13925f" msprop:DbColumnName="CodigoCentro" msprop:FriendlyName="CodigoCentro" type="xs:int" minOccurs="0" />
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_TipoModalidades" msprop:design-time-name="a89da39e-11d1-48c1-8b0b-e2ba26d8e9b2" msprop:DbTableName="TipoModalidades" msprop:FriendlyName="TipoModalidades" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_TipoModalidades" msprop:design-time-name="dc81dac3-4a0d-42ed-8e85-23c3a549c648" msprop:DbTableName="TipoModalidades" msprop:FriendlyName="TipoModalidades" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdTipoModalidad" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="f65f13c6-df98-4104-9ccd-956be8e62b73" msprop:DbColumnName="IdTipoModalidad" msprop:FriendlyName="IdTipoModalidad" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="4a06e60f-ca86-41ad-8c56-b01e201c042b" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
-                    <xs:simpleType>
-                      <xs:restriction base="xs:string">
-                        <xs:maxLength value="150" />
-                      </xs:restriction>
-                    </xs:simpleType>
-                  </xs:element>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="dbo_Condiciones" msprop:design-time-name="1bc50314-10d8-4b6e-b5b8-f20fbf3228a1" msprop:DbTableName="Condiciones" msprop:FriendlyName="Condiciones" msprop:DbSchemaName="dbo" msprop:TableType="Table">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="IdCondicion" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="a9575d09-ea11-4373-823e-5be8a1d0d729" msprop:DbColumnName="IdCondicion" msprop:FriendlyName="IdCondicion" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="9029ed71-2b0c-459c-a230-106d5aa1cf4d" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
+                  <xs:element name="IdTipoModalidad" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="a9a3accf-cc31-4329-ab3b-9deeb5bafee2" msprop:DbColumnName="IdTipoModalidad" msprop:FriendlyName="IdTipoModalidad" type="xs:int" />
+                  <xs:element name="Nombre" msprop:design-time-name="464c6850-70fa-4658-a3da-9b7075819042" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="150" />
@@ -147,25 +133,39 @@
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_Cursos" msprop:design-time-name="d6e53d50-5665-48a3-bc7a-814dcb203952" msprop:DbTableName="Cursos" msprop:FriendlyName="Cursos" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_Condiciones" msprop:design-time-name="d1df1025-761e-4a62-9008-0cb763064d46" msprop:DbTableName="Condiciones" msprop:FriendlyName="Condiciones" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdCurso" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="9aa86add-7028-4189-a23e-1770bcca383c" msprop:DbColumnName="IdCurso" msprop:FriendlyName="IdCurso" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="2adfd2dc-de4a-48ba-939b-46ebf2e14e38" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
+                  <xs:element name="IdCondicion" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="cd3f3acd-2c33-4a80-a4de-54a5116d449e" msprop:DbColumnName="IdCondicion" msprop:FriendlyName="IdCondicion" type="xs:int" />
+                  <xs:element name="Nombre" msprop:design-time-name="4d117098-c990-472a-8898-282e3bae5b42" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:maxLength value="150" />
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:element>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="dbo_Cursos" msprop:design-time-name="24c3d3fb-c50b-4617-9230-aba7d1e1177c" msprop:DbTableName="Cursos" msprop:FriendlyName="Cursos" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:element name="IdCurso" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="ee31971f-96ef-4195-bdb8-b49b7f668e23" msprop:DbColumnName="IdCurso" msprop:FriendlyName="IdCurso" type="xs:int" />
+                  <xs:element name="Nombre" msprop:design-time-name="0750e727-fec0-498f-8fe5-f6879ae1ad0b" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="255" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
-                  <xs:element name="Seccion" msprop:design-time-name="fd36a402-fc3e-4eac-9f43-e78b016152d1" msprop:DbColumnName="Seccion" msprop:FriendlyName="Seccion" minOccurs="0">
+                  <xs:element name="Seccion" msprop:design-time-name="c562d38a-5b8e-4d71-ae58-dbd649bcf603" msprop:DbColumnName="Seccion" msprop:FriendlyName="Seccion" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="255" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
-                  <xs:element name="Nivel" msprop:design-time-name="c593611a-5fb9-4065-920d-f8f81992298a" msprop:DbColumnName="Nivel" msprop:FriendlyName="Nivel" minOccurs="0">
+                  <xs:element name="Nivel" msprop:design-time-name="75c5014d-6f2d-4881-9a6f-42f22fa8129c" msprop:DbColumnName="Nivel" msprop:FriendlyName="Nivel" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="150" />
@@ -175,12 +175,12 @@
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_Edades" msprop:design-time-name="be983d59-9260-4a03-a287-64fdb48e7fe1" msprop:DbTableName="Edades" msprop:FriendlyName="Edades" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_Edades" msprop:design-time-name="f14162f0-3e3a-4bd3-a1e5-4440e95f7bab" msprop:DbTableName="Edades" msprop:FriendlyName="Edades" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdEdad" msprop:design-time-name="4d847788-7a6b-4ada-949f-42fd56de6a1a" msprop:DbColumnName="IdEdad" msprop:FriendlyName="IdEdad" type="xs:int" />
-                  <xs:element name="Edad" msprop:design-time-name="553e7b59-afe9-46b1-9224-d8d8563a6089" msprop:DbColumnName="Edad" msprop:FriendlyName="Edad" type="xs:int" minOccurs="0" />
-                  <xs:element name="Rango" msprop:design-time-name="1eb66657-0f3f-4006-a9db-3d2dc3391e23" msprop:DbColumnName="Rango" msprop:FriendlyName="Rango" minOccurs="0">
+                  <xs:element name="IdEdad" msprop:design-time-name="a1cca77d-efe7-4376-93fd-23cb723b5cce" msprop:DbColumnName="IdEdad" msprop:FriendlyName="IdEdad" type="xs:int" />
+                  <xs:element name="Edad" msprop:design-time-name="08b978ce-e608-4fb8-b49c-a476f543fee6" msprop:DbColumnName="Edad" msprop:FriendlyName="Edad" type="xs:int" minOccurs="0" />
+                  <xs:element name="Rango" msprop:design-time-name="5869e540-2fba-4c35-8c3c-432ff899b117" msprop:DbColumnName="Rango" msprop:FriendlyName="Rango" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="5" />
@@ -190,11 +190,11 @@
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_TipoEstudiante" msprop:design-time-name="e97b1969-6d7f-4b25-8b9c-dca80f4b813f" msprop:DbTableName="TipoEstudiante" msprop:FriendlyName="TipoEstudiante" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_TipoEstudiante" msprop:design-time-name="dcfcd4c2-ec28-4544-94cc-e651ef91344c" msprop:DbTableName="TipoEstudiante" msprop:FriendlyName="TipoEstudiante" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdTipoEstudiante" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="6a32339a-47a6-4128-b7b1-1696db2075bd" msprop:DbColumnName="IdTipoEstudiante" msprop:FriendlyName="IdTipoEstudiante" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="0b0ba658-5e67-4f11-8d96-6b0651adc898" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
+                  <xs:element name="IdTipoEstudiante" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="c6f7b6c8-c6c9-47f5-b95c-40c4c95ffb49" msprop:DbColumnName="IdTipoEstudiante" msprop:FriendlyName="IdTipoEstudiante" type="xs:int" />
+                  <xs:element name="Nombre" msprop:design-time-name="96647de5-5c08-4120-a112-508a616db760" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="150" />
@@ -204,11 +204,11 @@
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_AnioEscolar" msprop:design-time-name="c466601e-617d-4cfd-b0ae-9a4cafd6a90e" msprop:DbTableName="AnioEscolar" msprop:FriendlyName="AnioEscolar" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_AnioEscolar" msprop:design-time-name="311350cd-74ef-46f5-9f83-540f875f6c92" msprop:DbTableName="AnioEscolar" msprop:FriendlyName="AnioEscolar" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdAnioEscolar" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="9da04d6e-bba3-4a14-a296-3561183f2f0d" msprop:DbColumnName="IdAnioEscolar" msprop:FriendlyName="IdAnioEscolar" type="xs:int" />
-                  <xs:element name="Anio" msprop:design-time-name="40bc2e07-9a6a-4a82-a89e-e147ee2335d8" msprop:DbColumnName="Anio" msprop:FriendlyName="Anio" minOccurs="0">
+                  <xs:element name="IdAnioEscolar" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="f8f1b59b-c234-4140-8e2e-b63d3b918e5e" msprop:DbColumnName="IdAnioEscolar" msprop:FriendlyName="IdAnioEscolar" type="xs:int" />
+                  <xs:element name="Anio" msprop:design-time-name="82a25a2f-8f55-4a0d-b7f7-77d0309a3437" msprop:DbColumnName="Anio" msprop:FriendlyName="Anio" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="20" />
@@ -218,63 +218,42 @@
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_Estudiantes" msprop:design-time-name="f5eb958a-aaa9-4f02-9f0e-14fcd6f0102e" msprop:DbTableName="Estudiantes" msprop:FriendlyName="Estudiantes" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_Estudiantes" msprop:design-time-name="4cd06e3c-ea9a-43dd-9b1b-378bc7d2b44d" msprop:DbTableName="Estudiantes" msprop:FriendlyName="Estudiantes" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdEstudiante" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="d26cb8be-7ebf-45e7-9846-9553a9b9e7f6" msprop:DbColumnName="IdEstudiante" msprop:FriendlyName="IdEstudiante" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="6531fe46-078e-48e7-974e-adb255f4c098" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
+                  <xs:element name="IdEstudiante" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="8da43742-107b-462e-b289-eafb8dece4bc" msprop:DbColumnName="IdEstudiante" msprop:FriendlyName="IdEstudiante" type="xs:int" />
+                  <xs:element name="Nombre" msprop:design-time-name="cc61dd96-5cf5-429d-918a-380aa27a245e" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="255" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
-                  <xs:element name="Apellido" msprop:design-time-name="adb3b26d-8ca5-4ce1-99cf-acf7c68d8654" msprop:DbColumnName="Apellido" msprop:FriendlyName="Apellido" minOccurs="0">
+                  <xs:element name="Apellido" msprop:design-time-name="b9db61a4-3dab-4ee9-beed-609611a972bc" msprop:DbColumnName="Apellido" msprop:FriendlyName="Apellido" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="255" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
-                  <xs:element name="FechaNacimiento" msprop:design-time-name="732edbe1-700d-43a7-be8b-e8a9088baca2" msprop:DbColumnName="FechaNacimiento" msprop:FriendlyName="FechaNacimiento" type="xs:dateTime" minOccurs="0" />
-                  <xs:element name="Sexo" msprop:design-time-name="26e329ed-4a84-47a5-9adc-255a38f317e8" msprop:DbColumnName="Sexo" msprop:FriendlyName="Sexo" minOccurs="0">
+                  <xs:element name="FechaNacimiento" msprop:design-time-name="c1099b13-12b9-489f-9328-67118d691c0a" msprop:DbColumnName="FechaNacimiento" msprop:FriendlyName="FechaNacimiento" type="xs:dateTime" minOccurs="0" />
+                  <xs:element name="Sexo" msprop:design-time-name="4c8efcb5-44ec-4125-a1d3-6bb91c9fdd64" msprop:DbColumnName="Sexo" msprop:FriendlyName="Sexo" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="20" />
                       </xs:restriction>
                     </xs:simpleType>
                   </xs:element>
-                  <xs:element name="IdSigerd" msprop:design-time-name="0cf22629-0fb4-42c7-a6b2-43f3190d7b26" msprop:DbColumnName="IdSigerd" msprop:FriendlyName="IdSigerd" type="xs:int" />
-                  <xs:element name="IdCentro" msprop:design-time-name="a962f941-482a-41e9-81f8-5b4e47765ed6" msprop:DbColumnName="IdCentro" msprop:FriendlyName="IdCentro" type="xs:int" minOccurs="0" />
+                  <xs:element name="IdSigerd" msprop:design-time-name="2e641ccd-ce50-4438-b08b-0d4c183d892d" msprop:DbColumnName="IdSigerd" msprop:FriendlyName="IdSigerd" type="xs:long" />
+                  <xs:element name="IdCentro" msprop:design-time-name="39d1142e-4a75-4bee-a7a4-c217a4293dd8" msprop:DbColumnName="IdCentro" msprop:FriendlyName="IdCentro" type="xs:int" minOccurs="0" />
                 </xs:sequence>
               </xs:complexType>
             </xs:element>
-            <xs:element name="dbo_Distritos" msprop:design-time-name="53bec027-e1c9-4825-928e-d97102b7bed5" msprop:DbTableName="Distritos" msprop:FriendlyName="Distritos" msprop:DbSchemaName="dbo" msprop:TableType="Table">
+            <xs:element name="dbo_Estados" msprop:design-time-name="9581b02e-da1b-45a5-89a1-7218e6acaa81" msprop:DbTableName="Estados" msprop:FriendlyName="Estados" msprop:DbSchemaName="dbo" msprop:TableType="Table">
               <xs:complexType>
                 <xs:sequence>
-                  <xs:element name="IdDistrito" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="2b58103e-a38e-4ad9-bd17-037579f99e36" msprop:DbColumnName="IdDistrito" msprop:FriendlyName="IdDistrito" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="d09a9d5a-effd-47c1-80ac-483a326827be" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
-                    <xs:simpleType>
-                      <xs:restriction base="xs:string">
-                        <xs:maxLength value="150" />
-                      </xs:restriction>
-                    </xs:simpleType>
-                  </xs:element>
-                  <xs:element name="Codigo" msprop:design-time-name="911e57b3-1023-4762-a3a4-f38ffaae6156" msprop:DbColumnName="Codigo" msprop:FriendlyName="Codigo" minOccurs="0">
-                    <xs:simpleType>
-                      <xs:restriction base="xs:string">
-                        <xs:maxLength value="20" />
-                      </xs:restriction>
-                    </xs:simpleType>
-                  </xs:element>
-                </xs:sequence>
-              </xs:complexType>
-            </xs:element>
-            <xs:element name="dbo_Estados" msprop:design-time-name="464b0710-3830-4914-a19b-7aa79f2700b2" msprop:DbTableName="Estados" msprop:FriendlyName="Estados" msprop:DbSchemaName="dbo" msprop:TableType="Table">
-              <xs:complexType>
-                <xs:sequence>
-                  <xs:element name="IdEstado" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="09418176-cdd3-416b-aeee-9298c0d96462" msprop:DbColumnName="IdEstado" msprop:FriendlyName="IdEstado" type="xs:int" />
-                  <xs:element name="Nombre" msprop:design-time-name="19a99353-6fb5-460e-8923-0aac772e2199" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
+                  <xs:element name="IdEstado" msdata:ReadOnly="true" msdata:AutoIncrement="true" msprop:design-time-name="4a0ad797-8c12-4919-b502-cdad456566d3" msprop:DbColumnName="IdEstado" msprop:FriendlyName="IdEstado" type="xs:int" />
+                  <xs:element name="Nombre" msprop:design-time-name="b31b534b-03f1-4937-8087-739e15e72f5c" msprop:DbColumnName="Nombre" msprop:FriendlyName="Nombre" minOccurs="0">
                     <xs:simpleType>
                       <xs:restriction base="xs:string">
                         <xs:maxLength value="150" />
@@ -330,10 +309,6 @@
           <xs:selector xpath=".//dbo_Estudiantes" />
           <xs:field xpath="IdEstudiante" />
         </xs:unique>
-        <xs:unique name="dbo_Distritos_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
-          <xs:selector xpath=".//dbo_Distritos" />
-          <xs:field xpath="IdDistrito" />
-        </xs:unique>
         <xs:unique name="dbo_Estados_Constraint1" msdata:ConstraintName="Constraint1" msdata:PrimaryKey="true">
           <xs:selector xpath=".//dbo_Estados" />
           <xs:field xpath="IdEstado" />
@@ -341,10 +316,6 @@
         <xs:keyref name="FK_TipoEstudiante" refer="dbo_Centros_Constraint1">
           <xs:selector xpath=".//dbo_Estudiantes" />
           <xs:field xpath="IdCentro" />
-        </xs:keyref>
-        <xs:keyref name="FK_DistritoCentro" refer="dbo_Distritos_Constraint1">
-          <xs:selector xpath=".//dbo_Centros" />
-          <xs:field xpath="IdDistrito" />
         </xs:keyref>
         <xs:keyref name="FK_CentroProfesor" refer="dbo_Centros_Constraint1">
           <xs:selector xpath=".//dbo_Profesores" />

@@ -1,14 +1,14 @@
-﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="05b84116-3fef-4186-ba93-5c2a087cb38e" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
+﻿<Dimension xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0" dwd:design-time-name="3dc1178e-b504-4df2-804e-1773a49ef857" xmlns="http://schemas.microsoft.com/analysisservices/2003/engine">
   <ID>Estudiantes</ID>
   <Name>Estudiantes</Name>
-  <CreatedTimestamp>0001-01-01T00:00:00Z</CreatedTimestamp>
-  <LastSchemaUpdate>0001-01-01T00:00:00Z</LastSchemaUpdate>
+  <CreatedTimestamp>0001-01-01T04:00:00Z</CreatedTimestamp>
+  <LastSchemaUpdate>0001-01-01T04:00:00Z</LastSchemaUpdate>
   <Annotations>
     <Annotation>
       <Name>http://schemas.microsoft.com/DataWarehouse/Designer/1.0:DiagramLayout</Name>
       <Value>
         <dds xmlns="">
-          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="2" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2891" scrolltop="-4382" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="9208" y="12150" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
+          <diagram fontclsid="{0BE35203-8F91-11CE-9DE3-00AA004BB851}" mouseiconclsid="{0BE35204-8F91-11CE-9DE3-00AA004BB851}" defaultlayout="MSDDS.Rectilinear" defaultlineroute="MSDDS.Rectilinear" version="7" nextobject="3" scale="100" pagebreakanchorx="0" pagebreakanchory="0" pagebreaksizex="0" pagebreaksizey="0" scrollleft="-2891" scrolltop="-4382" gridx="150" gridy="150" marginx="5000" marginy="5000" zoom="100" x="9208" y="12150" backcolor="2434342" defaultpersistence="2" PrintPageNumbersMode="3" PrintMarginTop="0" PrintMarginBottom="635" PrintMarginLeft="0" PrintMarginRight="0" marqueeselectionmode="0" mousepointer="0" snaptogrid="0" autotypeannotation="1" showscrollbars="0" viewpagebreaks="0" donotforceconnectorsbehindshapes="1" backpictureclsid="{00000000-0000-0000-0000-000000000000}">
             <font>
               <ddsxmlobjectstreamwrapper binary="010000009001b0300100065461686f6d61" />
             </font>
@@ -19,7 +19,7 @@
           <layoutmanager>
             <ddsxmlobj />
           </layoutmanager>
-          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Estudiantes" left="20" top="0" logicalid="1" controlid="1" masterid="0" hint1="0" hint2="0" width="3387" height="3387" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
+          <ddscontrol controlprogid="DdsShapes.DdsObjectManagedBridge" tooltip="Estudiantes" left="20" top="0" logicalid="2" controlid="1" masterid="0" hint1="0" hint2="0" width="3387" height="3387" noresize="0" nomove="0" nodefaultattachpoints="0" autodrag="1" usedefaultiddshape="1" selectable="1" showselectionhandles="1" allownudging="1" isannotation="0" dontautolayout="0" groupcollapsed="0" tabstop="1" visible="1" snaptogrid="0">
             <control>
               <ddsxmlobjectstreaminitwrapper binary="000e00003b0d00003b0d0000" />
             </control>
@@ -66,65 +66,61 @@
       <Value>100</Value>
     </Annotation>
   </Annotations>
-  <LastProcessed>0001-01-01T00:00:00Z</LastProcessed>
+  <LastProcessed>0001-01-01T04:00:00Z</LastProcessed>
   <State>Unprocessed</State>
-  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="49d97321-90f0-47f8-b24e-416053bd38e2">
+  <Source xsi:type="DataSourceViewBinding" dwd:design-time-name="3de56876-ec4d-4f70-bcc2-51ee36b1db9a">
     <DataSourceViewID>DW Episcopal2</DataSourceViewID>
   </Source>
-  <ErrorConfiguration dwd:design-time-name="25134582-197c-4225-87e3-fa33c067bb36">
+  <ErrorConfiguration dwd:design-time-name="cdfdd15a-a0b8-4306-b1bd-874c95f8e701">
     <KeyNotFound>ReportAndStop</KeyNotFound>
     <KeyDuplicate>ReportAndStop</KeyDuplicate>
     <NullKeyNotAllowed>ReportAndStop</NullKeyNotAllowed>
   </ErrorConfiguration>
   <CurrentStorageMode>Molap</CurrentStorageMode>
   <Attributes>
-    <Attribute dwd:design-time-name="1709e7a2-f12c-4ff4-b5b0-1fdf3ebffa4f">
+    <Attribute dwd:design-time-name="ac38dfe8-68a0-4a08-b053-3286d2f0df1b">
       <ID>Id Estudiante</ID>
       <Name>Id Estudiante</Name>
       <Usage>Key</Usage>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="cdda8642-a8ad-43ed-a234-bcec83a8f235">
+        <KeyColumn dwd:design-time-name="9435c525-60e6-45ab-9822-607f214f23b3">
           <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="3a2c4562-9792-42a8-88cc-51b005131ab6">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="7294c9ef-6516-4c0a-ab62-aab34b332b89">
             <TableID>dbo_Estudiantes</TableID>
             <ColumnID>IdEstudiante</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
       <AttributeRelationships>
-        <AttributeRelationship dwd:design-time-name="9769110e-27a0-41db-838f-d72294603d64">
+        <AttributeRelationship dwd:design-time-name="1d444957-6e3b-46e4-9f0d-c3ae9a895548">
           <AttributeID>Nombre</AttributeID>
           <Name>Nombre</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="92946e00-1a9c-49bc-bad7-308524efdd0d">
+        <AttributeRelationship dwd:design-time-name="4de4192d-a099-45d8-9fd7-c38413766f6d">
           <AttributeID>Apellido</AttributeID>
           <Name>Apellido</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="cd7ca0d8-b196-4311-b063-93017395dcd1">
+        <AttributeRelationship dwd:design-time-name="b9286f54-89f7-46ad-8edd-dbf3f92220cf">
           <AttributeID>Fecha Nacimiento</AttributeID>
           <Name>Fecha Nacimiento</Name>
         </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="02998312-e4c7-4a5d-82b2-74ef7d8201d0">
+        <AttributeRelationship dwd:design-time-name="7eeb5cbe-c785-4454-98d4-e08531879686">
           <AttributeID>Sexo</AttributeID>
           <Name>Sexo</Name>
-        </AttributeRelationship>
-        <AttributeRelationship dwd:design-time-name="5fb7ada1-0089-429c-8e90-103b46f4e157">
-          <AttributeID>Id Sigerd</AttributeID>
-          <Name>Id Sigerd</Name>
         </AttributeRelationship>
       </AttributeRelationships>
       <OrderBy>Key</OrderBy>
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="3ec2665e-11f7-4cfc-b19e-2b37df357f0a">
+    <Attribute dwd:design-time-name="cd334252-e269-4e0a-a9f3-38f91d803504">
       <ID>Nombre</ID>
       <Name>Nombre</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="53f51a3d-5899-41fc-b89d-19263695a4aa">
+        <KeyColumn dwd:design-time-name="f652d244-d80a-465e-9029-c01ff27258b6">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="3c6b3fc4-a4ec-4c83-907f-5f41d95b46ac">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="853d8fd5-9ef8-4072-9eb2-109c075ce686">
             <TableID>dbo_Estudiantes</TableID>
             <ColumnID>Nombre</ColumnID>
           </Source>
@@ -133,14 +129,14 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="d91dab6c-72ba-40bb-9ed2-1fa0d1e51437">
+    <Attribute dwd:design-time-name="895da23e-8182-484a-8f1b-960ec69c55a4">
       <ID>Apellido</ID>
       <Name>Apellido</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="a0a71e4d-13ab-4fd1-bcfb-08d39100c501">
+        <KeyColumn dwd:design-time-name="750aa171-fa28-4d07-9a1b-37b9ce72a7d0">
           <DataType>WChar</DataType>
           <DataSize>255</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="88cf5ed6-c553-4ba7-bba9-d2555c496a39">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="c106243c-d9d9-49e2-b85f-051b886a00dd">
             <TableID>dbo_Estudiantes</TableID>
             <ColumnID>Apellido</ColumnID>
           </Source>
@@ -149,13 +145,13 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="ad6ea664-1a9c-497a-a5bf-c7cc609c1d22">
+    <Attribute dwd:design-time-name="628dff04-73f8-4e13-9542-526ae184bc2e">
       <ID>Fecha Nacimiento</ID>
       <Name>Fecha Nacimiento</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="3f5c1b43-ac0c-45e0-ab78-b59e5e51e30b">
+        <KeyColumn dwd:design-time-name="f5e62cb0-1887-427c-9336-156c757fba03">
           <DataType>Date</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="9f926452-f017-439d-bd12-995d259326e9">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="4d997366-2c1b-4c4e-a6d5-ee95e3739ce3">
             <TableID>dbo_Estudiantes</TableID>
             <ColumnID>FechaNacimiento</ColumnID>
           </Source>
@@ -164,31 +160,16 @@
       <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
       <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
     </Attribute>
-    <Attribute dwd:design-time-name="b4ec236e-01c8-4bc6-8fb9-216ec03e4e0e">
+    <Attribute dwd:design-time-name="7fca5304-ae98-469b-9159-1a888ea93212">
       <ID>Sexo</ID>
       <Name>Sexo</Name>
       <KeyColumns>
-        <KeyColumn dwd:design-time-name="efd30044-e2cf-4008-9537-bdab44115a2a">
+        <KeyColumn dwd:design-time-name="f9c291bb-ec5d-49e3-b83b-093108c8a05a">
           <DataType>WChar</DataType>
           <DataSize>20</DataSize>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="ae22bb6f-f55e-42bc-af9f-a0f11ea040bb">
+          <Source xsi:type="ColumnBinding" dwd:design-time-name="75dfe11d-07de-408c-929e-4fe64beaab8a">
             <TableID>dbo_Estudiantes</TableID>
             <ColumnID>Sexo</ColumnID>
-          </Source>
-        </KeyColumn>
-      </KeyColumns>
-      <ddl200:ProcessingState>Unprocessed</ddl200:ProcessingState>
-      <ddl300:AttributeHierarchyProcessingState>Unprocessed</ddl300:AttributeHierarchyProcessingState>
-    </Attribute>
-    <Attribute dwd:design-time-name="0f266789-98f4-4fd5-8ec8-af2fb77be832">
-      <ID>Id Sigerd</ID>
-      <Name>Id Sigerd</Name>
-      <KeyColumns>
-        <KeyColumn dwd:design-time-name="658f89bc-bb65-4bc8-ab4f-d41c35cc0f42">
-          <DataType>Integer</DataType>
-          <Source xsi:type="ColumnBinding" dwd:design-time-name="0309a992-bf43-4736-891d-b9311afd4e98">
-            <TableID>dbo_Estudiantes</TableID>
-            <ColumnID>IdSigerd</ColumnID>
           </Source>
         </KeyColumn>
       </KeyColumns>
