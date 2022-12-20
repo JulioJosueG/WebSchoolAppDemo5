@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -14,12 +15,19 @@ namespace WebSchoolAppUI.Models
         }
 
         public int IdArchivo { get; set; }
+        [Required]
         public string NombreArchivo { get; set; }
+        [Required]
         public DateTime? Fecha { get; set; }
+        [Required]
         public string Ruta { get; set; }
+        [Required]
         public int? IdEstado { get; set; }
+        [Required]
         public int? IdAnioEscolar { get; set; }
+        [Required]
         public int? IdDistrito { get; set; }
+        [Required]
         public int? IdCentro { get; set; }
 
         public virtual AnioEscolar IdAnioEscolarNavigation { get; set; }

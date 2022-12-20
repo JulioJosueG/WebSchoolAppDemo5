@@ -12,12 +12,10 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="IdUsuario" />
-          
-         
+
             <div class="form-group">
-                <label asp-for="Perfil" class="control-label"></label>
-                <select asp-for="Perfil" class="form-control" asp-items="ViewBag.Perfil"></select>
-                <span asp-validation-for="Perfil" class="text-danger"></span>
+                <label asp-for="Personal" class="control-label"></label>
+                <select asp-for="Personal" class="form-control" asp-items="ViewBag.Personal"></select>
             </div>
             <div class="form-group">
                 <label asp-for="NombreUsuario" class="control-label">Nombre de Usuario</label>
@@ -29,13 +27,12 @@
                 <input asp-for="Correo" class="form-control" />
                 <span asp-validation-for="Correo" class="text-danger"></span>
             </div>
-           
+
             <div class="form-group">
-                <label asp-for="Personal" class="control-label"></label>
-                <input asp-for="Personal" class="form-control" />
-                <span asp-validation-for="Personal" class="text-danger"></span>
+                <label asp-for="Perfil" class="control-label"></label>
+                <select asp-for="Perfil" class="form-control" asp-items="ViewBag.Perfil"></select>
             </div>
-          
+
             <div class="form-group">
                 <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>

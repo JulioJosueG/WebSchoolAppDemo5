@@ -35,7 +35,7 @@
 <h1>Inscripciones</h1>
 
 <p>
-    <a asp-action="Create">Crear nueva Inscripcion</a>
+    <a asp-action="Create" asp-route-id="@User.Claims.FirstOrDefault(c => c.Type == "CentroId").Value">Crear nueva Inscripcion</a>
 </p>
 @using (Html.BeginForm("Index", "FactInscripcions", FormMethod.Get))
 {

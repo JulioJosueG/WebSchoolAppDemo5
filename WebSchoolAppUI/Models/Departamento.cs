@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -14,6 +15,7 @@ namespace WebSchoolAppUI.Models
         }
 
         public int IdDepartamento { get; set; }
+        [Required]
         public string Nombre { get; set; }
         public int? IdCentro { get; set; }
         public int CreadoPor { get; set; }

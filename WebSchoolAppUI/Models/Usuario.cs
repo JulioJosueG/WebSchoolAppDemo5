@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -46,11 +47,16 @@ namespace WebSchoolAppUI.Models
         public int IdUsuario { get; set; }
         public DateTime FechaCreado { get; set; }
         public DateTime? FechaModificado { get; set; }
+        [Required(ErrorMessage ="Falta ingresar el contraseña"), MinLength(3, ErrorMessage = "Contraseña menor a 3 caracteres"), MaxLength(20,ErrorMessage ="Contraseña mayor a 20 caracteres")]
         public string Contrasena { get; set; }
+        [Required]
         public int? Perfil { get; set; }
+        [Required(ErrorMessage ="Falta ingresar el nombre de usuario"), MinLength(3, ErrorMessage ="Nombre de usuario menor a 3 caracteres"), MaxLength(20,ErrorMessage ="Nombre de usuario mayor a 20 caracteres")]
         public string NombreUsuario { get; set; }
+        [Required(ErrorMessage ="Falta ingresar el el correo")]
         public string Correo { get; set; }
         public int? Estado { get; set; }
+        [Required]
         public int? Personal { get; set; }
         public int? TipoUsuario { get; set; }
 

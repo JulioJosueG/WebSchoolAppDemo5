@@ -110,21 +110,26 @@ namespace WebSchoolAppUI.Controllers
         public async Task<IActionResult> Create([Bind("IdEstudiante,Nombre,Apellido,Idsigerd,FechaNacimiento,Sexo,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] Estudiante estudiante)
         {
             string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
-            var sigerdval = from s in _context.Estudiantes.Where(x => x.Idsigerd == estudiante.Idsigerd).ToList()
-                           select s;
-            if (ModelState.IsValid && !sigerdval.Any())
+            var sigerdval = _context.Estudiantes.Where(x => x.Idsigerd == estudiante.Idsigerd).FirstOrDefault();
+            
+            if(sigerdval != null)
             {
-                _context.Add(estudiante);
+                return BadRequest("El Sigerd debe ser Unico!");
+            }
+            if (ModelState.IsValid )
+            {
+
                 estudiante.Centro = Convert.ToInt32(centro);
                 estudiante.Estado = 1;
                 estudiante.CreadoPor = 1;
                 estudiante.FechaCreado = DateTime.Now;
+                _context.Add(estudiante);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
             }
             else
-            { 
-                return BadRequest("El Sigerd debe ser Unico!");
+            {
+                return BadRequest("Fecha de nacimiento invalida, minimo 3 años");
             }
             ViewData["Sexo"] = new SelectList(_context.Sexos, "IdSexo", "Nombre", estudiante.Sexo);
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -8,15 +9,24 @@ namespace WebSchoolAppUI.Models
     public partial class FactInscripcion
     {
         public int IdFactInscripcion { get; set; }
+        [Required(ErrorMessage ="Falta ingresar el Estudiandte")]
         public int IdEstudiante { get; set; }
+        [Required(ErrorMessage = "Falta ingresar el Tipo de estudiandte")]
         public int? IdEstudianteTipo { get; set; }
+        [Required(ErrorMessage = "Falta ingresar el Tipo de modalidad")]
         public int? IdModalidadTipo { get; set; }
+        [Required(ErrorMessage = "Falta ingresar el Año escolar")]
         public int? IdAnioEscolar { get; set; }
+        [Required(ErrorMessage = "Falta ingresar el Curso")]
         public int? IdCurso { get; set; }
+        //[Required(ErrorMessage = "Falta ingresar el Profesor")]
         public int? IdProfesor { get; set; }
+        [Required(ErrorMessage = "Falta ingresar el Edad")]
         public int? IdEdad { get; set; }
+        [Required(ErrorMessage = "Falta ingresar el Condicion")]
         public int? IdCondicion { get; set; }
         public int? IdCentro { get; set; }
+        [Required(ErrorMessage = "Falta ingresar el Importe")]
         public int? ImporteInscripcion { get; set; }
         public int CreadoPor { get; set; }
         public DateTime FechaCreado { get; set; }

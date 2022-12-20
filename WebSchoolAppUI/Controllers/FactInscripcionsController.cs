@@ -147,14 +147,20 @@ namespace WebSchoolAppUI.Controllers
         }
 
         // GET: FactInscripcions/Create
-        public IActionResult Create()
+        public IActionResult Create(int? id)
         {
+            var estudiante = _context.Estudiantes.Where(x => x.Centro == id && _context.FactInscripcions.Where(s=> s.IdEstudiante == x.IdEstudiante && s.FechaCreado.Year == DateTime.Now.Year).FirstOrDefault()==null).Select(s => new
+            {
+                IdEstudiante = s.IdEstudiante,
+                NombreCompleto = s.Nombre + " " + s.Apellido + " " + s.Idsigerd
+            });
+
             ViewData["IdAnioEscolar"] = new SelectList(_context.AnioEscolars, "IdAnioEscolar", "Anio");
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
             ViewData["IdCondicion"] = new SelectList(_context.Condiciones, "IdCondicion", "Nombre");
             ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "Nombre");
             ViewData["IdEdad"] = new SelectList(_context.Edades, "IdEdad", "Edad");
-            ViewData["IdEstudiante"] = new SelectList(_context.Estudiantes, "IdEstudiante", "Nombre");
+            ViewData["IdEstudiante"] = new SelectList(estudiante, "IdEstudiante", "NombreCompleto");
             ViewData["IdEstudianteTipo"] = new SelectList(_context.EstudiantesTipos, "IdEstudianteTipo", "Nombre");
             ViewData["IdModalidadTipo"] = new SelectList(_context.ModalidadesTipos, "IdModalidadTipo", "Nombre");
             ViewData["IdProfesor"] = new SelectList(_context.Profesores, "IdProfesor", "Nombre");
@@ -172,24 +178,28 @@ namespace WebSchoolAppUI.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Add(factInscripcion);
                 factInscripcion.Estado = 1;
                 factInscripcion.CreadoPor = 1;
                 factInscripcion.IdCentro = Convert.ToInt32(centro);
                 factInscripcion.FechaCreado = DateTime.Now;
+                _context.Add(factInscripcion);
+
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            ViewData["IdAnioEscolar"] = new SelectList(_context.AnioEscolars, "IdAnioEscolar", "IdAnioEscolar", factInscripcion.IdAnioEscolarNavigation.Anio);
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", factInscripcion.IdCentroNavigation.Nombre);
-            ViewData["IdCondicion"] = new SelectList(_context.Condiciones, "IdCondicion", "IdCondicion", factInscripcion.IdCondicionNavigation.Nombre);
-            ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", factInscripcion.IdCursoNavigation.Nombre);
-            ViewData["IdEdad"] = new SelectList(_context.Edades, "IdEdad", "IdEdad", factInscripcion.IdEdadNavigation.Edad);
-            ViewData["IdEstudiante"] = new SelectList(_context.Estudiantes, "IdEstudiante", "IdEstudiante", factInscripcion.IdEstudianteNavigation.Nombre);
-            ViewData["IdEstudianteTipo"] = new SelectList(_context.EstudiantesTipos, "IdEstudianteTipo", "IdEstudianteTipo", factInscripcion.IdEstudianteTipoNavigation.Nombre);
-            ViewData["IdModalidadTipo"] = new SelectList(_context.ModalidadesTipos, "IdModalidadTipo", "IdModalidadTipo", factInscripcion.IdModalidadTipoNavigation.Nombre);
-            ViewData["IdProfesor"] = new SelectList(_context.Profesores, "IdProfesor", "IdProfesor", factInscripcion.IdProfesorNavigation.Nombre);
-            return View(factInscripcion);
+            else
+            {
+                return BadRequest();
+            }
+            //ViewData["IdAnioEscolar"] = new SelectList(_context.AnioEscolars, "IdAnioEscolar", "IdAnioEscolar", factInscripcion.IdAnioEscolar.Anio);
+            //ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", factInscripcion.IdCentroNavigation.Nombre);
+            //ViewData["IdCondicion"] = new SelectList(_context.Condiciones, "IdCondicion", "IdCondicion", factInscripcion.IdCondicionNavigation.Nombre);
+            //ViewData["IdCurso"] = new SelectList(_context.Cursos, "IdCurso", "IdCurso", factInscripcion.IdCursoNavigation.Nombre);
+            //ViewData["IdEdad"] = new SelectList(_context.Edades, "IdEdad", "IdEdad", factInscripcion.IdEdadNavigation.Edad);
+            //ViewData["IdEstudiante"] = new SelectList(_context.Estudiantes, "IdEstudiante", "IdEstudiante", factInscripcion.IdEstudianteNavigation.Nombre);
+            //ViewData["IdEstudianteTipo"] = new SelectList(_context.EstudiantesTipos, "IdEstudianteTipo", "IdEstudianteTipo", factInscripcion.IdEstudianteTipoNavigation.Nombre);
+            //ViewData["IdModalidadTipo"] = new SelectList(_context.ModalidadesTipos, "IdModalidadTipo", "IdModalidadTipo", factInscripcion.IdModalidadTipoNavigation.Nombre);
+            //ViewData["IdProfesor"] = new SelectList(_context.Profesores, "IdProfesor", "IdProfesor", factInscripcion.IdProfesorNavigation.Nombre);
+            return RedirectToAction("index");
         }
 
         // GET: FactInscripcions/Edit/5

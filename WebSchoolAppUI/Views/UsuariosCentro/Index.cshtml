@@ -3,8 +3,19 @@
 @{
     ViewData["Title"] = "Usuarios de Centros educativos";
 }
+@{if (User.Claims.FirstOrDefault(c => c.Type == "Centro").Value == "")
+    {
 
-<h1>Usuarios de @User.Claims.FirstOrDefault(c => c.Type == "Centro").Value</h1>
+        <h1>Usuarios de Centros Educativos</h1>
+    }
+    else
+    {
+        <h1>
+            Usuarios de @User.Claims.FirstOrDefault(c => c.Type == "Centro").Value
+        </h1>
+    }
+}
+
 
 <p>
     <a asp-action="Create" asp-route-id="@User.Claims.FirstOrDefault(c => c.Type == "CentroId").Value">Create nuevo Usuario</a>
@@ -12,7 +23,7 @@
 <table class="table">
     <thead>
         <tr>
-         
+
             <th>
                 Usuario
             </th>
@@ -23,7 +34,7 @@
                 @Html.DisplayNameFor(model => model.Personal)
             </th>
             <th>
-               Perfil
+                Perfil
             </th>
             <th>
                 Tipo de Usuario
@@ -35,33 +46,34 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NombreUsuario)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Correo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Personal)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Perfil)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TipoUsuario)
-            </td>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NombreUsuario)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Personal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Perfil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TipoUsuario)
+                </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Centro)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.IdUsuario">Editar</a> |
-                <a asp-action="Details" asp-route-id="@item.IdUsuario">Detalles</a> |
-                <a asp-action="Delete" asp-route-id="@item.IdUsuario">Eliminar</a>
-            </td>
-        </tr>
-}
+                <td>
+                    @Html.DisplayFor(modelItem => item.Centro)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdUsuario">Editar</a> |
+                    <a asp-action="Details" asp-route-id="@item.IdUsuario">Detalles</a> |
+                    <a asp-action="Delete" asp-route-id="@item.IdUsuario">Eliminar</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

@@ -108,11 +108,12 @@ namespace WebSchoolAppUI.Controllers
 
             if (ModelState.IsValid)
             {
-                _context.Add(profesore);
                 profesore.CreadoPor = 1;
                 profesore.Estado = 1;
                 profesore.IdCentro = Convert.ToInt32(centro);
                 profesore.FechaCreado = DateTime.Now;
+                _context.Add(profesore);
+
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }

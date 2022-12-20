@@ -23,16 +23,16 @@
             </div>
             <div class="form-group">
                 <label asp-for="Cedula" class="control-label"></label>
-                <ejs-maskedtextbox id="Cedula" mask="000-0000000-0" promptChar=" "></ejs-maskedtextbox>
+                <input asp-for="Cedula" class="form-control" />
                 <span asp-validation-for="Cedula" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="IdAsignatura" class="control-label">Asignatura</label>
-                <select asp-for="IdAsignatura" class ="form-control" asp-items="ViewBag.IdAsignatura"></select>
+                <select asp-for="IdAsignatura" class="form-control" asp-items="ViewBag.IdAsignatura"></select>
             </div>
             <div class="form-group">
                 <label asp-for="IdCentro" class="control-label">Centro</label>
-                <select asp-for="IdCentro" class ="form-control" asp-items="ViewBag.IdCentro"></select>
+                <select asp-for="IdCentro" class="form-control" asp-items="ViewBag.IdCentro"></select>
             </div>
 
             <div class="form-group">

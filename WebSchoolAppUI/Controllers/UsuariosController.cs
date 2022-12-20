@@ -57,8 +57,15 @@ namespace WebSchoolAppUI.Controllers
 
         public IActionResult Create(int? id)
         {
+
+            var personal = _context.PersonalDistritos.Where(x => x.IdDistrito == id && _context.Usuarios.Where(y => y.TipoUsuario == 1 && y.Personal == x.IdPersonalDistrito && y.Estado == 1).FirstOrDefault() == null).Select(s => new
+            {
+                IdPersonalDistrito = s.IdPersonalDistrito,
+                NombreCompleto = s.Nombre + " " + s.Apellido
+            });
+
             ViewData["Perfil"] = new SelectList(_context.Perfiles.Where(i => i.Nombre.Contains("Distrito") || i.Nombre =="Administrador"), "IdPerfil", "Nombre");
-            ViewData["Personal"] = new SelectList(_context.PersonalDistritos.Where(x=> x.IdDistrito == id), "IdPersonalDistrito", "Nombre");
+            ViewData["Personal"] = new SelectList(personal, "IdPersonalDistrito", "NombreCompleto");
 
 
             return View();
@@ -68,7 +75,12 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdUsuario,Personal,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
         {
+            var oldusuario = _context.Usuarios.Where(x => (x.Correo == usuario.Correo || x.NombreUsuario == usuario.NombreUsuario) && x.Estado == 1).FirstOrDefault();
 
+            if (oldusuario != null)
+            {
+                return RedirectToAction("create");
+            };
             if (ModelState.IsValid)
             {
                 usuario.FechaCreado = DateTime.Now;
@@ -76,13 +88,12 @@ namespace WebSchoolAppUI.Controllers
                 usuario.Estado = 1;
                 _context.Add(usuario) ;
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
             ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
 
-            return View(usuario);
+            return RedirectToAction("index");
         }
-
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)

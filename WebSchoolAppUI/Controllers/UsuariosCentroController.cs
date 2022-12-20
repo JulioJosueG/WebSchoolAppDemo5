@@ -62,14 +62,27 @@ namespace WebSchoolAppUI.Controllers
 
         public IActionResult Create(int? id)
         {
-            var personal = _context.PersonalCentros.Where(x => x.IdCentro == id).Select(s => new
+            if(id > 0)
             {
-                IdPersonalCentro = s.IdPersonalCentro,
-                NombreCompleto = s.Nombre + " " + s.Apellido
-            });
+                var personal = _context.PersonalCentros.Where(x => x.IdCentro == id && _context.Usuarios.Where(y => y.TipoUsuario == 2 && y.Personal == x.IdPersonalCentro && y.Estado == 1).FirstOrDefault() == null).Select(s => new
+                {
+                    IdPersonalCentro = s.IdPersonalCentro,
+                    NombreCompleto = s.Nombre + " " + s.Apellido
+                });
+                ViewData["Personal"] = new SelectList(personal, "IdPersonalCentro", "NombreCompleto");
+
+            }
+            else
+            {
+                var personal = _context.PersonalCentros.Where(x => _context.Usuarios.Where(y => y.TipoUsuario == 2 && y.Personal == x.IdPersonalCentro && y.Estado == 1).FirstOrDefault() == null).Select(s => new
+                {
+                    IdPersonalCentro = s.IdPersonalCentro,
+                    NombreCompleto = s.Nombre + " " + s.Apellido + " - " + _context.CentrosEducativos.Where(x=> x.IdCentroEducativo ==s.IdCentro).Select( x=> x.Nombre).FirstOrDefault()
+                });
+                ViewData["Personal"] = new SelectList(personal, "IdPersonalCentro", "NombreCompleto");
+            }
 
             ViewData["Perfil"] = new SelectList(_context.Perfiles.Where(x=> !x.Nombre.Contains("Distrito") ), "IdPerfil", "Nombre");
-            ViewData["Personal"] = new SelectList(personal, "IdPersonalCentro", "NombreCompleto");
 
             return View();
         }
@@ -78,22 +91,26 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdUsuario,FechaCreado,FechaModificado,Contrasena,Perfil,NombreUsuario,Correo,Estado,Personal,TipoUsuario")] Usuario usuario)
         {
+            var oldusuario = _context.Usuarios.Where(x => (x.Correo == usuario.Correo || x.NombreUsuario == usuario.NombreUsuario) && x.Estado == 1).FirstOrDefault();
+
+            if(oldusuario != null)
+            {
+                
+                return RedirectToAction("create");
+            };
             if (ModelState.IsValid)
             {
-                _context.Add(usuario);
                 usuario.Estado = 1;
                 usuario.TipoUsuario = 2;
                 usuario.FechaCreado = DateTime.Now;
-                
+                _context.Add(usuario);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
             }
-            ViewData["Estado"] = new SelectList(_context.Estados, "IdEstado", "IdEstado", usuario.Estado);
             ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
-            ViewData["TipoUsuario"] = new SelectList(_context.TipoUsuarios, "IdTipoUsuario", "IdTipoUsuario", usuario.TipoUsuario);
-            return View(usuario);
-        }
 
+            return RedirectToAction("index");
+        }
+        [HttpGet]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -106,13 +123,13 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-            ViewData["Estado"] = new SelectList(_context.Estados, "IdEstado", "IdEstado", usuario.Estado);
+            ViewData["Personal"] = new SelectList(_context.PersonalCentros, "IdPersonal", "Nombre", usuario.Personal);
             ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
-            ViewData["TipoUsuario"] = new SelectList(_context.TipoUsuarios, "IdTipoUsuario", "IdTipoUsuario", usuario.TipoUsuario);
             return View(usuario);
         }
 
         [ValidateAntiForgeryToken]
+        [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("IdUsuario,FechaCreado,FechaModificado,Contrasena,Perfil,NombreUsuario,Correo,Estado,Personal,TipoUsuario")] Usuario usuario)
         {
             if (id != usuario.IdUsuario)
@@ -145,9 +162,8 @@ namespace WebSchoolAppUI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["Estado"] = new SelectList(_context.Estados, "IdEstado", "IdEstado", usuario.Estado);
+            ViewData["Personal"] = new SelectList(_context.PersonalCentros, "IdPersonal", "Nombre", usuario.Personal);
             ViewData["Perfil"] = new SelectList(_context.Perfiles, "IdPerfil", "Nombre", usuario.Perfil);
-            ViewData["TipoUsuario"] = new SelectList(_context.TipoUsuarios, "IdTipoUsuario", "IdTipoUsuario", usuario.TipoUsuario);
             return View(usuario);
         }
 

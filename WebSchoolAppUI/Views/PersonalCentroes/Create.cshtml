@@ -27,12 +27,18 @@
             </div>
             <div class="form-group">
                 <label asp-for="IdDepartamento" class="control-label">Departamento</label>
-                <select asp-for="IdDepartamento" class ="form-control" asp-items="ViewBag.IdDepartamento"></select>
+                <select asp-for="IdDepartamento" class="form-control" asp-items="ViewBag.IdDepartamento"></select>
             </div>
-            <div class="form-group">
-                <label asp-for="IdCentro" class="control-label">Centro</label>
-                <select asp-for="IdCentro" class ="form-control" asp-items="ViewBag.IdCentro"></select>
-            </div>
+            @{if (User.Claims.FirstOrDefault(c => c.Type == "Centro").Value == "")
+                {
+                    <div class="form-group">
+                        <label asp-for="IdCentro" class="control-label">Centro</label>
+                        <select asp-for="IdCentro" class="form-control" asp-items="ViewBag.IdCentro"></select>
+                    </div>
+                }
+            }
+
+
 
             <div class="form-group">
                 <input type="submit" value="Crear" class="btn btn-primary" />

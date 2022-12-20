@@ -7,30 +7,57 @@
     @{ if (User.IsInRole("Administrador"))
         {
             <div>
-                <div class="d-flex justify-content-between align-content-center">
-                    <div class="card p-2" style="width: 18rem;">
-                        <img src="~/img/Usuarios.png" class="card-img-top" alt="...">
-                        <div class="card-body">
-                            <h5 class="card-title">Usuarios</h5>
-                            <p class="card-text">Gestion de Usuarios</p>
-                            @{ if (User.Claims.FirstOrDefault(c => c.Type == "Centro").Value == "")
-                                {
-                                    <a asp-controller="Usuarios" asp-action="index" class="btn btn-primary">Ir</a>
-                                }
-                                else
-                                {
-                                    <a asp-controller="UsuariosCentro" asp-action="index" class="btn btn-primary">Ir</a>
+                    <div class="d-flex justify-content-between align-content-center">
+                        @{if (User.Claims.FirstOrDefault(c => c.Type == "Centro").Value == "")
+                            {
 
-                                }
+                                <div class="card p-2" style="width: 18rem;">
+                                    <img src="~/img/Usuarios.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Usuarios - Distrito</h5>
+                                        <p class="card-text">Gestion de Usuarios Distrito</p>
+                                        <a asp-controller="Usuarios" asp-action="index" class="btn btn-primary">Ir</a>
+                                    </div>
+                                </div>
+                                <div class="card p-2" style="width: 18rem;">
+                                    <img src="~/img/Profesor2.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Personal de centro</h5>
+                                        <p class="card-text">Gestion de Personal de centro</p>
+                                           
+                                                <a asp-controller="PersonalCentroes" asp-action="index" class="btn btn-primary">Ir</a>
+                                    </div>
+                                </div>
+
+                                <div class="card p-2" style="width: 18rem;">
+                                    <img src="~/img/217-2175129_de-riesgos-laborales-necesario-para-la-inscripción-administracion-y-negocios-internacionales-logo.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Usuarios - Centros</h5>
+                                        <p class="card-text">Gestion de Usuarios Centros</p>
+                                        <a asp-controller="UsuariosCentro" asp-action="index" class="btn btn-primary">Ir</a>
+                                    </div>
+                                </div>
                             }
-                        </div>
+                            else
+                            {
+                                <div class="card p-2" style="width: 18rem;">
+                                    <img src="~/img/Usuarios.png" class="card-img-top" alt="...">
+                                    <div class="card-body">
+                                        <h5 class="card-title">Usuarios</h5>
+                                        <p class="card-text">Gestion de Usuarios</p>
+                                        <a asp-controller="UsuariosCentro" asp-action="index" class="btn btn-primary">Ir</a>
+                                    </div>
+                                </div>
+                            }
+                        }
+
+
                     </div>
                 </div>
-                </div>
-                }
+                            }
 
-                else
-                {
+                            else
+                            {
 <div class="d-flex justify-content-between align-content-center">
 
 
