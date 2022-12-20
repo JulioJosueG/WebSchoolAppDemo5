@@ -119,7 +119,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-            var oldusuario = _context.Usuarios.Where(x => (x.Correo == usuario.Correo || x.NombreUsuario == usuario.NombreUsuario) && x.Estado == 1 && id != usuario.IdUsuario).FirstOrDefault();
+            var oldusuario = _context.Usuarios.Where(x => (x.Correo == usuario.Correo || x.NombreUsuario == usuario.NombreUsuario) && x.Estado == 1 && x.TipoUsuario == 1  &&  id != usuario.IdUsuario).FirstOrDefault();
 
             if (oldusuario != null)
             {
