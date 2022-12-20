@@ -66,6 +66,12 @@
       <FullPath>DW Episcopal2.ds</FullPath>
     </ProjectItem>
   </DataSources>
+  <DataSourceViews>
+    <ProjectItem>
+      <Name>DW Episcopal2.dsv</Name>
+      <FullPath>DW Episcopal2.dsv</FullPath>
+    </ProjectItem>
+  </DataSourceViews>
   <Configurations>
     <Configuration>
       <Name>Development</Name>
