@@ -24,7 +24,6 @@ namespace WebSchoolAppUI.Models
         public string Cedula { get; set; }
         [Required]
         public int? IdAsignatura { get; set; }
-        [Required]
         public int? IdCentro { get; set; }
         public int CreadoPor { get; set; }
         public DateTime FechaCreado { get; set; }
