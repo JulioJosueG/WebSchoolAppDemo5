@@ -75,7 +75,7 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdUsuario,Personal,Contrasena,Perfil,NombreUsuario,Correo")] Usuario usuario)
         {
-            var oldusuario = _context.Usuarios.Where(x => (x.Correo == usuario.Correo || x.NombreUsuario == usuario.NombreUsuario) && x.Estado == 1).FirstOrDefault();
+            var oldusuario = _context.Usuarios.Where(x => (x.Correo.Trim() == usuario.Correo.Trim() || x.NombreUsuario.Trim() == usuario.NombreUsuario.Trim()) && x.TipoUsuario == 1 && x.Estado == 1).FirstOrDefault();
 
             if (oldusuario != null)
             {
