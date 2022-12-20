@@ -10,50 +10,50 @@
     <h4>Profesore</h4>
     <hr />
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Nombre)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Apellido)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Apellido)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Cedula)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Cedula)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FechaCreado)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FechaCreado)
         </dd>
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.FechaModificado)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.FechaModificado)
         </dd>
-        
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdAsignaturaNavigation)
+
+        <dt class="col-sm-2">
+            Asignatura
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdAsignaturaNavigation.IdAsignatura)
-        </dd class>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdCentroNavigation)
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdAsignaturaNavigation.Nombre)
+        </dd>
+        <dt class="col-sm-2">
+            Centro
         </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdCentroNavigation.IdCentroEducativo)
-        </dd class>
-        
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IdCentroNavigation.Nombre)
+        </dd>
+
     </dl>
     
     <form asp-action="Delete">

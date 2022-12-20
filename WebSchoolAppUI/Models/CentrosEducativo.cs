@@ -26,7 +26,6 @@ namespace WebSchoolAppUI.Models
         [Required]
 
         public int IdTipoCentro { get; set; }
-        public string CodigoCentro { get; set; }
         public int IdDistrito { get; set; }
         public int CreadoPor { get; set; }
         public DateTime FechaCreado { get; set; }

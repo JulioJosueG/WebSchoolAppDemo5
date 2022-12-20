@@ -103,9 +103,14 @@ namespace WebSchoolAppUI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("IdCentroEducativo,Nombre,IdTipoCentro,IdDistrito")] CentrosEducativo centrosEducativo)
+        public async Task<IActionResult> Create([Bind("IdCentroEducativo,Nombre,IdTipoCentro,CodigoCentro,IdDistrito")] CentrosEducativo centrosEducativo)
         {
             string distrito = User.Claims.FirstOrDefault(x => x.Type == "DistritoId").Value;
+            var oldCentro = _context.CentrosEducativos.Where(x => x.Nombre == centrosEducativo.Nombre);
+            if(oldCentro != null)
+            {
+                return BadRequest("Ya existe dicho centro");
+            }
 
             if (ModelState.IsValid)
             {
@@ -149,11 +154,16 @@ namespace WebSchoolAppUI.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("IdCentroEducativo,Nombre,IdTipoCentro,IdDistrito,ModificadoPor,FechaModificado")] CentrosEducativo centrosEducativo)
+        public async Task<IActionResult> Edit(int id, [Bind("IdCentroEducativo,Nombre,IdTipoCentro,IdDistrito,CodigoCentro,ModificadoPor,FechaModificado")] CentrosEducativo centrosEducativo)
         {
             if (id != centrosEducativo.IdCentroEducativo)
             {
                 return NotFound();
+            }
+            var oldCentro = _context.CentrosEducativos.Where(x => x.Nombre == centrosEducativo.Nombre);
+            if (oldCentro != null)
+            {
+                return BadRequest("Ya existe dicho centro");
             }
 
             if (ModelState.IsValid)

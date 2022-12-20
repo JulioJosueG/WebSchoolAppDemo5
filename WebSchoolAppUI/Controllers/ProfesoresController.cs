@@ -106,6 +106,11 @@ namespace WebSchoolAppUI.Controllers
         {
             string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
 
+            var oldprofesor = _context.Profesores.Where(x => x.Estado == 1 && x.Cedula == profesore.Cedula);
+            if(oldprofesor != null)
+            {
+                return BadRequest("Cedula ya registrada");
+            }
             if (ModelState.IsValid)
             {
                 profesore.CreadoPor = 1;
@@ -152,6 +157,11 @@ namespace WebSchoolAppUI.Controllers
             if (id != profesore.IdProfesor)
             {
                 return NotFound();
+            }
+            var oldprofesors = _context.Profesores.Where(x => x.Estado == 1 && x.Cedula == profesore.Cedula);
+            if (oldprofesors != null)
+            {
+                return BadRequest("Cedula ya registrada");
             }
 
             if (ModelState.IsValid)

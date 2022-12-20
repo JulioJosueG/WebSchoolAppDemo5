@@ -24,20 +24,41 @@ namespace WebSchoolAppUI.Controllers
 
        
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int? id)
         {
-            var context = _context.Usuarios.Where(x=> x.TipoUsuario==2 && x.Estado == 1).Select(x => new UsuarioCentroVM
+            if(id == null)
             {
-                IdUsuario = x.IdUsuario,
-                Perfil = x.PerfilNavigation.Nombre,
-                NombreUsuario = x.NombreUsuario,
-                Correo = x.Correo,
-                Estado = x.Estado,
-                Personal = _context.PersonalCentros.Where(u => u.IdPersonalCentro == x.Personal).Select(x => x.Nombre + " " + x.Apellido).FirstOrDefault(),
-                TipoUsuario = x.TipoUsuarioNavigation.Nombre,
-                Centro = _context.CentrosEducativos.Where(z=> z.IdCentroEducativo == _context.PersonalCentros.Where(u => u.IdPersonalCentro == x.Personal).Select(t=> t.IdCentro).FirstOrDefault()).Select(x=> x.Nombre).FirstOrDefault()
-            });
-            return View(await context.ToListAsync());
+                var context = _context.Usuarios.Where(x => x.TipoUsuario == 2 && x.Estado == 1).Select(x => new UsuarioCentroVM
+                {
+                    IdUsuario = x.IdUsuario,
+                    Perfil = x.PerfilNavigation.Nombre,
+                    NombreUsuario = x.NombreUsuario,
+                    Correo = x.Correo,
+                    Estado = x.Estado,
+                    Personal = _context.PersonalCentros.Where(u => u.IdPersonalCentro == x.Personal).Select(x => x.Nombre + " " + x.Apellido).FirstOrDefault(),
+                    TipoUsuario = x.TipoUsuarioNavigation.Nombre,
+                    Centro = _context.CentrosEducativos.Where(z => z.IdCentroEducativo == _context.PersonalCentros.Where(u => u.IdPersonalCentro == x.Personal).Select(t => t.IdCentro).FirstOrDefault()).Select(x => x.Nombre).FirstOrDefault()
+                });
+                return View(await context.ToListAsync());
+
+            }
+            else
+            {
+                var context = _context.Usuarios.Where(x => x.TipoUsuario == 2 && x.Estado == 1 && _context.PersonalCentros.Where(y=>  y.IdPersonalCentro == x.Personal && y.IdCentro == id).FirstOrDefault() != null).Select(x => new UsuarioCentroVM
+                {
+                    IdUsuario = x.IdUsuario,
+                    Perfil = x.PerfilNavigation.Nombre,
+                    NombreUsuario = x.NombreUsuario,
+                    Correo = x.Correo,
+                    Estado = x.Estado,
+                    Personal = _context.PersonalCentros.Where(u => u.IdPersonalCentro == x.Personal).Select(x => x.Nombre + " " + x.Apellido).FirstOrDefault(),
+                    TipoUsuario = x.TipoUsuarioNavigation.Nombre,
+                    Centro = _context.CentrosEducativos.Where(z => z.IdCentroEducativo == _context.PersonalCentros.Where(u => u.IdPersonalCentro == x.Personal).Select(t => t.IdCentro).FirstOrDefault()).Select(x => x.Nombre).FirstOrDefault()
+                });
+                return View(await context.ToListAsync());
+
+            }
+
         }
 
         public async Task<IActionResult> Details(int? id)
@@ -142,7 +163,6 @@ namespace WebSchoolAppUI.Controllers
                 try
                 {
                     var oldUsuario = await _context.Usuarios.FindAsync(usuario.IdUsuario);
-                    oldUsuario.Personal = usuario.Personal;
                     oldUsuario.NombreUsuario = usuario.NombreUsuario;
                     oldUsuario.Perfil = usuario.Perfil;
                     oldUsuario.Correo = usuario.Correo;
