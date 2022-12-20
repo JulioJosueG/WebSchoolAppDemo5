@@ -48,7 +48,7 @@ namespace WebSchoolAppUI.Controllers
         public IActionResult Create()
         {
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos.Where(x=> x.Estado ==1), "IdDepartamento", "Nombre");
             return View();
         }
 
@@ -71,7 +71,7 @@ namespace WebSchoolAppUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentroNavigation.Nombre);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamentoNavigation.Nombre);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos.Where(x => x.Estado == 1), "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamentoNavigation.Nombre);
             return View(personalCentro);
         }
 
@@ -88,7 +88,7 @@ namespace WebSchoolAppUI.Controllers
                 return NotFound();
             }
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos.Where(x => x.Estado == 1), "IdDepartamento", "Nombre");
             return View(personalCentro);
         }
 
@@ -132,7 +132,7 @@ namespace WebSchoolAppUI.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "IdCentroEducativo", personalCentro.IdCentroNavigation.Nombre);
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamentoNavigation.Nombre);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos.Where(x => x.Estado == 1), "IdDepartamento", "IdDepartamento", personalCentro.IdDepartamentoNavigation.Nombre);
             return View(personalCentro);
         }
 
