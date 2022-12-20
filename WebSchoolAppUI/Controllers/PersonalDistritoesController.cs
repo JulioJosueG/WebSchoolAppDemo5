@@ -97,8 +97,8 @@ namespace WebSchoolAppUI.Controllers
         // GET: PersonalDistritoes/Create
         public IActionResult Create()
         {
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre");
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo");
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos.Where(x => x.Estado == 1), "IdDepartamento", "Nombre");
+            ViewData["IdDistrito"] = new SelectList(_context.Distritos.Where(x => x.Estado == 1), "IdDistrito", "Codigo");
             return View();
         }
 
@@ -119,11 +119,11 @@ namespace WebSchoolAppUI.Controllers
                 personalDistrito.CreadoPor = 1;
                 _context.Add(personalDistrito);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                
             }
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre", personalDistrito.IdDepartamento);
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", personalDistrito.IdDistrito);
-            return View(personalDistrito);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos.Where(x => x.Estado == 1), "IdDepartamento", "Nombre", personalDistrito.IdDepartamento);
+            ViewData["IdDistrito"] = new SelectList(_context.Distritos.Where(x => x.Estado == 1), "IdDistrito", "Codigo", personalDistrito.IdDistrito);
+            return RedirectToAction("index");
         }
 
         public async Task<IActionResult> Edit(int? id)
@@ -143,8 +143,8 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "Nombre", personalDistrito.IdDepartamento);
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", personalDistrito.IdDistrito);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos.Where(x => x.Estado == 1), "IdDepartamento", "Nombre", personalDistrito.IdDepartamento);
+            ViewData["IdDistrito"] = new SelectList(_context.Distritos.Where(x => x.Estado == 1), "IdDistrito", "Codigo", personalDistrito.IdDistrito);
             
             return View(personalDistrito);
         }
@@ -191,12 +191,12 @@ namespace WebSchoolAppUI.Controllers
                         throw;
                     }
                 }
-                return RedirectToAction(nameof(Index));
+                
             }
-            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos, "IdDepartamento", "IdDepartamento", personalDistrito.IdDepartamento);
-            ViewData["IdDistrito"] = new SelectList(_context.Distritos, "IdDistrito", "Codigo", personalDistrito.IdDistrito);
+            ViewData["IdDepartamento"] = new SelectList(_context.Departamentos.Where(x => x.Estado == 1), "IdDepartamento", "IdDepartamento", personalDistrito.IdDepartamento);
+            ViewData["IdDistrito"] = new SelectList(_context.Distritos.Where(x => x.Estado == 1), "IdDistrito", "Codigo", personalDistrito.IdDistrito);
  
-            return View(personalDistrito);
+            return RedirectToAction("index");
         }
 
         // GET: PersonalDistritoes/Delete/5

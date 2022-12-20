@@ -96,7 +96,7 @@ namespace WebSchoolAppUI.Controllers
         public IActionResult Create()
         {
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos.Where(x => x.Estado == 1), "IdCentroEducativo", "Nombre");
             return View();
         }
 
@@ -124,7 +124,7 @@ namespace WebSchoolAppUI.Controllers
             }
 
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos.Where(x => x.Estado == 1), "IdCentroEducativo", "Nombre");
             return View(profesore);
         }
 
@@ -145,7 +145,7 @@ namespace WebSchoolAppUI.Controllers
             }
 
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos.Where(x => x.Estado == 1), "IdCentroEducativo", "Nombre");
 
             return View(profesore);
         }
@@ -193,7 +193,7 @@ namespace WebSchoolAppUI.Controllers
             }
 
             ViewData["IdAsignatura"] = new SelectList(_context.Asignaturas, "IdAsignatura", "Nombre");
-            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos, "IdCentroEducativo", "Nombre");
+            ViewData["IdCentro"] = new SelectList(_context.CentrosEducativos.Where(x => x.Estado == 1), "IdCentroEducativo", "Nombre");
 
             return View(profesore);
         }
