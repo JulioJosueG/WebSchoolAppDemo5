@@ -164,7 +164,12 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
+            var sigerdval = _context.Estudiantes.Where(x => x.Idsigerd == estudiante.Idsigerd && x.Estado == 1 && id != x.IdEstudiante).FirstOrDefault();
 
+            if (sigerdval != null)
+            {
+                return BadRequest("El Sigerd debe ser Unico!");
+            }
             if (ModelState.IsValid)
             {
                 try

@@ -36,6 +36,11 @@
                         <select asp-for="IdCentro" class="form-control" asp-items="ViewBag.IdCentro"></select>
                     </div>
                 }
+                else
+                {
+                    <input type="hidden" asp-for="IdCentro" value="@User.Claims.FirstOrDefault(c => c.Type == "CentroId").Value" />
+
+                }
             }
 
 
