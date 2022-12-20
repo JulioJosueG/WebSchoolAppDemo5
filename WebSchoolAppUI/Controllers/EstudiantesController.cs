@@ -44,7 +44,7 @@ namespace WebSchoolAppUI.Controllers
             if (!String.IsNullOrEmpty(searchString))
             {
                 students = students.Where(s => s.Apellido.Contains(searchString)
-                                       || s.Nombre.Contains(searchString));
+                                       || s.Nombre.Contains(searchString) || s.Idsigerd.Contains(searchString));
             }
             switch (sortOrder)
             {

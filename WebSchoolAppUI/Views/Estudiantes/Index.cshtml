@@ -41,8 +41,8 @@
 @using (Html.BeginForm("Index", "Estudiantes", FormMethod.Get))
 {
     <p>
-        Buscar por nombre: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-        <input type="submit" value="Search" />
+        Buscar por nombre/IdSigerd: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Buscar" />
     </p>
 }
 <center>
@@ -51,6 +51,9 @@
         <table class="table" style="width:100%" border="1">
             <thead>
                 <tr>
+                    <th>
+                        Idsigerd
+                    </th>
                     <th>
                         Nombre
                     </th>
@@ -73,29 +76,32 @@
             <tbody>
                 @foreach (var item in Model)
                 {
-                    <tr style="border:1px solid black">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Nombre)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Apellido)
-                        </td>
+                <tr style="border:1px solid black">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Idsigerd)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellido)
+                    </td>
 
-                        <td>
-                            @{
-                                var date = item.FechaNacimiento.Value.Date.ToString("dd/MM/yyyy");
-                           }
-                            @Html.DisplayFor(modelItem => date)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.SexoNavigation.Nombre)
-                        </td>
-                        <td>
-                            <a asp-action="Edit" asp-route-id="@item.IdEstudiante">Editar</a> |
-                            <a asp-action="Details" asp-route-id="@item.IdEstudiante">Detalles</a> |
-                            <a asp-action="Delete" asp-route-id="@item.IdEstudiante">Eliminar</a>
-                        </td>
-                    </tr>
+                    <td>
+                        @{
+                            var date = item.FechaNacimiento.Value.Date.ToString("dd/MM/yyyy");
+                        }
+                        @Html.DisplayFor(modelItem => date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SexoNavigation.Nombre)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.IdEstudiante">Editar</a> |
+                        <a asp-action="Details" asp-route-id="@item.IdEstudiante">Detalles</a> |
+                        <a asp-action="Delete" asp-route-id="@item.IdEstudiante">Eliminar</a>
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
