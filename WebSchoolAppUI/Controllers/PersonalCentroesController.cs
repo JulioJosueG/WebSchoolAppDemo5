@@ -56,6 +56,11 @@ namespace WebSchoolAppUI.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdPersonalCentro,Nombre,Apellido,Cedula,IdDepartamento,IdCentro,CreadoPor,FechaCreado,ModificadoPor,FechaModificado")] PersonalCentro personalCentro)
         {
+            var oldPersonal = _context.PersonalCentros.Where(x => x.Cedula == personalCentro.Cedula && x.Estado == 1).FirstOrDefault();
+            if (oldPersonal != null)
+            {
+                return BadRequest("Cedula ya utilizada");
+            }
             if (ModelState.IsValid)
             {
                 _context.Add(personalCentro);
@@ -95,7 +100,11 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-
+            var oldPersonal = _context.PersonalCentros.Where(x => x.Cedula == personalCentro.Cedula && x.Estado==1 && id != x.IdPersonalCentro).FirstOrDefault();
+            if (oldPersonal != null)
+            {
+                return BadRequest("Cedula ya utilizada");
+            }
             if (ModelState.IsValid)
             {
                 try

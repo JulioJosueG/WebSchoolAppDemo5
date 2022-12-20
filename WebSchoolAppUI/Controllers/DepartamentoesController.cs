@@ -61,7 +61,7 @@ namespace WebSchoolAppUI.Views
         public async Task<IActionResult> Create([Bind("IdDepartamento,Nombre,IdCentro,CreadoPor,FechaCreado")] Departamento departamento)
         {
             string centro = User.Claims.FirstOrDefault(x => x.Type == "CentroId").Value;
-            var oldDepartamento = _context.Departamentos.Where(x => x.Nombre == departamento.Nombre);
+            var oldDepartamento = _context.Departamentos.Where(x => x.Nombre == departamento.Nombre && x.Estado==1).FirstOrDefault();
             if (oldDepartamento != null)
             {
                 return BadRequest("Ya existe dicho departamento");
@@ -107,7 +107,7 @@ namespace WebSchoolAppUI.Views
             {
                 return NotFound();
             }
-            var oldDepartamentos = _context.Departamentos.Where(x => x.Nombre == departamento.Nombre);
+            var oldDepartamentos = _context.Departamentos.Where(x => x.Nombre == departamento.Nombre && x.Estado == 1 && id != x.IdDepartamento).FirstOrDefault();
             if (oldDepartamentos != null)
             {
                 return BadRequest("Ya existe dicho departamento");

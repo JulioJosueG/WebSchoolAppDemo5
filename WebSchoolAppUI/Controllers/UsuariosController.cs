@@ -79,7 +79,7 @@ namespace WebSchoolAppUI.Controllers
 
             if (oldusuario != null)
             {
-                return RedirectToAction("create");
+                return BadRequest("Usuario o Correo ya utilizado");
             };
             if (ModelState.IsValid)
             {
@@ -100,7 +100,7 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
-
+           
             var usuario = await _context.Usuarios.FindAsync(id);
             if (usuario == null)
             {
@@ -119,7 +119,12 @@ namespace WebSchoolAppUI.Controllers
             {
                 return NotFound();
             }
+            var oldusuario = _context.Usuarios.Where(x => (x.Correo == usuario.Correo || x.NombreUsuario == usuario.NombreUsuario) && x.Estado == 1 && id != usuario.IdUsuario).FirstOrDefault();
 
+            if (oldusuario != null)
+            {
+                return BadRequest("Usuario o Correo ya utilizado");
+            };
             if (ModelState.IsValid)
             {
                 try
